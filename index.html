@@ -271,7 +271,7 @@
                             <div class="pt-2"><img src="https://img.icons8.com/color/48/google-logo.png" class="mx-auto opacity-50 w-8 h-8" alt="NFC"></div>
                         </div>
                     </div>
-                    <button onclick="window.openOnboarding('Tier 3: Review Booster')" class="w-full py-4 bg-amber-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-amber-500 transition text-white">Select Tier 3</button>
+                    <button onclick="window.openOnboarding('Tier 3: Review Booster')" class="w-full py-4 bg-amber-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-amber-500 transition text-white text-center">Select Tier 3</button>
                 </div>
 
                 <div id="tier-4" class="glass-card p-8 rounded-3xl border-teal-400/50 bg-slate-900 shadow-2xl flex flex-col items-center hover:scale-[1.02] transition-transform text-center text-pretty text-white">
@@ -292,7 +292,7 @@
         </div>
     </section>
 
-    <!-- Lab Intelligence FAQ (Restored Original 5) -->
+    <!-- Lab Intelligence FAQ -->
     <section id="faq" class="py-24 px-6 bg-slate-950/50 border-t border-slate-900">
         <div class="max-w-4xl mx-auto text-center text-pretty">
             <div class="mb-16">
@@ -389,14 +389,15 @@
                 <p id="selected-tier-display" class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest border-b border-white/10 pb-4 text-center">Selected: [Tier Name]</p>
             </div>
 
+            <!-- AJAX FORM SUBMIT TO dappsncfc@gmail.com -->
             <form id="requirement-form" class="space-y-8">
                 <div class="space-y-4 text-center text-pretty">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black">01. Contact Intelligence</h4>
                     <div class="space-y-4">
-                        <input type="text" id="ob-name" required placeholder="Full Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
-                        <input type="text" id="ob-business-name" required placeholder="Business Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
-                        <input type="email" id="ob-email" required placeholder="Email Address" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
-                        <input type="tel" id="ob-phone" required placeholder="Contact Number" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                        <input type="text" id="ob-name" name="Full Name" required placeholder="Full Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                        <input type="text" id="ob-business-name" name="Business Name" required placeholder="Business Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                        <input type="email" id="ob-email" name="Email Address" required placeholder="Email Address" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                        <input type="tel" id="ob-phone" name="Contact Number" required placeholder="Contact Number" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
                     </div>
                 </div>
 
@@ -404,28 +405,28 @@
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black">02. Digital Infrastructure</h4>
                     <div class="space-y-4 text-pretty text-pretty">
                         <label class="block text-[11px] font-medium text-slate-300">Have you invited [lab@offscript.co.uk] as a Manager to your Google Profile?</label>
-                        <select id="ob-invite" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white">
+                        <select id="ob-invite" name="Manager Invitation Status" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white">
                             <option>Yes, invitation sent</option>
                             <option>Not yet, send me the guide</option>
                         </select>
                         <label class="block text-[11px] font-medium text-slate-300">Is your business currently "Verified" on Google Maps?</label>
-                        <select id="ob-verified" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white">
+                        <select id="ob-verified" name="Google Maps Verified" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white">
                             <option>Yes, verified</option>
                             <option>No / Unsure</option>
                         </select>
-                        <input type="url" id="ob-link" placeholder="Official Website / Social Media Link" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                        <input type="url" id="ob-link" name="Website or Social Link" placeholder="Official Website / Social Media Link" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
                     </div>
                 </div>
 
                 <div class="space-y-4 text-center text-pretty text-pretty">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black">03. Semantic Mapping</h4>
-                    <textarea id="ob-services" placeholder="List your 3 priority services for AI recommendation mapping" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 h-24 text-white placeholder-slate-500"></textarea>
+                    <textarea id="ob-services" name="Priority Services" placeholder="List your 3 priority services for AI recommendation mapping" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 h-24 text-white placeholder-slate-500"></textarea>
                 </div>
 
                 <div id="physical-shipping" class="space-y-4 text-center text-pretty">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black text-pretty">04. Lab Delivery</h4>
-                    <textarea id="ob-address" placeholder="UK Shipping Address for NFC Review Kit(s)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 h-20 text-white placeholder-slate-500"></textarea>
-                    <input type="url" id="ob-review-link" placeholder="Direct Google Review Link" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                    <textarea id="ob-address" name="Shipping Address" placeholder="UK Shipping Address for NFC Review Kit(s)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 h-20 text-white placeholder-slate-500"></textarea>
+                    <input type="url" id="ob-review-link" name="Google Review Link" placeholder="Direct Google Review Link" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
                 </div>
 
                 <button type="submit" class="w-full bg-teal-500 text-slate-900 font-bold py-5 rounded-2xl glow-button uppercase text-xs tracking-[0.3em] text-center">Ignite Lab Session</button>
@@ -460,8 +461,8 @@
     <script>
         // --- 1. CONFIGURATION ---
         // CRITICAL: Replace the empty string below with your NEW Google API key
-        const apiKey = ""; 
-        const modelName = "gemini-1.5-flash"; 
+        const apiKey = "AIzaSyCPrOKK3BEKeDCmAnZb2L2_AzI5hsLozxo"; 
+        const modelName = "gemini-2.0-flash"; 
 
         // --- 2. API CORE LOGIC ---
         async function callGemini(prompt, retryCount = 0) {
@@ -590,20 +591,52 @@
             scanner.classList.add('hidden');
         };
 
-        // --- 5. ONBOARDING SUBMISSION ---
+        // --- 5. EMAIL FORM SUBMISSION LOGIC (AJAX) ---
         document.getElementById('requirement-form').onsubmit = function(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button');
             const originalText = btn.innerText;
-            btn.innerText = 'SENDING...';
+            btn.innerText = 'SENDING TO LAB...';
             btn.disabled = true;
-            setTimeout(() => {
+
+            // Gather the data to send
+            const formData = {
+                "Selected Tier": document.getElementById('selected-tier-display').innerText,
+                "Full Name": document.getElementById('ob-name').value,
+                "Business Name": document.getElementById('ob-business-name').value,
+                "Email Address": document.getElementById('ob-email').value,
+                "Contact Number": document.getElementById('ob-phone').value,
+                "Manager Invite Status": document.getElementById('ob-invite').value,
+                "Google Maps Verified": document.getElementById('ob-verified').value,
+                "Website/Social Link": document.getElementById('ob-link').value,
+                "Priority Services": document.getElementById('ob-services').value,
+                "Shipping Address": document.getElementById('ob-address').value,
+                "Google Review Link": document.getElementById('ob-review-link').value
+            };
+
+            // Send to FormSubmit
+            fetch("https://formsubmit.co/ajax/dappsncfc@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
                 window.showStatusMessage('Lab Session Ignited Successfully. You will be contacted within 24 hours to complete your set-up.');
                 btn.innerText = originalText;
                 btn.disabled = false;
                 window.closeOnboarding();
                 e.target.reset();
-            }, 1500);
+            })
+            .catch(error => {
+                console.error("Email Error:", error);
+                window.showStatusMessage('Protocol Error: Failed to send data. Please ensure you clicked the FormSubmit verification email.', false);
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
         };
 
         window.onclick = function(e) { if (e.target == document.getElementById('onboarding-modal')) window.closeOnboarding(); };
