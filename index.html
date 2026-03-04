@@ -467,8 +467,8 @@
         // The code will automatically flip it back to normal at runtime.
         const apiKey = reversedKey ? reversedKey.trim().split('').reverse().join('') : ""; 
         
-        // Switched to stable 'gemini-1.5-flash' compatible with standard production endpoints
-        const modelName = "gemini-1.5-flash"; 
+        // Switched to the latest 'gemini-2.0-flash' model
+        const modelName = "gemini-2.0-flash"; 
 
         // --- 2. API CORE LOGIC ---
         async function callGemini(prompt, retryCount = 0) {
@@ -490,7 +490,7 @@
                     }]
                 };
 
-                // Updated to v1beta testing endpoint which supports gemini-1.5-flash for all keys
+                // Using v1beta testing endpoint which properly supports gemini-2.0-flash
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${activeKey}`;
                 
                 const response = await fetch(url, {
