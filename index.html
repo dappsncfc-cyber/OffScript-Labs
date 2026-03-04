@@ -394,11 +394,34 @@
                     </svg>
                     <h2 class="text-2xl md:text-3xl font-bold tracking-tighter uppercase text-center text-white">Lab Onboarding</h2>
                 </div>
-                <p id="selected-tier-display" class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest border-b border-white/10 pb-4 text-center">Selected: [Tier Name]</p>
+                
+                <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest pb-4 text-center">Initialising Protocol</p>
+                
+                <!-- Dynamic Selected Tier Card (Now Clickable for Full Preview) -->
+                <div id="modal-tier-card" onclick="window.showFullCardPreview()" class="glass-card bg-slate-900/60 rounded-2xl p-4 md:p-6 border mb-6 mx-auto max-w-sm text-center cursor-pointer hover:bg-slate-800 transition-all group relative">
+                    <div class="absolute top-3 right-3 text-slate-500 group-hover:text-teal-400 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                    </div>
+                    <div id="modal-tier-name" class="text-teal-400 text-[11px] font-bold uppercase tracking-widest mb-2">[Tier Name]</div>
+                    <div id="modal-tier-price" class="text-4xl font-bold text-white mb-2">£0</div>
+                    <p id="modal-tier-desc" class="text-slate-500 text-[10px] uppercase tracking-widest leading-tight">Details</p>
+                    <p class="text-teal-500/70 text-[9px] uppercase tracking-widest mt-4 opacity-0 group-hover:opacity-100 transition-opacity">Click to view full tier details</p>
+                </div>
+
+                <!-- Payment Assurance Banner -->
+                <div class="bg-teal-500/10 border border-teal-500/20 rounded-xl p-4 mb-6 mx-auto max-w-md">
+                    <p class="text-xs text-teal-300 font-medium leading-relaxed">
+                        <span class="block mb-1 text-sm">💳 <strong>No payment is taken today.</strong></span>
+                        We will be in touch to complete your set-up and tailor the service to your business.
+                    </p>
+                </div>
+                <div class="border-b border-white/10 w-full mb-2"></div>
             </div>
 
             <!-- AJAX FORM SUBMIT TO dappsncfc@gmail.com -->
             <form id="requirement-form" class="space-y-8">
+                <input type="hidden" id="selected-tier-value" name="Selected Tier">
+                
                 <div class="space-y-4 text-center text-pretty">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black">01. Contact Intelligence</h4>
                     <div class="space-y-4">
@@ -442,6 +465,19 @@
         </div>
     </div>
 
+    <!-- Full Card Preview Modal -->
+    <div id="full-card-modal" class="fixed inset-0 z-[70] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="w-full max-w-sm relative">
+            <button onclick="window.hideFullCardPreview()" class="absolute -top-12 right-0 text-slate-400 hover:text-white transition flex items-center gap-2 text-xs uppercase tracking-widest font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                Close Preview
+            </button>
+            <div id="full-card-content" class="w-full text-left">
+                <!-- Cloned card content will be injected here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
         <div class="flex items-center justify-center gap-3 mb-8 text-white">
@@ -473,7 +509,50 @@
         };
 
         window.openOnboarding = function(tierName) {
-            document.getElementById('selected-tier-display').innerText = `Onboarding Protocol: ${tierName}`;
+            // Setup dynamic card details based on selection
+            let price = "£0";
+            let desc = "";
+            let nameColor = "text-teal-400";
+            let borderColor = "border-teal-500/20";
+            
+            if (tierName.includes('Tier 1')) {
+                price = "£70";
+                desc = "Digital Only | Delivery: 3 Days";
+                nameColor = "text-teal-400";
+                borderColor = "border-teal-500/20";
+            } else if (tierName.includes('Tier 2')) {
+                price = "£100";
+                desc = "Digital Only | Delivery: 4 Days";
+                nameColor = "text-blue-400";
+                borderColor = "border-blue-500/20";
+            } else if (tierName.includes('Tier 3')) {
+                price = "£130";
+                desc = "Digital + 1 NFC Card | Delivery: 5 Days";
+                nameColor = "text-amber-500";
+                borderColor = "border-amber-500/40";
+            } else if (tierName.includes('Tier 4')) {
+                price = "£265";
+                desc = "Full Lab Suite | 30 Days Management";
+                nameColor = "text-teal-400";
+                borderColor = "border-teal-400/50";
+            }
+
+            // Populate the modal card
+            const modalNameEl = document.getElementById('modal-tier-name');
+            modalNameEl.innerText = tierName;
+            modalNameEl.className = `text-[11px] font-bold uppercase tracking-widest mb-2 ${nameColor}`;
+            
+            const modalPriceEl = document.getElementById('modal-tier-price');
+            modalPriceEl.innerText = price;
+            modalPriceEl.className = `text-4xl font-bold mb-2 ${tierName.includes('Tier 3') ? 'text-amber-500' : 'text-white'}`;
+            
+            document.getElementById('modal-tier-desc').innerText = desc;
+            document.getElementById('modal-tier-card').className = `glass-card bg-slate-900/60 rounded-2xl p-4 md:p-6 border mb-6 mx-auto max-w-sm text-center cursor-pointer hover:bg-slate-800 transition-all group relative ${borderColor}`;
+
+            // Set hidden form input for email submission
+            document.getElementById('selected-tier-value').value = tierName;
+
+            // Handle physical shipping section visibility
             const shipping = document.getElementById('physical-shipping');
             if (tierName.includes('Tier 3') || tierName.includes('Tier 4')) {
                 shipping.classList.remove('opacity-30', 'pointer-events-none');
@@ -491,6 +570,50 @@
             modal.classList.add('hidden');
             modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
+        };
+
+        // Function to clone and display the full tier card dynamically
+        window.showFullCardPreview = function() {
+            const tierName = document.getElementById('selected-tier-value').value;
+            let tierId = "";
+            
+            if (tierName.includes('Tier 1')) tierId = "tier-1";
+            else if (tierName.includes('Tier 2')) tierId = "tier-2";
+            else if (tierName.includes('Tier 3')) tierId = "tier-3";
+            else if (tierName.includes('Tier 4')) tierId = "tier-4";
+
+            if (tierId) {
+                const originalCard = document.getElementById(tierId);
+                const clone = originalCard.cloneNode(true);
+                
+                // Remove the ID to avoid duplicates and remove hover animations for the static preview
+                clone.removeAttribute('id');
+                clone.classList.remove('hover:scale-[1.02]', 'hover:scale-[1.05]');
+                
+                // Change the button inside the cloned card to act as a close/return button
+                const btn = clone.querySelector('button');
+                if (btn) {
+                    btn.innerText = "Return to Form";
+                    btn.setAttribute('onclick', 'window.hideFullCardPreview()');
+                    btn.setAttribute('type', 'button');
+                }
+
+                // Inject the cloned card into the full preview modal
+                const container = document.getElementById('full-card-content');
+                container.innerHTML = '';
+                container.appendChild(clone);
+                
+                // Show the preview modal
+                const previewModal = document.getElementById('full-card-modal');
+                previewModal.classList.remove('hidden');
+                previewModal.classList.add('flex');
+            }
+        };
+
+        window.hideFullCardPreview = function() {
+            const previewModal = document.getElementById('full-card-modal');
+            previewModal.classList.add('hidden');
+            previewModal.classList.remove('flex');
         };
 
         window.showStatusMessage = function(text, isSuccess = true) {
@@ -580,7 +703,7 @@
 <strong>Recommended Lab Protocol:</strong><br>
 Based on this analysis, we strongly recommend <strong>${recommendedTierTitle}</strong>.<br><br>
 ${tierReasoning}<br><br>
-<strong>This is how AI views your business any mistakes we can correct with a Lab plan.</strong>`,
+<strong>Start being seen. Click the link below.</strong>`,
                 tier: recommendedTierTitle
             };
         }
@@ -630,7 +753,7 @@ ${tierReasoning}<br><br>
 
             // Gather the data to send
             const formData = {
-                "Selected Tier": document.getElementById('selected-tier-display').innerText,
+                "Selected Tier": document.getElementById('selected-tier-value').value,
                 "Full Name": document.getElementById('ob-name').value,
                 "Business Name": document.getElementById('ob-business-name').value,
                 "Email Address": document.getElementById('ob-email').value,
@@ -668,7 +791,14 @@ ${tierReasoning}<br><br>
             });
         };
 
-        window.onclick = function(e) { if (e.target == document.getElementById('onboarding-modal')) window.closeOnboarding(); };
+        // Update global click handler to manage both modals
+        window.onclick = function(e) { 
+            if (e.target == document.getElementById('full-card-modal')) {
+                window.hideFullCardPreview();
+            } else if (e.target == document.getElementById('onboarding-modal')) {
+                window.closeOnboarding(); 
+            }
+        };
     </script>
 </body>
 </html>
