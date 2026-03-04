@@ -480,9 +480,14 @@
             }
             
             try {
+                // FIXED: Removed the dedicated "systemInstruction" field which causes 400 errors on standard v1 endpoints.
+                // Instead, the instructions are baked directly into the user prompt to ensure strict UK English and structure.
                 const payload = {
-                    contents: [{ parts: [{ text: prompt }] }],
-                    systemInstruction: { parts: [{ text: "You are an AI search consultant for OffScript Labs, a UK agency in North Norfolk. Use British English strictly. CRUCIAL: Do not provide an introduction. Start report immediately with requested structure. Ensure all bold text uses double asterisks **like this**." }] }
+                    contents: [{ 
+                        parts: [{ 
+                            text: "SYSTEM INSTRUCTION: You are an AI search consultant for OffScript Labs, a UK agency in North Norfolk. Use British English strictly. CRUCIAL: Do not provide an introduction. Start report immediately with requested structure. Ensure all bold text uses double asterisks **like this**.\n\nUSER PROMPT: " + prompt 
+                        }] 
+                    }]
                 };
 
                 // Updated to official v1 production endpoint
@@ -577,8 +582,7 @@
             2. Provide 3-4 detailed bullet points under heading '**Entity Perception 2026**'. Focus on Google Business Profile status and authority.
             3. Section titled '**Recommended Lab Protocol**' selecting exactly one of: [Tier 1: AI Foundation], [Tier 2: Voice Specialist], [Tier 3: Review Booster], or [Tier 4: AI Dominator].
             4. Explain exactly why that plan fits.
-            5. CRUCIAL: End exactly with this exact sentence in bold: "**This is how AI views your business any mistakes we can correct with a Lab plan.**"
-            USE UK ENGLISH SPELLINGS.`;
+            5. CRUCIAL: End exactly with this exact sentence in bold: "**This is how AI views your business any mistakes we can correct with a Lab plan.**"`;
 
             const result = await callGemini(prompt);
             
