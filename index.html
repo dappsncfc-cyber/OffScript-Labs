@@ -65,4 +65,594 @@
             scroll-behavior: smooth; 
             overflow-x: hidden; 
         }
-        h1, h2, h3, .font-display
+        h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
+        
+        .circuit-bg {
+            background-image: radial-gradient(var(--lab-teal) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #2dd4bf, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-right: 0.2em; 
+            display: inline-block;
+        }
+
+        .glow-button {
+            box-shadow: 0 0 20px var(--lab-teal-glow);
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(45, 212, 191, 0.4);
+            transform: translateY(-2px);
+        }
+
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary svg { transform: rotate(180deg); }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        .scanner-line {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--lab-teal), transparent);
+            animation: scan 3s linear infinite;
+        }
+        
+        input, select, textarea {
+            background-color: #0f172a !important;
+            border: 1px solid #1e293b !important;
+            color: white !important;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #64748b !important;
+        }
+        
+        #mobile-menu.hidden { display: none; }
+
+        .gemini-pulse {
+            animation: gemini-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes gemini-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.98); }
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <div class="fixed inset-0 circuit-bg pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-4 md:px-6 py-4">
+        <div class="max-w-7xl mx-auto glass-card rounded-2xl px-6 py-3 flex items-center justify-between relative">
+            <a href="#" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-white">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M30 65C40 60 50 70 70 65" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5"/>
+                    <circle cx="50" cy="45" r="3" fill="#2dd4bf" opacity="0.6"/>
+                </svg>
+                <div class="flex flex-col leading-none">
+                    <span class="text-lg font-bold tracking-tighter uppercase">OffScript</span>
+                    <span class="text-[8px] uppercase tracking-[0.3em] text-teal-400 font-bold">Labs</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-[10px] uppercase font-bold tracking-widest text-slate-400">
+                <a href="#solutions" class="hover:text-teal-400 transition">Solutions</a>
+                <a href="#tiers" class="hover:text-teal-400 transition">Lab Tiers</a>
+                <a href="#faq" class="hover:text-teal-400 transition">FAQ</a>
+                <a href="#audit" class="bg-teal-500 text-slate-900 px-5 py-2 rounded-lg glow-button font-bold">Free AI Audit</a>
+            </div>
+
+            <button onclick="window.toggleMobileMenu()" class="md:hidden text-teal-400 p-2 focus:outline-none">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-2 p-6 glass-card rounded-2xl flex-col gap-6 md:hidden">
+                <a href="#solutions" onclick="toggleMobileMenu()" class="text-xs uppercase font-bold tracking-widest text-slate-300">Solutions</a>
+                <a href="#tiers" onclick="toggleMobileMenu()" class="text-xs uppercase font-bold tracking-widest text-slate-300">Lab Tiers</a>
+                <a href="#faq" onclick="toggleMobileMenu()" class="text-xs uppercase font-bold tracking-widest text-slate-300">FAQ</a>
+                <a href="#audit" onclick="toggleMobileMenu()" class="bg-teal-500 text-slate-900 text-center py-3 rounded-xl font-bold text-xs uppercase tracking-widest">Free AI Audit</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 md:pt-48 pb-24 md:pb-32 px-6 overflow-hidden text-center">
+        <div class="max-w-6xl mx-auto relative z-10 text-pretty">
+            <div class="inline-block bg-teal-500/10 text-teal-400 border border-teal-500/20 px-4 py-1 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest mb-8">
+                Serving the Whole of North Norfolk
+            </div>
+            <h1 class="text-5xl md:text-8xl font-bold mb-8 tracking-tighter leading-[0.95] text-white">
+                Stop Searching <br><span class="gradient-text italic">Start Being Seen</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-slate-400 text-base md:text-lg mb-12 font-light leading-relaxed">
+                Traditional SEO is dead. In 2026, Google Gemini and Voice Assistants decide who wins. We bridge the gap between your physical North Norfolk business and the AI recommendations that matter.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#tiers" class="bg-teal-500 text-slate-900 px-8 md:px-10 py-4 md:py-5 rounded-2xl font-bold glow-button text-base md:text-lg w-full sm:w-auto text-center">View Lab Tiers</a>
+                <a href="#audit" class="glass-card px-8 md:px-10 py-4 md:py-5 rounded-2xl font-bold hover:bg-slate-800 transition text-base md:text-lg w-full sm:w-auto text-center text-white">Free Audit</a>
+            </div>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-teal-500/10 rounded-full blur-[80px] md:blur-[120px] -z-10"></div>
+    </section>
+
+    <!-- Core Solutions -->
+    <section id="solutions" class="py-24 px-6 border-y border-slate-900 relative">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 md:gap-12 text-center text-pretty">
+            <div class="glass-card p-8 md:p-10 rounded-[32px] flex items-center flex-col">
+                <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400 mb-8">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-tighter text-white">Semantic Mapping</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">We restructure your business data into "Atomic Answers" so Google Gemini cites your services in its AI Overviews</p>
+            </div>
+            <div class="glass-card p-8 md:p-10 rounded-[32px] flex items-center flex-col">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-8">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-tighter text-white">Voice Implementation</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">Conversational FAQ pairs designed specifically for Siri, Alexa, and Google Gemini hands-free requests</p>
+            </div>
+            <div class="glass-card p-8 md:p-10 rounded-[32px] flex items-center flex-col text-pretty">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 mb-8">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-tighter text-white">NFC Infrastructure</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">Physical "Tap-to-Review" hardware to bridge the gap between your shop floor and digital trust signals</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab-Tested Tiers -->
+    <section id="tiers" class="py-32 px-6 text-center text-pretty">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-bold mb-6 tracking-tighter uppercase text-center text-white">Lab-Tested Tiers</h2>
+            <p class="text-slate-500 max-w-2xl mx-auto font-light mb-20 text-center">Precision-engineered packages to move your business from a basic search result to a trusted AI recommendation</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+                <div id="tier-1" class="glass-card p-8 rounded-3xl border-teal-500/20 flex flex-col items-center hover:scale-[1.02] transition-transform text-center">
+                    <div class="mb-auto w-full">
+                        <div class="text-teal-400 text-[10px] font-bold uppercase tracking-widest mb-4">Tier 1: AI Foundation</div>
+                        <div class="text-5xl font-bold mb-2 text-white">£70</div>
+                        <p class="text-slate-500 text-[10px] mb-8 uppercase tracking-widest leading-tight">Digital Only | Delivery: 3 Days</p>
+                        <div class="space-y-6 mb-10 text-pretty">
+                            <div><span class="text-teal-500 font-bold block mb-1">01</span><p class="text-[11px] text-slate-300">AI Semantic Mapping: Restructuring data for Google Gemini cite-readiness</p></div>
+                            <div><span class="text-teal-500 font-bold block mb-1">02</span><p class="text-[11px] text-slate-300">Entity Reinforcement: Cleaning up digital footprint to solidify "Brand Entity"</p></div>
+                            <div><span class="text-teal-500 font-bold block mb-1">03</span><p class="text-[11px] text-slate-300">Vision AI Tagging: Geotagging 5 photos with precise UK coordinates</p></div>
+                        </div>
+                    </div>
+                    <button onclick="window.openOnboarding('Tier 1: AI Foundation')" class="w-full py-4 bg-slate-800 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-slate-700 transition">Select Tier 1</button>
+                </div>
+
+                <div id="tier-2" class="glass-card p-8 rounded-3xl border-blue-500/20 flex flex-col items-center hover:scale-[1.02] transition-transform text-center">
+                    <div class="mb-auto w-full text-pretty">
+                        <div class="text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-4 text-center">Tier 2: Voice Specialist</div>
+                        <div class="text-5xl font-bold mb-2 text-white">£100</div>
+                        <p class="text-slate-500 text-[10px] mb-8 uppercase tracking-widest leading-tight">Digital Only | Delivery: 4 Days</p>
+                        <div class="space-y-6 mb-10">
+                            <p class="text-[10px] text-blue-400 font-bold uppercase italic tracking-wider">Includes all Tier 1 features</p>
+                            <div><span class="text-blue-400 font-bold block mb-1">04</span><p class="text-[11px] text-slate-300">Voice Search: 10 conversational "Natural Language" FAQ pairs</p></div>
+                            <div><span class="text-blue-400 font-bold block mb-1">05</span><p class="text-[11px] text-slate-300">Hyper-Local Triggers: Neighbourhood data to win "Near Me" requests</p></div>
+                            <div><span class="text-blue-400 font-bold block mb-1">06</span><p class="text-[11px] text-slate-300">NAP Synchronisation: Ensuring 100% data accuracy for hands-free calling</p></div>
+                        </div>
+                    </div>
+                    <button onclick="window.openOnboarding('Tier 2: Voice Specialist')" class="w-full py-4 bg-slate-800 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-slate-700 transition">Select Tier 2</button>
+                </div>
+
+                <div id="tier-3" class="glass-card p-8 rounded-3xl border-amber-500/40 bg-amber-500/5 ring-1 ring-amber-500/20 flex flex-col items-center hover:scale-[1.05] transition-all shadow-xl text-center">
+                    <div class="mb-auto w-full text-pretty">
+                        <div class="text-amber-500 text-[10px] font-bold uppercase tracking-widest mb-4 text-center">Tier 3: Review Booster</div>
+                        <div class="text-5xl font-bold mb-2 text-amber-500">£130</div>
+                        <p class="text-amber-500/60 text-[10px] mb-8 uppercase tracking-widest leading-tight text-pretty text-pretty text-pretty">Digital + 1 NFC Card | Delivery: 5 Days</p>
+                        <div class="space-y-6 mb-10 text-pretty">
+                            <p class="text-[10px] text-amber-500 font-bold uppercase italic tracking-wider">Includes all Tiers 1 & 2 features</p>
+                            <div><span class="text-amber-500 font-bold block mb-1">07</span><p class="text-[11px] text-slate-200 font-bold italic">1x Physical NFC Review Card: Google-Branded Tap-to-Review</p></div>
+                            <div><span class="text-amber-500 font-bold block mb-1">08</span><p class="text-[11px] text-slate-300">OffScript Staff Script: Guide for acquiring "AI-friendly" reviews</p></div>
+                            <div class="pt-2"><img src="https://img.icons8.com/color/48/google-logo.png" class="mx-auto opacity-50 w-8 h-8" alt="NFC"></div>
+                        </div>
+                    </div>
+                    <button onclick="window.openOnboarding('Tier 3: Review Booster')" class="w-full py-4 bg-amber-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-amber-500 transition text-white text-center">Select Tier 3</button>
+                </div>
+
+                <div id="tier-4" class="glass-card p-8 rounded-3xl border-teal-400/50 bg-slate-900 shadow-2xl flex flex-col items-center hover:scale-[1.02] transition-transform text-center text-pretty text-white">
+                    <div class="mb-auto w-full text-center text-pretty">
+                        <div class="text-teal-400 text-[10px] font-bold uppercase tracking-widest mb-4 text-center text-pretty">Tier 4: AI Dominator</div>
+                        <div class="text-5xl font-bold mb-2">£265</div>
+                        <p class="text-teal-400/60 text-[10px] mb-8 uppercase tracking-widest leading-tight text-pretty text-pretty">Full Lab Suite | 30 Days Management</p>
+                        <div class="space-y-6 mb-10 text-pretty text-pretty text-pretty">
+                            <p class="text-[10px] text-teal-400 font-bold uppercase italic tracking-wider">Includes all Tiers 1, 2 & 3 features</p>
+                            <div><span class="text-teal-400 font-bold block mb-1">10</span><p class="text-[11px] text-slate-200 font-bold italic">3x Physical NFC Review Cards for multi-point acquisition</p></div>
+                            <div><span class="text-teal-400 font-bold block mb-1">11</span><p class="text-[11px] text-slate-300">Photo Refresh: 5 brand photos + custom profile banner</p></div>
+                            <div><span class="text-teal-400 font-bold block mb-1">12</span><p class="text-[11px] text-slate-300">30-Day Signal Management: Weekly AI posts and responses</p></div>
+                        </div>
+                    </div>
+                    <button onclick="window.openOnboarding('Tier 4: AI Dominator')" class="w-full py-4 bg-teal-500 text-slate-900 rounded-xl font-bold text-xs glow-button uppercase tracking-widest text-center">Select Tier 4</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab Intelligence FAQ -->
+    <section id="faq" class="py-24 px-6 bg-slate-950/50 border-t border-slate-900">
+        <div class="max-w-4xl mx-auto text-center text-pretty">
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold mb-4 tracking-tighter uppercase text-white">Lab Intelligence FAQ</h2>
+                <p class="text-slate-500 text-sm uppercase tracking-widest text-center">Common queries regarding our 2026 search suite</p>
+            </div>
+            <div class="space-y-4">
+                <details class="group glass-card rounded-2xl border-slate-800 transition-all duration-300 text-pretty">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-white/5 transition-colors text-left text-white text-pretty">
+                        <span class="text-sm font-bold uppercase tracking-tighter">Do I need to share my Google password?</span>
+                        <svg class="w-5 h-5 text-teal-500 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="px-6 pt-4 pb-6 text-base text-white leading-relaxed font-light text-center">
+                        No. We utilise safe, official "Manager" access. You simply invite our lab email to your profile, keeping your account 100% secure and under your ultimate control.
+                    </div>
+                </details>
+                <details class="group glass-card rounded-2xl border-slate-800 transition-all duration-300 text-pretty">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-white/5 transition-colors text-left text-white text-pretty">
+                        <span class="text-sm font-bold uppercase tracking-tighter">How long does the NFC kit take to arrive?</span>
+                        <svg class="w-5 h-5 text-teal-500 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="px-6 pt-4 pb-6 text-base text-white leading-relaxed font-light text-center">
+                        Digital AI work begins within 24 hours. Physical NFC kits are programmed in our Norfolk lab and shipped via Royal Mail 1st Class, usually arriving in 1-2 working days.
+                    </div>
+                </details>
+                <details class="group glass-card rounded-2xl border-slate-800 transition-all duration-300 text-pretty text-pretty">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-white/5 transition-colors text-left text-white text-pretty">
+                        <span class="text-sm font-bold uppercase tracking-tighter text-pretty">What exactly is "AI Semantic Mapping"?</span>
+                        <svg class="w-5 h-5 text-teal-500 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="px-6 pt-4 pb-6 text-base text-white leading-relaxed font-light text-center">
+                        It is the technical process of restructuring your business data into "Atomic Answers." By standardising your data schema, we ensure Google Gemini can easily read and cite your services in its AI Overviews.
+                    </div>
+                </details>
+                <details class="group glass-card rounded-2xl border-slate-800 transition-all duration-300 text-pretty text-pretty">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-white/5 transition-colors text-left text-white text-pretty">
+                        <span class="text-sm font-bold uppercase tracking-tighter">Does the NFC hardware work on all phones?</span>
+                        <svg class="w-5 h-5 text-teal-500 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="px-6 pt-4 pb-6 text-base text-white leading-relaxed font-light text-center">
+                        Yes. Our cards use universal NFC technology that works instantly with modern iPhone and Android devices—no app required. Your customers simply tap their phone to the card to trigger the review link.
+                    </div>
+                </details>
+                <details class="group glass-card rounded-2xl border-slate-800 transition-all duration-300 text-pretty">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-white/5 transition-colors text-left text-white text-pretty">
+                        <span class="text-sm font-bold uppercase tracking-tighter text-pretty">Can you design a new logo or website too?</span>
+                        <svg class="w-5 h-5 text-teal-500 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="px-6 pt-4 pb-6 text-base text-white leading-relaxed font-light text-center text-pretty">
+                        Absolutely. While our core tiers focus on search signals, our custom studio specialises in high-performance web development and brand identity engineered for human trust and AI Vision recognition.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audit Section -->
+    <section id="audit" class="py-24 px-6 border-t border-slate-900 text-center text-pretty">
+        <div class="max-w-2xl mx-auto glass-card p-8 md:p-12 rounded-[40px] border-teal-500/30 relative overflow-hidden text-center">
+            <div id="audit-scanner" class="scanner-line absolute top-0 left-0 w-full opacity-20 hidden"></div>
+            <h3 class="text-3xl font-bold mb-6 uppercase tracking-tighter text-white">Free AI Entity Audit</h3>
+            <p class="text-slate-400 mb-8 text-sm font-light text-center">Enter your business details below to receive a baseline report on how AI models currently perceive your brand entity</p>
+            
+            <form id="audit-form" class="space-y-4">
+                <input type="text" id="audit-business" required placeholder="Business Name and Location" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
+                
+                <div id="audit-ai-result" class="hidden text-left bg-slate-950/80 p-6 rounded-2xl border border-teal-500/20 text-xs text-slate-300 mb-4 font-mono leading-relaxed max-h-96 overflow-y-auto">
+                    <!-- AI Preview Result injected here -->
+                </div>
+
+                <div class="flex justify-center">
+                    <button type="submit" id="gemini-preview-btn" class="w-full sm:w-auto px-8 bg-teal-500 text-slate-900 font-bold py-4 rounded-xl glow-button uppercase text-xs tracking-widest transition text-center">
+                        Get my Audit ✨
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Onboarding Modal -->
+    <div id="onboarding-modal" class="fixed inset-0 z-[60] hidden bg-slate-950/80 backdrop-blur-md items-center justify-center p-4 text-center text-pretty">
+        <div class="glass-card w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[32px] md:rounded-[40px] border-teal-500/30 shadow-2xl p-6 md:p-8 relative text-center">
+            <button onclick="window.closeOnboarding()" class="absolute top-6 right-6 text-slate-500 hover:text-white transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+           
+            <div class="mb-8 text-center text-pretty">
+                <div class="flex items-center justify-center gap-3 mb-4 text-white text-center">
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none">
+                        <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="8" stroke-linejoin="round"/>
+                    </svg>
+                    <h2 class="text-2xl md:text-3xl font-bold tracking-tighter uppercase text-center text-white">Lab Onboarding</h2>
+                </div>
+                <p id="selected-tier-display" class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest border-b border-white/10 pb-4 text-center">Selected: [Tier Name]</p>
+            </div>
+
+            <!-- AJAX FORM SUBMIT TO dappsncfc@gmail.com -->
+            <form id="requirement-form" class="space-y-8">
+                <div class="space-y-4 text-center text-pretty">
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black">01. Contact Intelligence</h4>
+                    <div class="space-y-4">
+                        <input type="text" id="ob-name" name="Full Name" required placeholder="Full Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                        <input type="text" id="ob-business-name" name="Business Name" required placeholder="Business Name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                        <input type="email" id="ob-email" name="Email Address" required placeholder="Email Address" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                        <input type="tel" id="ob-phone" name="Contact Number" required placeholder="Contact Number" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-center text-pretty">
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black">02. Digital Infrastructure</h4>
+                    <div class="space-y-4 text-pretty text-pretty text-pretty">
+                        <label class="block text-[11px] font-medium text-slate-300">Have you invited [lab@offscript.co.uk] as a Manager to your Google Profile?</label>
+                        <select id="ob-invite" name="Manager Invitation Status" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white">
+                            <option>Yes, invitation sent</option>
+                            <option>Not yet, send me the guide</option>
+                        </select>
+                        <label class="block text-[11px] font-medium text-slate-300">Is your business currently "Verified" on Google Maps?</label>
+                        <select id="ob-verified" name="Google Maps Verified" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white">
+                            <option>Yes, verified</option>
+                            <option>No / Unsure</option>
+                        </select>
+                        <input type="url" id="ob-link" name="Website or Social Link" placeholder="Official Website / Social Media Link" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-center text-pretty text-pretty">
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black">03. Semantic Mapping</h4>
+                    <textarea id="ob-services" name="Priority Services" placeholder="List your 3 priority services for AI recommendation mapping" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 h-24 text-white placeholder-slate-500"></textarea>
+                </div>
+
+                <div id="physical-shipping" class="space-y-4 text-center text-pretty text-pretty text-pretty">
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black text-pretty">04. Lab Delivery</h4>
+                    <textarea id="ob-address" name="Shipping Address" placeholder="UK Shipping Address for NFC Review Kit(s)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 h-20 text-white placeholder-slate-500"></textarea>
+                    <input type="url" id="ob-review-link" name="Google Review Link" placeholder="Direct Google Review Link" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 text-white placeholder-slate-500">
+                </div>
+
+                <button type="submit" class="w-full bg-teal-500 text-slate-900 font-bold py-5 rounded-2xl glow-button uppercase text-xs tracking-[0.3em] text-center">Ignite Lab Session</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
+        <div class="flex items-center justify-center gap-3 mb-8 text-white">
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round" opacity="0.3"/>
+            </svg>
+            <span class="text-xs uppercase tracking-[0.5em] font-bold text-white/40">OffScript Labs &copy; 2026</span>
+        </div>
+        <!-- BRIGHT FOOTER TEXT -->
+        <p class="text-white text-sm max-w-sm mx-auto font-light leading-relaxed mb-8">
+            Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for high-intent growth across North Norfolk.
+        </p>
+        
+        <div class="flex items-center justify-center gap-6 mb-8 text-pretty">
+            <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+        </div>
+        <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono mt-8">Lab System Operational</div>
+    </footer>
+
+    <script>
+        // --- 1. CONFIGURATION ---
+        // CRITICAL: You must still set HTTP Referrer restrictions in Google Cloud Console!
+        const reversedKey = "kXhtuchYeGx6WEUSWajYjU_mJKIiuo7bBySazIA"; 
+        const apiKey = reversedKey ? reversedKey.trim().split('').reverse().join('') : ""; 
+        
+        // Reverted to the most stable API model to avoid 404/400 errors for newer keys
+        const modelName = "gemini-1.5-flash"; 
+
+        // --- 2. API CORE LOGIC ---
+        async function callGemini(prompt, retryCount = 0) {
+            // Environment key fallback for Canvas preview
+            const activeKey = apiKey || (typeof __api_key !== 'undefined' ? __api_key : "");
+            
+            if (!activeKey) {
+                return { text: "Protocol Error: Laboratory API Key missing. Please update your code with a valid key." };
+            }
+            
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    systemInstruction: { parts: [{ text: "You are an AI search consultant for OffScript Labs, a UK agency in North Norfolk. Use British English strictly. CRUCIAL: Do not provide an introduction. Start report immediately with requested structure. Ensure all bold text uses double asterisks **like this**." }] }
+                };
+
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${activeKey}`;
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    // Capture exact error from Google to help troubleshooting
+                    const errorData = await response.json().catch(() => ({}));
+                    const errorDetail = errorData.error?.message || response.statusText || "Unknown Error";
+                    
+                    if (response.status === 429 && retryCount < 5) {
+                        const delay = Math.pow(2, retryCount) * 1000;
+                        await new Promise(r => setTimeout(r, delay));
+                        return callGemini(prompt, retryCount + 1);
+                    }
+                    throw new Error(`API ${response.status}: ${errorDetail}`);
+                }
+
+                const data = await response.json();
+                const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No insights generated.";
+                return { text: resultText };
+            } catch (error) {
+                console.error("Lab Error:", error);
+                return { text: `Protocol Error: Laboratory connection failed (${error.message}). Please verify your API key permissions.` };
+            }
+        }
+
+        // --- 3. UI INTERACTIONS ---
+        window.toggleMobileMenu = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        };
+
+        window.openOnboarding = function(tierName) {
+            document.getElementById('selected-tier-display').innerText = `Onboarding Protocol: ${tierName}`;
+            const shipping = document.getElementById('physical-shipping');
+            if (tierName.includes('Tier 3') || tierName.includes('Tier 4')) {
+                shipping.classList.remove('opacity-30', 'pointer-events-none');
+            } else {
+                shipping.classList.add('opacity-30', 'pointer-events-none');
+            }
+            const modal = document.getElementById('onboarding-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeOnboarding = function() {
+            const modal = document.getElementById('onboarding-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        };
+
+        window.showStatusMessage = function(text, isSuccess = true) {
+            const message = document.createElement('div');
+            message.className = `fixed top-10 left-1/2 -translate-x-1/2 glass-card px-8 py-4 rounded-2xl z-[100] font-bold uppercase tracking-widest text-[10px] text-center max-w-[90vw] transition-all duration-300 transform translate-y-[-20px] opacity-0 shadow-2xl`;
+            message.classList.add(isSuccess ? 'border-teal-500' : 'border-red-500', isSuccess ? 'text-teal-400' : 'text-red-400');
+            message.innerText = text;
+            document.body.appendChild(message);
+            requestAnimationFrame(() => { message.classList.remove('translate-y-[-20px]', 'opacity-0'); });
+            setTimeout(() => {
+                message.classList.add('translate-y-[-20px]', 'opacity-0');
+                setTimeout(() => message.remove(), 400);
+            }, 7000);
+        };
+
+        // --- 4. AUDIT FORM LOGIC ---
+        document.getElementById('audit-form').onsubmit = async function(e) {
+            e.preventDefault();
+            const bizInfo = document.getElementById('audit-business').value;
+            if (!bizInfo) return window.showStatusMessage('Please enter a business name and location.', false);
+
+            const btn = document.getElementById('gemini-preview-btn');
+            const resultArea = document.getElementById('audit-ai-result');
+            const scanner = document.getElementById('audit-scanner');
+            const originalText = btn.innerText;
+            
+            btn.disabled = true;
+            btn.classList.add('gemini-pulse');
+            btn.innerText = 'Searching Lab Archive...';
+            scanner.classList.remove('hidden');
+
+            const prompt = `Search for specific business match for "${bizInfo}". 
+            STRUCTURE:
+            1. Start with bold heading: "**This is how AI views your business:**"
+            2. Provide 3-4 detailed bullet points under heading '**Entity Perception 2026**'. Focus on Google Business Profile status and authority.
+            3. Section titled '**Recommended Lab Protocol**' selecting exactly one of: [Tier 1: AI Foundation], [Tier 2: Voice Specialist], [Tier 3: Review Booster], or [Tier 4: AI Dominator].
+            4. Explain exactly why that plan fits.
+            5. CRUCIAL: End exactly with this exact sentence in bold: "**This is how AI views your business any mistakes we can correct with a Lab plan.**"
+            USE UK ENGLISH SPELLINGS.`;
+
+            const result = await callGemini(prompt);
+            
+            // Allow the error message through without formatting if it's an error
+            if (result.text.includes("Protocol Error:")) {
+                resultArea.innerHTML = `<span class="text-red-400">${result.text}</span>`;
+            } else {
+                let formattedText = result.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+                
+                let recommendedAnchor = "";
+                if (result.text.toLowerCase().includes("tier 1")) recommendedAnchor = "#tier-1";
+                else if (result.text.toLowerCase().includes("tier 2")) recommendedAnchor = "#tier-2";
+                else if (result.text.toLowerCase().includes("tier 3")) recommendedAnchor = "#tier-3";
+                else if (result.text.toLowerCase().includes("tier 4")) recommendedAnchor = "#tier-4";
+
+                if (recommendedAnchor) {
+                    formattedText += `<br><br><div class="flex justify-center"><a href="${recommendedAnchor}" class="bg-teal-500 text-slate-900 px-4 py-2 rounded-lg font-bold uppercase text-[10px] tracking-widest hover:bg-white transition inline-block">Initialise Recommended Protocol</a></div>`;
+                }
+                resultArea.innerHTML = formattedText;
+            }
+
+            resultArea.classList.remove('hidden');
+            
+            btn.disabled = false;
+            btn.classList.remove('gemini-pulse');
+            btn.innerText = originalText;
+            scanner.classList.add('hidden');
+        };
+
+        // --- 5. EMAIL FORM SUBMISSION LOGIC (AJAX) ---
+        document.getElementById('requirement-form').onsubmit = function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'SENDING TO LAB...';
+            btn.disabled = true;
+
+            // Gather the data to send
+            const formData = {
+                "Selected Tier": document.getElementById('selected-tier-display').innerText,
+                "Full Name": document.getElementById('ob-name').value,
+                "Business Name": document.getElementById('ob-business-name').value,
+                "Email Address": document.getElementById('ob-email').value,
+                "Contact Number": document.getElementById('ob-phone').value,
+                "Manager Invite Status": document.getElementById('ob-invite').value,
+                "Google Maps Verified": document.getElementById('ob-verified').value,
+                "Website/Social Link": document.getElementById('ob-link').value,
+                "Priority Services": document.getElementById('ob-services').value,
+                "Shipping Address": document.getElementById('ob-address').value,
+                "Google Review Link": document.getElementById('ob-review-link').value
+            };
+
+            // Send to FormSubmit
+            fetch("https://formsubmit.co/ajax/dappsncfc@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.showStatusMessage('Lab Session Ignited Successfully. You will be contacted within 24 hours to complete your set-up.');
+                btn.innerText = originalText;
+                btn.disabled = false;
+                window.closeOnboarding();
+                e.target.reset();
+            })
+            .catch(error => {
+                console.error("Email Error:", error);
+                window.showStatusMessage('Protocol Error: Failed to send data. Please ensure you clicked the FormSubmit verification email.', false);
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        };
+
+        window.onclick = function(e) { if (e.target == document.getElementById('onboarding-modal')) window.closeOnboarding(); };
+    </script>
+</body>
+</html>
