@@ -480,7 +480,7 @@
             }
             
             try {
-                // FIXED: Removed the dedicated "systemInstruction" field which causes 400 errors on standard v1 endpoints.
+                // Removed the dedicated "systemInstruction" field which causes 400 errors on standard v1 endpoints.
                 // Instead, the instructions are baked directly into the user prompt to ensure strict UK English and structure.
                 const payload = {
                     contents: [{ 
@@ -490,8 +490,8 @@
                     }]
                 };
 
-                // Updated to official v1 production endpoint
-                const url = `https://generativelanguage.googleapis.com/v1/models/${modelName}:generateContent?key=${activeKey}`;
+                // Updated to v1beta testing endpoint which supports gemini-1.5-flash for all keys
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${activeKey}`;
                 
                 const response = await fetch(url, {
                     method: 'POST',
