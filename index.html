@@ -169,7 +169,7 @@
             100% { transform: translateX(-100%); }
         }
         .global-ticker {
-            animation: ticker-scroll 25s linear infinite;
+            animation: ticker-scroll 35s linear infinite;
             will-change: transform;
         }
 
@@ -228,10 +228,10 @@
 
     <!-- Dynamic Exclusivity Bar -->
     <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-slate-950 border-b border-teal-500/20 flex items-center justify-start backdrop-blur-md overflow-hidden">
-        <div class="global-ticker flex items-center gap-2 md:gap-3 text-[10px] uppercase tracking-widest text-slate-300 font-medium whitespace-nowrap px-4">
-            <span class="relative flex h-2 w-2 flex-shrink-0">
+        <div class="global-ticker flex items-center gap-2 md:gap-3 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest text-slate-300 font-medium whitespace-nowrap px-4">
+            <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5 flex-shrink-0">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-500"></span>
             </span>
             <span><strong class="text-teal-400">Lab Status:</strong> Currently accepting <strong class="text-white">2 more local partners</strong> in North Norfolk for the Q2 AI rollout.</span>
         </div>
@@ -420,6 +420,9 @@
             <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -z-10"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -z-10"></div>
             
+            <div class="inline-block bg-amber-500/10 text-amber-500 border border-amber-500/20 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
+                ROI Projector
+            </div>
             <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tighter uppercase text-white">Calculate Your Blind Spot</h2>
             <p class="text-slate-400 mb-12 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
                 How much revenue are you losing to competitors who are already optimised for AI and Voice search? Adjust your average customer value below to see the projection.
