@@ -589,7 +589,22 @@
             <form id="audit-form" class="space-y-4">
                 <div class="flex flex-col sm:flex-row gap-4">
                     <input type="text" id="audit-business" required placeholder="Business Name & Local Town (e.g. Joe's Cafe, Cromer)" class="w-full sm:w-2/3 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
-                    <input type="text" id="audit-type" required placeholder="Business Type (e.g. Cafe)" class="w-full sm:w-1/3 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
+                    
+                    <!-- Custom Styled Dropdown -->
+                    <div class="relative w-full sm:w-1/3 text-left">
+                        <select id="audit-type" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition appearance-none cursor-pointer text-slate-300">
+                            <option value="" disabled selected hidden>Business Type...</option>
+                            <option value="hospitality" class="text-white">Hospitality (Cafe, Pub, Food)</option>
+                            <option value="beauty and wellness" class="text-white">Beauty & Wellness (Salon)</option>
+                            <option value="trade" class="text-white">Trade (Plumbing, Builder)</option>
+                            <option value="retail" class="text-white">Retail (Shop, Boutique)</option>
+                            <option value="accommodation" class="text-white">Accommodation (Hotel, B&B)</option>
+                            <option value="local services" class="text-white">Other Local Service</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </div>
                 </div>
                 
                 <div id="audit-ai-result" class="hidden text-left bg-slate-950/80 p-6 rounded-2xl border border-teal-500/20 text-xs md:text-sm text-slate-300 mb-4 font-mono leading-relaxed max-h-96 overflow-y-auto shadow-inner">
@@ -885,11 +900,11 @@
             }
         }
         document.getElementById('audit-business').addEventListener('input', resetAuditUI);
-        document.getElementById('audit-type').addEventListener('input', resetAuditUI);
+        document.getElementById('audit-type').addEventListener('change', resetAuditUI);
 
         // --- 2. INTELLIGENT SIMULATED AI AUDIT ---
         async function runSimulatedAudit(bizName, bizType, resultAreaElement) {
-            const lowerInput = (bizName + " " + bizType).toLowerCase();
+            const lowerInput = bizName.toLowerCase();
             const cleanName = bizName.split(',')[0].trim() || "Your Business";
             
             // 1. Extract Town/Location Data
@@ -902,25 +917,9 @@
                 }
             }
 
-            // 2. Extract Industry Data based on keywords
-            let industryText = "local services";
-            let industryKey = "local services";
-            if (lowerInput.match(/cafe|coffee|restaurant|pub|inn|diner|food|kitchen/)) {
-                industryText = "hospitality";
-                industryKey = "hospitality";
-            } else if (lowerInput.match(/salon|hair|barber|spa|nails|beauty/)) {
-                industryText = "beauty and wellness";
-                industryKey = "beauty and wellness";
-            } else if (lowerInput.match(/plumber|builder|electric|sparky|roof|trade|mechanic|garage/)) {
-                industryText = "trade";
-                industryKey = "trade";
-            } else if (lowerInput.match(/shop|store|boutique|retail/)) {
-                industryText = "retail";
-                industryKey = "retail";
-            } else if (lowerInput.match(/hotel|bnb|bed and breakfast|accommodation/)) {
-                industryText = "accommodation";
-                industryKey = "accommodation";
-            }
+            // 2. Direct Industry Mapping from Dropdown
+            const industryKey = bizType; // Maps exactly to the <option> value
+            const industryText = bizType; // e.g., "hospitality", "trade"
 
             // Create a deterministic hash from the business name
             let hash = 0;
