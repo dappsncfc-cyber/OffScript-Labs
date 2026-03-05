@@ -420,9 +420,6 @@
             <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -z-10"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -z-10"></div>
             
-            <div class="inline-block bg-amber-500/10 text-amber-500 border border-amber-500/20 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
-                ROI Projector
-            </div>
             <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tighter uppercase text-white">Calculate Your Blind Spot</h2>
             <p class="text-slate-400 mb-12 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
                 How much revenue are you losing to competitors who are already optimised for AI and Voice search? Adjust your average customer value below to see the projection.
@@ -1113,6 +1110,29 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
             const scanner = document.getElementById('audit-scanner');
             const originalText = btn.innerText;
             
+            // --- SILENT COLD LEAD CAPTURE ---
+            // Automatically send the audit inputs to the spreadsheet in the background
+            const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzaHOh1MLMNPMRf7IDw2weSqaJ6U6FDMad_4br4xOvl7P6vIvZ0RWQxq8EagjqpaV_E/exec";
+            const coldLeadData = {
+                "Selected Tier": "Cold Lead (Audit Run)",
+                "Full Name": "Not provided yet",
+                "Business Name": bizName + " [Type: " + bizType + "]",
+                "Email Address": "Not provided yet",
+                "Contact Number": "Not provided yet",
+                "Manager Invite Status": "",
+                "Google Maps Verified": "",
+                "Website/Social Link": "",
+                "Priority Services": "",
+                "Shipping Address": "",
+                "Google Review Link": ""
+            };
+            fetch(googleScriptUrl, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify(coldLeadData)
+            }).catch(console.error); // Fire and forget without disrupting the user
+
             // Start scanning animation
             btn.disabled = true;
             btn.classList.add('gemini-pulse');
