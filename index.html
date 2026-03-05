@@ -788,14 +788,14 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
                 });
 
                 // 2. Send to Google Sheets via Web App
-                const googleScriptUrl = "https://script.google.com/macros/s/AKfycbxtDnkIkgKLyIAnr0OH2hEjz4tt1FnfzGv_cTNWYYY60ErGucFzZMbasC2HVhDkPUoF/exec"; 
+                const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzaHOh1MLMNPMRf7IDw2weSqaJ6U6FDMad_4br4xOvl7P6vIvZ0RWQxq8EagjqpaV_E/exec"; 
                 
                 let sheetPromise = Promise.resolve();
                 if (googleScriptUrl) {
                     sheetPromise = fetch(googleScriptUrl, {
                         method: "POST",
                         mode: "no-cors", // Crucial to prevent CORS errors on static GitHub Pages
-                        headers: { "Content-Type": "application/json" },
+                        headers: { "Content-Type": "text/plain" }, // FIXED: Sent as plain text to bypass strict Google CORS blocks
                         body: JSON.stringify(formData)
                     });
                 }
