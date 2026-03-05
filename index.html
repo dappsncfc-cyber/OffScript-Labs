@@ -134,13 +134,26 @@
             font-weight: 700;
         }
         
-        /* New blinking cursor for simulated typing */
+        /* Blinking cursor for simulated typing */
         .typing-cursor::after {
             content: '█';
             animation: blink 1s step-start infinite;
             color: #2dd4bf;
         }
         @keyframes blink { 50% { opacity: 0; } }
+
+        /* Terminal Logs Styling */
+        .terminal-log {
+            color: #2dd4bf;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body class="relative">
@@ -365,11 +378,11 @@
     <section id="audit" class="py-24 px-6 border-t border-slate-900 text-center text-pretty">
         <div class="max-w-2xl mx-auto glass-card p-8 md:p-12 rounded-[40px] border-teal-500/30 relative overflow-hidden text-center">
             <div id="audit-scanner" class="scanner-line absolute top-0 left-0 w-full opacity-20 hidden"></div>
-            <h3 class="text-3xl font-bold mb-6 uppercase tracking-tighter text-white">Free AI Entity Audit</h3>
-            <p class="text-slate-400 mb-8 text-sm font-light text-center">Enter your business details below to receive a baseline report on how AI models currently perceive your brand entity</p>
+            <h3 class="text-3xl font-bold mb-6 uppercase tracking-tighter text-white">Is Your Business Unseen by AI?</h3>
+            <p class="text-slate-400 mb-8 text-sm font-light text-center">Discover exactly how Gemini, Siri, and Alexa see you. Instant 1-Click free review.</p>
             
             <form id="audit-form" class="space-y-4">
-                <input type="text" id="audit-business" required placeholder="Business Name and Location (e.g. Joe's Cafe Cromer)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
+                <input type="text" id="audit-business" required placeholder="Business Name & Local Town (e.g. Joe's Cafe Cromer)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
                 
                 <div id="audit-ai-result" class="hidden text-left bg-slate-950/80 p-6 rounded-2xl border border-teal-500/20 text-xs md:text-sm text-slate-300 mb-4 font-mono leading-relaxed max-h-96 overflow-y-auto shadow-inner">
                     <!-- Dynamic Simulated Audit injected here -->
@@ -377,7 +390,7 @@
 
                 <div id="audit-btn-container" class="flex justify-center">
                     <button type="submit" id="gemini-preview-btn" class="w-full sm:w-auto px-8 bg-teal-500 text-slate-900 font-bold py-4 rounded-xl glow-button uppercase text-xs tracking-widest transition text-center">
-                        Get my Audit ✨
+                        GET YOUR FREE REVIEW & REPORT ✨
                     </button>
                 </div>
             </form>
@@ -536,7 +549,7 @@
                 borderColor = "border-amber-500/40";
             } else if (tierName.includes('Tier 4')) {
                 price = "£265";
-                desc = "Full Lab Suite | 30 Days Management";
+                desc = "Full Lab Suite | Delivery: Starts in 48hrs";
                 nameColor = "text-teal-400";
                 borderColor = "border-teal-400/50";
             }
@@ -643,12 +656,29 @@
             }
         });
 
-        // --- 2. SIMULATED AI AUDIT (100% Free & Reliable) ---
-        // This function dynamically generates a realistic AI report without needing an expensive API call.
-        async function runSimulatedAudit(businessName) {
-            // Clean the input to just get the core name
+        // --- 2. INTELLIGENT SIMULATED AI AUDIT ---
+        async function runSimulatedAudit(businessName, resultAreaElement) {
+            const lowerInput = businessName.toLowerCase();
             const cleanName = businessName.split(',')[0].trim() || "Your Business";
             
+            // 1. Extract Town/Location Data
+            const norfolkTowns = ['cromer', 'sheringham', 'holt', 'norwich', 'aylsham', 'fakenham', 'wells', 'north walsham', 'mundesley', 'stalham'];
+            let locationText = "your local area";
+            for (let town of norfolkTowns) {
+                if (lowerInput.includes(town)) {
+                    locationText = town.charAt(0).toUpperCase() + town.slice(1);
+                    break;
+                }
+            }
+
+            // 2. Extract Industry Data based on keywords
+            let industryText = "local services";
+            if (lowerInput.match(/cafe|coffee|restaurant|pub|inn|diner|food|kitchen/)) industryText = "hospitality";
+            else if (lowerInput.match(/salon|hair|barber|spa|nails|beauty/)) industryText = "beauty and wellness";
+            else if (lowerInput.match(/plumber|builder|electric|sparky|roof|trade|mechanic|garage/)) industryText = "trade";
+            else if (lowerInput.match(/shop|store|boutique|retail/)) industryText = "retail";
+            else if (lowerInput.match(/hotel|bnb|bed and breakfast|accommodation/)) industryText = "accommodation";
+
             // Create a deterministic hash from the business name
             let hash = 0;
             for (let i = 0; i < cleanName.length; i++) {
@@ -657,25 +687,50 @@
             }
             hash = Math.abs(hash);
 
-            // Wait a realistic amount of time to simulate AI processing (2.5 seconds)
-            await new Promise(resolve => setTimeout(resolve, 2500));
+            // 3. Realistic Terminal Scanning Sequence
+            const terminalLogs = [
+                `> Initialising Lab connection...`,
+                `> Querying semantic footprint for "${cleanName}"...`,
+                `> Cross-referencing ${industryText} sector data in ${locationText}...`,
+                `> Pinging Apple Siri & Amazon Alexa voice registries...`,
+                `> Analysing Google Gemini cite-readiness...`,
+                `> Compiling final entity report...`
+            ];
+
+            resultAreaElement.innerHTML = '';
+            for (let i = 0; i < terminalLogs.length; i++) {
+                setTimeout(() => {
+                    const logLine = document.createElement('div');
+                    logLine.className = 'terminal-log';
+                    logLine.innerText = terminalLogs[i];
+                    resultAreaElement.appendChild(logLine);
+                    // Add typing cursor to the last element temporarily
+                    if (i < terminalLogs.length - 1) {
+                         logLine.classList.add('typing-cursor');
+                         setTimeout(() => logLine.classList.remove('typing-cursor'), 400);
+                    }
+                }, i * 400); // Sequence timing
+            }
+
+            // Wait for terminal sequence to finish before showing results
+            await new Promise(resolve => setTimeout(resolve, 3000));
             
-            // Dynamic Response Arrays matching the new ad pillars (Strict UK English)
+            // 4. Inject Extracted Data into Dynamic Response Arrays (Strict UK English)
             const geminiVariations = [
-                `Partial footprint detected. Gemini struggles to differentiate your core services from local competitors due to missing 'Atomic Answers'.`,
-                `Fragmented visibility. Your business data is not semantically structured, meaning Gemini often bypasses you in AI Overviews.`,
-                `Low AI confidence. Gemini cannot reliably pull your priority services into its chat interface for prospective customers.`
+                `Partial footprint detected in ${locationText}. Gemini struggles to differentiate your core ${industryText} from local competitors due to missing 'Atomic Answers'.`,
+                `Fragmented visibility. Your business data is not semantically structured, meaning Gemini often bypasses you in AI Overviews for ${locationText}.`,
+                `Low AI confidence. Gemini cannot reliably pull your priority ${industryText} into its chat interface for prospective customers.`
             ];
             
             const voiceVariations = [
-                `Critical gap. Siri and Alexa cannot find conversational FAQ pairs or hyper-local 'near me' triggers for your location.`,
-                `Sub-optimal. Your online profile lacks the natural language formatting required for hands-free smart speaker queries.`,
-                `Unverified. Voice assistants are currently unable to confidently recommend your services for spoken local searches.`
+                `Critical gap. Siri and Alexa cannot find conversational FAQ pairs or hyper-local 'near me' triggers for your location in ${locationText}.`,
+                `Sub-optimal. Your online profile lacks the natural language formatting required for hands-free smart speaker queries regarding ${industryText}.`,
+                `Unverified. Voice assistants are currently unable to confidently recommend your services for spoken local searches in ${locationText}.`
             ];
             
             const entityVariations = [
-                `Inconsistent trust signals. Your digital footprint lacks the high-frequency review velocity required to solidify your brand as a trusted entity.`,
-                `Weak entity reinforcement. Disconnected data and missing visual tags mean AI models do not recognise you as the primary authority in your sector.`,
+                `Inconsistent trust signals. Your digital footprint lacks the high-frequency review velocity required to solidify your brand as a trusted entity in the ${industryText} sector.`,
+                `Weak entity reinforcement. Disconnected data and missing visual tags mean AI models do not recognise you as the primary authority in ${locationText}.`,
                 `Unstable foundation. Your entity requires immediate reinforcement across multiple platforms to trigger automated AI recommendations.`
             ];
 
@@ -697,7 +752,7 @@
                 tierReasoning = "Because your digital footprint shows severe fragmentation across multiple categories, the full Dominator suite is required to aggressively retrain the AI models with 30 days of intensive signal management and multi-point NFC deployment.";
             }
 
-            // Generate the dynamic, convincing report formatted to match the ad pillars
+            // Generate the dynamic, convincing report
             return {
                 text: `<strong class="text-white text-base">Lab Analysis Complete for ${cleanName}:</strong><br><br>
 
@@ -733,11 +788,10 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
             btn.classList.add('gemini-pulse');
             btn.innerText = 'Analysing Local Entity Data...';
             scanner.classList.remove('hidden');
-            resultArea.innerHTML = `<span class="typing-cursor">Connecting to Lab Database...</span>`;
             resultArea.classList.remove('hidden');
 
-            // Run the simulated audit
-            const result = await runSimulatedAudit(bizInfo);
+            // Run the simulated audit (passes the UI element to handle live terminal typing)
+            const result = await runSimulatedAudit(bizInfo, resultArea);
             
             // Add the dynamic action button using the dynamically recommended tier
             const finalHTML = result.text + `<br><br><strong class="text-white">Start being seen. Click the link below.</strong><br><br><div class="flex justify-center"><button type="button" onclick="window.openOnboarding('${result.tier}')" class="bg-teal-500 text-slate-900 px-6 py-3 rounded-lg font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-white transition inline-block glow-button w-full sm:w-auto">Initialise Recommended Protocol</button></div>`;
