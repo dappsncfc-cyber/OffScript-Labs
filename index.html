@@ -216,8 +216,19 @@
 
     <div class="fixed inset-0 circuit-bg pointer-events-none z-0"></div>
 
+    <!-- Dynamic Exclusivity Bar -->
+    <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-slate-950 border-b border-teal-500/20 flex items-center justify-center backdrop-blur-md px-4">
+        <div class="flex items-center gap-2 md:gap-3 text-[8px] md:text-[10px] uppercase tracking-widest text-slate-300 font-medium">
+            <span class="relative flex h-2 w-2 flex-shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+            </span>
+            <span class="text-center truncate md:overflow-visible"><strong class="text-teal-400">Lab Status:</strong> Currently accepting <strong class="text-white">2 more local partners</strong> in North Norfolk for the Q2 AI rollout.</span>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav id="main-nav" class="fixed w-full z-50 px-4 md:px-6 py-4 transition-all duration-300">
+    <nav id="main-nav" class="fixed top-8 md:top-10 w-full z-50 px-4 md:px-6 py-4 transition-all duration-300">
         <div class="max-w-7xl mx-auto glass-card rounded-2xl px-6 py-3 flex items-center justify-between relative">
             <a href="#" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-white" aria-label="OffScript Labs Home">
                 <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
