@@ -422,7 +422,7 @@
                 <div class="border-b border-white/10 w-full mb-2"></div>
             </div>
 
-            <!-- AJAX FORM SUBMIT TO dappsncfc@gmail.com -->
+            <!-- AJAX FORM SUBMIT TO dappsncfc@gmail.com & GOOGLE SHEETS -->
             <form id="requirement-form" class="space-y-8">
                 <input type="hidden" id="selected-tier-value" name="Selected Tier">
                 
@@ -728,53 +728,6 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
             const scanner = document.getElementById('audit-scanner');
             const originalText = btn.innerText;
             
-            // Start scanning animation
-            btn.disabled = true;
-            btn.classList.add('gemini-pulse');
-            btn.innerText = 'Analysing Local Entity Data...';
-            scanner.classList.remove('hidden');
-            resultArea.innerHTML = `<span class="typing-cursor">Connecting to Lab Database...</span>`;
-            resultArea.classList.remove('hidden');
-
-            // Run the simulated audit
-            const result = await runSimulatedAudit(bizInfo);
-            
-            // Add the dynamic action button using the dynamically recommended tier
-            const finalHTML = result.text + `<br><br><strong class="text-white">Start being seen. Click the link below.</strong><br><br><div class="flex justify-center"><button type="button" onclick="window.openOnboarding('${result.tier}')" class="bg-teal-500 text-slate-900 px-6 py-3 rounded-lg font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-white transition inline-block glow-button w-full sm:w-auto">Initialise Recommended Protocol</button></div>`;
-
-            // Display results
-            resultArea.innerHTML = finalHTML;
-            btn.disabled = false;
-            btn.classList.remove('gemini-pulse');
-            scanner.classList.add('hidden');
-            
-            // Hide the original submit button to provide a single clear CTA
-            btnContainer.classList.add('hidden');
-        };
-
-        // --- 3. EMAIL FORM SUBMISSION LOGIC (AJAX) ---
-        document.getElementById('requirement-form').onsubmit = function(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = 'SENDING TO LAB...';
-            btn.disabled = true;
-
-            // Gather the data to send
-            const formData = {
-                "Selected Tier": document.getElementById('selected-tier-value').value,
-                "Full Name": document.getElementById('ob-name').value,
-                "Business Name": document.getElementById('ob-business-name').value,
-                "Email Address": document.getElementById('ob-email').value,
-                "Contact Number": document.getElementById('ob-phone').value,
-                "Manager Invite Status": document.getElementById('ob-invite').value,
-                "Google Maps Verified": document.getElementById('ob-verified').value,
-                "Website/Social Link": document.getElementById('ob-link').value,
-                "Priority Services": document.getElementById('ob-services').value,
-                "Shipping Address": document.getElementById('ob-address').value,
-                "Google Review Link": document.getElementById('ob-review-link').value
-            };
-
             // Send to FormSubmit
             fetch("https://formsubmit.co/ajax/dappsncfc@gmail.com", {
                 method: "POST",
@@ -798,6 +751,70 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
                 btn.innerText = originalText;
                 btn.disabled = false;
             });
+        };
+
+        // --- 3. EMAIL & SPREADSHEET FORM SUBMISSION LOGIC (AJAX) ---
+        document.getElementById('requirement-form').onsubmit = async function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'SENDING TO LAB...';
+            btn.disabled = true;
+
+            // Gather the data to send
+            const formData = {
+                "Selected Tier": document.getElementById('selected-tier-value').value,
+                "Full Name": document.getElementById('ob-name').value,
+                "Business Name": document.getElementById('ob-business-name').value,
+                "Email Address": document.getElementById('ob-email').value,
+                "Contact Number": document.getElementById('ob-phone').value,
+                "Manager Invite Status": document.getElementById('ob-invite').value,
+                "Google Maps Verified": document.getElementById('ob-verified').value,
+                "Website/Social Link": document.getElementById('ob-link').value,
+                "Priority Services": document.getElementById('ob-services').value,
+                "Shipping Address": document.getElementById('ob-address').value,
+                "Google Review Link": document.getElementById('ob-review-link').value
+            };
+
+            try {
+                // 1. Send Email via FormSubmit
+                const emailPromise = fetch("https://formsubmit.co/ajax/dappsncfc@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // 2. Send to Google Sheets via Web App
+                const googleScriptUrl = "https://script.google.com/macros/s/AKfycbxtDnkIkgKLyIAnr0OH2hEjz4tt1FnfzGv_cTNWYYY60ErGucFzZMbasC2HVhDkPUoF/exec"; 
+                
+                let sheetPromise = Promise.resolve();
+                if (googleScriptUrl) {
+                    sheetPromise = fetch(googleScriptUrl, {
+                        method: "POST",
+                        mode: "no-cors", // Crucial to prevent CORS errors on static GitHub Pages
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(formData)
+                    });
+                }
+
+                // Wait for submissions to trigger
+                await Promise.all([emailPromise, sheetPromise]);
+
+                window.showStatusMessage('Lab Session Ignited Successfully. You will be contacted within 24 hours to complete your set-up.');
+                btn.innerText = originalText;
+                btn.disabled = false;
+                window.closeOnboarding();
+                e.target.reset();
+
+            } catch (error) {
+                console.error("Submission Error:", error);
+                window.showStatusMessage('Protocol Error: Failed to send data. Please ensure you clicked the FormSubmit verification email.', false);
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
         };
 
         // Update global click handler to manage both modals
