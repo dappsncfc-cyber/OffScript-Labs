@@ -662,6 +662,9 @@
             <form id="requirement-form" class="space-y-8">
                 <input type="hidden" id="selected-tier-value" name="Selected Tier">
                 
+                <!-- Honeypot Field (Anti-Spam) -->
+                <input type="text" name="_honey" id="ob-honey" style="display:none" tabindex="-1" autocomplete="off">
+                
                 <div class="space-y-4 text-center text-pretty">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-black">01. Contact Intelligence</h4>
                     <div class="space-y-4">
@@ -1110,9 +1113,11 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
             const scanner = document.getElementById('audit-scanner');
             const originalText = btn.innerText;
             
-            // --- SILENT COLD LEAD CAPTURE ---
-            // Automatically send the audit inputs to the spreadsheet in the background
-            const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzaHOh1MLMNPMRf7IDw2weSqaJ6U6FDMad_4br4xOvl7P6vIvZ0RWQxq8EagjqpaV_E/exec";
+            // --- SILENT COLD LEAD CAPTURE (SECURED) ---
+            // The URL is Base64 encoded to prevent simple bot scraping
+            const encodedUrl = "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4Mjg0aDVOUGR4Umw0Wi1rZ21xNmhMb09HdzNNVmJtODRDWVpxZTlJdE5QLTRTSDF6X1JiRkdrOUVSX2FHU2UzWUIvZXhlYw==";
+            const googleScriptUrl = atob(encodedUrl);
+            
             const coldLeadData = {
                 "Selected Tier": "Cold Lead (Audit Run)",
                 "Full Name": "Not provided yet",
@@ -1159,6 +1164,14 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
         // --- 3. EMAIL & SPREADSHEET FORM SUBMISSION LOGIC (AJAX) ---
         document.getElementById('requirement-form').onsubmit = async function(e) {
             e.preventDefault();
+            
+            // Check Honeypot to block bots
+            const honeypot = document.getElementById('ob-honey').value;
+            if (honeypot) {
+                console.warn('Bot detected. Submission aborted.');
+                return; // Silently fail for bots
+            }
+
             const btn = e.target.querySelector('button');
             const originalText = btn.innerText;
             btn.innerText = 'SENDING TO LAB...';
@@ -1190,15 +1203,16 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
                     body: JSON.stringify(formData)
                 });
 
-                // 2. Send to Google Sheets via Web App
-                const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzaHOh1MLMNPMRf7IDw2weSqaJ6U6FDMad_4br4xOvl7P6vIvZ0RWQxq8EagjqpaV_E/exec"; 
+                // 2. Send to Google Sheets via Web App (SECURED)
+                const encodedUrl = "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4Mjg0aDVOUGR4Umw0Wi1rZ21xNmhMb09HdzNNVmJtODRDWVpxZTlJdE5QLTRTSDF6X1JiRkdrOUVSX2FHU2UzWUIvZXhlYw==";
+                const googleScriptUrl = atob(encodedUrl); 
                 
                 let sheetPromise = Promise.resolve();
                 if (googleScriptUrl) {
                     sheetPromise = fetch(googleScriptUrl, {
                         method: "POST",
                         mode: "no-cors", // Crucial to prevent CORS errors on static GitHub Pages
-                        headers: { "Content-Type": "text/plain" }, // FIXED: Sent as plain text to bypass strict Google CORS blocks
+                        headers: { "Content-Type": "text/plain" }, 
                         body: JSON.stringify(formData)
                     });
                 }
