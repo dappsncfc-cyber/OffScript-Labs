@@ -175,11 +175,15 @@
                 </svg>
             </button>
 
-            <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-2 p-6 glass-card rounded-2xl flex-col gap-6 md:hidden">
-                <a href="#solutions" onclick="toggleMobileMenu()" class="text-xs uppercase font-bold tracking-widest text-slate-300">Solutions</a>
-                <a href="#tiers" onclick="toggleMobileMenu()" class="text-xs uppercase font-bold tracking-widest text-slate-300">Lab Tiers</a>
-                <a href="#faq" onclick="toggleMobileMenu()" class="text-xs uppercase font-bold tracking-widest text-slate-300">FAQ</a>
-                <a href="#audit" onclick="toggleMobileMenu()" class="bg-teal-500 text-slate-900 text-center py-3 rounded-xl font-bold text-xs uppercase tracking-widest">Free AI Audit</a>
+            <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-2 p-6 glass-card rounded-2xl md:hidden">
+                <div class="flex flex-col gap-6 text-center">
+                    <a href="#solutions" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Solutions</a>
+                    <a href="#tiers" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Lab Tiers</a>
+                    <a href="#faq" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">FAQ</a>
+                    <div class="px-4">
+                        <a href="#audit" onclick="window.toggleMobileMenu()" class="inline-block w-full bg-teal-500 text-slate-900 text-center px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest mt-2">FREE AI AUDIT</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -197,8 +201,8 @@
                 Traditional SEO is dead. In 2026, Google Gemini and Voice Assistants decide who wins. We bridge the gap between your physical North Norfolk business and the AI recommendations that matter.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#tiers" class="bg-teal-500 text-slate-900 px-8 md:px-10 py-4 md:py-5 rounded-2xl font-bold glow-button text-base md:text-lg w-full sm:w-auto text-center">View Lab Tiers</a>
-                <a href="#audit" class="glass-card px-8 md:px-10 py-4 md:py-5 rounded-2xl font-bold hover:bg-slate-800 transition text-base md:text-lg w-full sm:w-auto text-center text-white">Free Audit</a>
+                <a href="#tiers" class="bg-teal-500 text-slate-900 px-8 md:px-10 py-4 rounded-2xl font-bold glow-button text-xs md:text-sm uppercase tracking-widest w-full sm:w-auto text-center">VIEW LAB TIERS</a>
+                <a href="#audit" class="glass-card px-8 md:px-10 py-4 rounded-2xl font-bold hover:bg-slate-800 transition text-xs md:text-sm uppercase tracking-widest w-full sm:w-auto text-center text-white">FREE AUDIT</a>
             </div>
         </div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-teal-500/10 rounded-full blur-[80px] md:blur-[120px] -z-10"></div>
@@ -249,7 +253,7 @@
                             <div><span class="text-teal-500 text-sm md:text-base font-bold block mb-1">03</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">Vision AI Tagging: Geotagging 5 photos with precise UK coordinates</p></div>
                         </div>
                     </div>
-                    <button onclick="window.openOnboarding('Tier 1: AI Foundation')" class="w-full py-4 bg-slate-800 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-slate-700 transition">Select Tier 1</button>
+                    <button onclick="window.openOnboarding('Tier 1: AI Foundation')" class="w-full py-4 bg-slate-800 text-white rounded-xl font-bold text-xs uppercase tracking-widest border border-transparent hover:border-teal-500/40 hover:bg-teal-900/30 hover:text-teal-400 transition">SELECT TIER 1</button>
                 </div>
 
                 <div id="tier-2" class="glass-card p-8 rounded-3xl border-blue-500/20 flex flex-col items-center hover:scale-[1.02] transition-transform text-center">
@@ -264,13 +268,13 @@
                             <div><span class="text-blue-400 text-sm md:text-base font-bold block mb-1">06</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">NAP Synchronisation: Ensuring 100% data accuracy for hands-free calling</p></div>
                         </div>
                     </div>
-                    <button onclick="window.openOnboarding('Tier 2: Voice Specialist')" class="w-full py-4 bg-slate-800 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-slate-700 transition">Select Tier 2</button>
+                    <button onclick="window.openOnboarding('Tier 2: Voice Specialist')" class="w-full py-4 bg-slate-800 text-white rounded-xl font-bold text-xs uppercase tracking-widest border border-transparent hover:border-blue-500/40 hover:bg-blue-900/30 hover:text-blue-400 transition">SELECT TIER 2</button>
                 </div>
 
                 <div id="tier-3" class="glass-card p-8 rounded-3xl border-amber-500/40 bg-amber-500/5 ring-1 ring-amber-500/20 flex flex-col items-center hover:scale-[1.05] transition-all shadow-xl text-center">
                     <div class="mb-auto w-full text-pretty">
                         <div class="text-amber-500 text-xs md:text-sm font-bold uppercase tracking-widest mb-4 text-center">Tier 3: Review Booster</div>
-                        <div class="text-5xl font-bold mb-2 text-amber-500">£130</div>
+                        <div class="text-5xl font-bold mb-2 text-white">£130</div>
                         <p class="text-amber-500/60 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight text-pretty text-pretty text-pretty">Digital + 1 NFC Card | Delivery: 5 Days</p>
                         <div class="space-y-6 mb-10 text-pretty">
                             <p class="text-[10px] md:text-xs text-amber-500 font-bold uppercase italic tracking-wider">Includes all Tiers 1 & 2 features</p>
@@ -279,14 +283,14 @@
                             <div class="pt-2"><img src="https://img.icons8.com/color/48/google-logo.png" class="mx-auto opacity-50 w-8 h-8 md:w-10 md:h-10" alt="NFC"></div>
                         </div>
                     </div>
-                    <button onclick="window.openOnboarding('Tier 3: Review Booster')" class="w-full py-4 bg-amber-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-amber-500 transition text-white text-center">Select Tier 3</button>
+                    <button onclick="window.openOnboarding('Tier 3: Review Booster')" class="w-full py-4 bg-amber-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-amber-500 transition text-white text-center">SELECT TIER 3</button>
                 </div>
 
                 <div id="tier-4" class="glass-card p-8 rounded-3xl border-teal-400/50 bg-slate-900 shadow-2xl flex flex-col items-center hover:scale-[1.02] transition-transform text-center text-pretty text-white">
                     <div class="mb-auto w-full text-center text-pretty">
                         <div class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest mb-4 text-center text-pretty">Tier 4: AI Dominator</div>
-                        <div class="text-5xl font-bold mb-2">£265</div>
-                        <p class="text-teal-400/60 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight text-pretty text-pretty">Full Lab Suite | 30 Days Management</p>
+                        <div class="text-5xl font-bold mb-2 text-white">£265</div>
+                        <p class="text-teal-400/60 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight text-pretty text-pretty">Full Lab Suite | Delivery: Starts in 48hrs</p>
                         <div class="space-y-6 mb-10 text-pretty text-pretty text-pretty">
                             <p class="text-[10px] md:text-xs text-teal-400 font-bold uppercase italic tracking-wider">Includes all Tiers 1, 2 & 3 features</p>
                             <div><span class="text-teal-400 text-sm md:text-base font-bold block mb-1">10</span><p class="text-xs md:text-sm text-slate-200 font-bold italic leading-relaxed">3x Physical NFC Review Cards for multi-point acquisition</p></div>
@@ -294,7 +298,7 @@
                             <div><span class="text-teal-400 text-sm md:text-base font-bold block mb-1">12</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">30-Day Signal Management: Weekly AI posts and responses</p></div>
                         </div>
                     </div>
-                    <button onclick="window.openOnboarding('Tier 4: AI Dominator')" class="w-full py-4 bg-teal-500 text-slate-900 rounded-xl font-bold text-xs glow-button uppercase tracking-widest text-center">Select Tier 4</button>
+                    <button onclick="window.openOnboarding('Tier 4: AI Dominator')" class="w-full py-4 bg-teal-500 text-slate-900 rounded-xl font-bold text-xs glow-button uppercase tracking-widest text-center">SELECT TIER 4</button>
                 </div>
             </div>
         </div>
@@ -367,7 +371,7 @@
             <form id="audit-form" class="space-y-4">
                 <input type="text" id="audit-business" required placeholder="Business Name and Location (e.g. Joe's Cafe Cromer)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
                 
-                <div id="audit-ai-result" class="hidden text-left bg-slate-950/80 p-6 rounded-2xl border border-teal-500/20 text-xs text-slate-300 mb-4 font-mono leading-relaxed max-h-96 overflow-y-auto">
+                <div id="audit-ai-result" class="hidden text-left bg-slate-950/80 p-6 rounded-2xl border border-teal-500/20 text-xs md:text-sm text-slate-300 mb-4 font-mono leading-relaxed max-h-96 overflow-y-auto shadow-inner">
                     <!-- Dynamic Simulated Audit injected here -->
                 </div>
 
@@ -646,8 +650,6 @@
             const cleanName = businessName.split(',')[0].trim() || "Your Business";
             
             // Create a deterministic hash from the business name
-            // This ensures "Joe's Cafe" gets the SAME report if scanned twice, 
-            // but "Sarah's Bakery" gets a completely DIFFERENT report.
             let hash = 0;
             for (let i = 0; i < cleanName.length; i++) {
                 hash = ((hash << 5) - hash) + cleanName.charCodeAt(i);
@@ -658,36 +660,29 @@
             // Wait a realistic amount of time to simulate AI processing (2.5 seconds)
             await new Promise(resolve => setTimeout(resolve, 2500));
             
-            // Dynamic Response Arrays (Strict UK English)
-            const kgVariations = [
-                `Partial mapping found for ${cleanName}. AI models (Gemini, Siri) cannot currently distinguish your priority services from local competitors with 100% certainty.`,
-                `Fragmented entity data. Google's Knowledge Graph lacks clear connections between ${cleanName} and specific high-intent search queries in your area.`,
-                `Unverified semantic structure. The core services for ${cleanName} are not formatted as 'Atomic Answers', reducing your chances of appearing in AI Overviews.`
+            // Dynamic Response Arrays matching the new ad pillars (Strict UK English)
+            const geminiVariations = [
+                `Partial footprint detected. Gemini struggles to differentiate your core services from local competitors due to missing 'Atomic Answers'.`,
+                `Fragmented visibility. Your business data is not semantically structured, meaning Gemini often bypasses you in AI Overviews.`,
+                `Low AI confidence. Gemini cannot reliably pull your priority services into its chat interface for prospective customers.`
             ];
             
-            const vsVariations = [
-                `Low. Your online profile lacks the 'Natural Language' formatting required for conversational, hands-free search queries in North Norfolk.`,
-                `Critical gap. Siri and Alexa are unlikely to recommend ${cleanName} due to missing conversational FAQ pairs and hyper-local triggers.`,
-                `Sub-optimal. Voice assistants struggle to parse your current digital footprint for immediate, hands-free 'near me' recommendations.`
+            const voiceVariations = [
+                `Critical gap. Siri and Alexa cannot find conversational FAQ pairs or hyper-local 'near me' triggers for your location.`,
+                `Sub-optimal. Your online profile lacks the natural language formatting required for hands-free smart speaker queries.`,
+                `Unverified. Voice assistants are currently unable to confidently recommend your services for spoken local searches.`
             ];
             
-            const tsVariations = [
-                `Inconsistent. AI models require recent, high-frequency reviews to recommend your business confidently over others in the area.`,
-                `Stagnant velocity. Google Gemini favours businesses with continuous, recent customer trust signals, which ${cleanName} is currently lacking.`,
-                `Below threshold. The frequency of your positive trust signals is not currently high enough to trigger automated AI endorsements.`
+            const entityVariations = [
+                `Inconsistent trust signals. Your digital footprint lacks the high-frequency review velocity required to solidify your brand as a trusted entity.`,
+                `Weak entity reinforcement. Disconnected data and missing visual tags mean AI models do not recognise you as the primary authority in your sector.`,
+                `Unstable foundation. Your entity requires immediate reinforcement across multiple platforms to trigger automated AI recommendations.`
             ];
 
-            const vtVariations = [
-                `Unverified. Images associated with ${cleanName} lack the necessary EXIF data and semantic labels for Google's Vision AI to categorise them effectively.`,
-                `Missing context. Your digital assets have not been processed through Vision AI tagging, meaning Google cannot 'see' what you do.`,
-                `Poor visual entity reinforcement. Lack of geotagged, AI-optimised imagery limits your visibility in multi-modal search results.`
-            ];
-
-            // Pick variations based on the hash (creates 81 unique combinations)
-            const kgIndex = hash % 3;
-            const vsIndex = (hash + 1) % 3;
-            const tsIndex = (hash + 2) % 3;
-            const vtIndex = (hash + 3) % 3;
+            // Pick variations based on the hash
+            const geminiIndex = hash % 3;
+            const voiceIndex = (hash + 1) % 3;
+            const entityIndex = (hash + 2) % 3;
 
             // Dynamically recommend a Tier based on the hash
             const tierDecider = hash % 10;
@@ -699,20 +694,25 @@
                 tierReasoning = "Given the critical gaps in your conversational data, this tier will build out your 'Natural Language' FAQ pairs and synchronise your NAP data, ensuring Siri and Gemini confidently recommend you for hands-free requests.";
             } else if (tierDecider >= 8) {
                 recommendedTierTitle = "Tier 4: AI Dominator";
-                tierReasoning = "Because your digital footprint shows severe fragmentation across multiple categories (Visual, Semantic, and Trust), the full Dominator suite is required to aggressively retrain the AI models with 30 days of intensive signal management and multi-point NFC deployment.";
+                tierReasoning = "Because your digital footprint shows severe fragmentation across multiple categories, the full Dominator suite is required to aggressively retrain the AI models with 30 days of intensive signal management and multi-point NFC deployment.";
             }
 
-            // Generate the dynamic, convincing report
+            // Generate the dynamic, convincing report formatted to match the ad pillars
             return {
-                text: `<strong>This is how AI views your business:</strong><br><br>
-<strong>Entity Perception 2026:</strong><br>
-• <strong class="text-teal-400">Knowledge Graph Status:</strong> ${kgVariations[kgIndex]}<br>
-• <strong class="text-teal-400">Voice Search Readiness:</strong> ${vsVariations[vsIndex]}<br>
-• <strong class="text-teal-400">Trust Signal Velocity:</strong> ${tsVariations[tsIndex]}<br>
-• <strong class="text-teal-400">Visual Data Tagging:</strong> ${vtVariations[vtIndex]}<br><br>
-<strong>Recommended Lab Protocol:</strong><br>
-Based on this analysis, we strongly recommend <strong>${recommendedTierTitle}</strong>.<br><br>
-${tierReasoning}`,
+                text: `<strong class="text-white text-base">Lab Analysis Complete for ${cleanName}:</strong><br><br>
+
+<strong class="text-teal-400">👁️ HOW GEMINI SEES YOU:</strong><br>
+<span class="text-slate-300">${geminiVariations[geminiIndex]}</span><br><br>
+
+<strong class="text-blue-400">🎙️ VOICE VISIBILITY (SIRI & ALEXA):</strong><br>
+<span class="text-slate-300">${voiceVariations[voiceIndex]}</span><br><br>
+
+<strong class="text-amber-500">🏢 BRAND ENTITY STATUS:</strong><br>
+<span class="text-slate-300">${entityVariations[entityIndex]}</span><br><br>
+
+<strong class="text-white">Recommended Lab Protocol:</strong><br>
+Based on this analysis, we strongly recommend <strong class="text-teal-400">${recommendedTierTitle}</strong>.<br><br>
+<span class="text-slate-300">${tierReasoning}</span>`,
                 tier: recommendedTierTitle
             };
         }
@@ -740,7 +740,7 @@ ${tierReasoning}`,
             const result = await runSimulatedAudit(bizInfo);
             
             // Add the dynamic action button using the dynamically recommended tier
-            const finalHTML = result.text + `<br><br><strong>Start being seen. Click the link below.</strong><br><br><div class="flex justify-center"><button type="button" onclick="window.openOnboarding('${result.tier}')" class="bg-teal-500 text-slate-900 px-4 py-2 rounded-lg font-bold uppercase text-[10px] tracking-widest hover:bg-white transition inline-block">Initialise Recommended Protocol</button></div>`;
+            const finalHTML = result.text + `<br><br><strong class="text-white">Start being seen. Click the link below.</strong><br><br><div class="flex justify-center"><button type="button" onclick="window.openOnboarding('${result.tier}')" class="bg-teal-500 text-slate-900 px-6 py-3 rounded-lg font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-white transition inline-block glow-button w-full sm:w-auto">Initialise Recommended Protocol</button></div>`;
 
             // Display results
             resultArea.innerHTML = finalHTML;
