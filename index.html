@@ -163,6 +163,18 @@
             to { opacity: 1; }
         }
 
+        /* Mobile Ticker Animation */
+        @keyframes ticker-scroll {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+        @media (max-width: 767px) {
+            .mobile-ticker {
+                animation: ticker-scroll 15s linear infinite;
+                will-change: transform;
+            }
+        }
+
         /* 3D Tilt Card Effects */
         .tilt-card {
             will-change: transform;
@@ -217,13 +229,13 @@
     <div class="fixed inset-0 circuit-bg pointer-events-none z-0"></div>
 
     <!-- Dynamic Exclusivity Bar -->
-    <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-slate-950 border-b border-teal-500/20 flex items-center justify-center backdrop-blur-md px-4">
-        <div class="flex items-center gap-2 md:gap-3 text-[8px] md:text-[10px] uppercase tracking-widest text-slate-300 font-medium">
+    <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-slate-950 border-b border-teal-500/20 flex items-center justify-start md:justify-center backdrop-blur-md overflow-hidden">
+        <div class="mobile-ticker flex items-center gap-2 md:gap-3 text-[10px] uppercase tracking-widest text-slate-300 font-medium whitespace-nowrap px-4 md:px-0">
             <span class="relative flex h-2 w-2 flex-shrink-0">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
             </span>
-            <span class="text-center truncate md:overflow-visible"><strong class="text-teal-400">Lab Status:</strong> Currently accepting <strong class="text-white">2 more local partners</strong> in North Norfolk for the Q2 AI rollout.</span>
+            <span><strong class="text-teal-400">Lab Status:</strong> Currently accepting <strong class="text-white">2 more local partners</strong> in North Norfolk for the Q2 AI rollout.</span>
         </div>
     </div>
 
