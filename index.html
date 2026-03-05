@@ -587,13 +587,16 @@
             <p class="text-slate-400 mb-8 text-sm font-light text-center">Discover exactly how Gemini, Siri, and Alexa see you. Instant 1-Click free review.</p>
             
             <form id="audit-form" class="space-y-4">
-                <input type="text" id="audit-business" required placeholder="Business Name & Local Town (e.g. Joe's Cafe Cromer)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="audit-business" required placeholder="Business Name & Local Town (e.g. Joe's Cafe, Cromer)" class="w-full sm:w-2/3 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
+                    <input type="text" id="audit-type" required placeholder="Business Type (e.g. Cafe)" class="w-full sm:w-1/3 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-teal-500 outline-none text-white transition placeholder-slate-500">
+                </div>
                 
                 <div id="audit-ai-result" class="hidden text-left bg-slate-950/80 p-6 rounded-2xl border border-teal-500/20 text-xs md:text-sm text-slate-300 mb-4 font-mono leading-relaxed max-h-96 overflow-y-auto shadow-inner">
                     <!-- Dynamic Simulated Audit injected here -->
                 </div>
 
-                <div id="audit-btn-container" class="flex flex-col items-center justify-center">
+                <div id="audit-btn-container" class="flex flex-col items-center justify-center pt-2">
                     <button type="submit" id="gemini-preview-btn" class="w-full sm:w-auto px-8 bg-teal-500 text-slate-900 font-bold py-4 rounded-xl glow-button uppercase text-xs tracking-widest transition text-center">
                         GET YOUR FREE REVIEW & REPORT ✨
                     </button>
@@ -873,19 +876,21 @@
         };
 
         // UX Feature: Bring back the original submit button if the user types a new business name
-        document.getElementById('audit-business').addEventListener('input', function() {
+        function resetAuditUI() {
             const btnContainer = document.getElementById('audit-btn-container');
             if (btnContainer.classList.contains('hidden')) {
                 btnContainer.classList.remove('hidden');
                 document.getElementById('audit-ai-result').classList.add('hidden');
-                document.getElementById('gemini-preview-btn').innerText = 'Get my Audit ✨';
+                document.getElementById('gemini-preview-btn').innerText = 'GET YOUR FREE REVIEW & REPORT ✨';
             }
-        });
+        }
+        document.getElementById('audit-business').addEventListener('input', resetAuditUI);
+        document.getElementById('audit-type').addEventListener('input', resetAuditUI);
 
         // --- 2. INTELLIGENT SIMULATED AI AUDIT ---
-        async function runSimulatedAudit(businessName, resultAreaElement) {
-            const lowerInput = businessName.toLowerCase();
-            const cleanName = businessName.split(',')[0].trim() || "Your Business";
+        async function runSimulatedAudit(bizName, bizType, resultAreaElement) {
+            const lowerInput = (bizName + " " + bizType).toLowerCase();
+            const cleanName = bizName.split(',')[0].trim() || "Your Business";
             
             // 1. Extract Town/Location Data
             const norfolkTowns = ['cromer', 'sheringham', 'holt', 'norwich', 'aylsham', 'fakenham', 'wells', 'north walsham', 'mundesley', 'stalham'];
@@ -899,11 +904,23 @@
 
             // 2. Extract Industry Data based on keywords
             let industryText = "local services";
-            if (lowerInput.match(/cafe|coffee|restaurant|pub|inn|diner|food|kitchen/)) industryText = "hospitality";
-            else if (lowerInput.match(/salon|hair|barber|spa|nails|beauty/)) industryText = "beauty and wellness";
-            else if (lowerInput.match(/plumber|builder|electric|sparky|roof|trade|mechanic|garage/)) industryText = "trade";
-            else if (lowerInput.match(/shop|store|boutique|retail/)) industryText = "retail";
-            else if (lowerInput.match(/hotel|bnb|bed and breakfast|accommodation/)) industryText = "accommodation";
+            let industryKey = "local services";
+            if (lowerInput.match(/cafe|coffee|restaurant|pub|inn|diner|food|kitchen/)) {
+                industryText = "hospitality";
+                industryKey = "hospitality";
+            } else if (lowerInput.match(/salon|hair|barber|spa|nails|beauty/)) {
+                industryText = "beauty and wellness";
+                industryKey = "beauty and wellness";
+            } else if (lowerInput.match(/plumber|builder|electric|sparky|roof|trade|mechanic|garage/)) {
+                industryText = "trade";
+                industryKey = "trade";
+            } else if (lowerInput.match(/shop|store|boutique|retail/)) {
+                industryText = "retail";
+                industryKey = "retail";
+            } else if (lowerInput.match(/hotel|bnb|bed and breakfast|accommodation/)) {
+                industryText = "accommodation";
+                industryKey = "accommodation";
+            }
 
             // Create a deterministic hash from the business name
             let hash = 0;
@@ -941,24 +958,113 @@
             // Wait for terminal sequence to finish before showing results
             await new Promise(resolve => setTimeout(resolve, 3000));
             
-            // 4. Inject Extracted Data into Dynamic Response Arrays (Strict UK English)
-            const geminiVariations = [
-                `Partial footprint detected in ${locationText}. Gemini struggles to differentiate your core ${industryText} from local competitors due to missing 'Atomic Answers'.`,
-                `Fragmented visibility. Your business data is not semantically structured, meaning Gemini often bypasses you in AI Overviews for ${locationText}.`,
-                `Low AI confidence. Gemini cannot reliably pull your priority ${industryText} into its chat interface for prospective customers.`
-            ];
-            
-            const voiceVariations = [
-                `Critical gap. Siri and Alexa cannot find conversational FAQ pairs or hyper-local 'near me' triggers for your location in ${locationText}.`,
-                `Sub-optimal. Your online profile lacks the natural language formatting required for hands-free smart speaker queries regarding ${industryText}.`,
-                `Unverified. Voice assistants are currently unable to confidently recommend your services for spoken local searches in ${locationText}.`
-            ];
-            
-            const entityVariations = [
-                `Inconsistent trust signals. Your digital footprint lacks the high-frequency review velocity required to solidify your brand as a trusted entity in the ${industryText} sector.`,
-                `Weak entity reinforcement. Disconnected data and missing visual tags mean AI models do not recognise you as the primary authority in ${locationText}.`,
-                `Unstable foundation. Your entity requires immediate reinforcement across multiple platforms to trigger automated AI recommendations.`
-            ];
+            // 4. Inject Extracted Data into Dynamic Response Arrays (Strict UK English & Highly Tailored)
+            const tailoredResponses = {
+                "hospitality": {
+                    gemini: [
+                        `Menu and opening hours lack semantic structuring. Gemini struggles to confidently recommend your dishes over local competitors.`,
+                        `Fragmented entity data. AI models cannot definitively link your establishment to high-intent searches like 'best lunch in ${locationText}'.`,
+                        `Missing 'Atomic Answers' for dietary requirements. Gemini often bypasses your profile when users search for specific dining options.`
+                    ],
+                    voice: [
+                        `Siri and Alexa cannot find conversational FAQ pairs for table bookings or dog-friendly queries in ${locationText}.`,
+                        `Your digital footprint lacks the natural language formatting required for hands-free 'food near me' smart speaker requests.`,
+                        `Voice assistants fail to pull your live availability, reducing your chances of winning spontaneous spoken local searches.`
+                    ],
+                    entity: [
+                        `Inconsistent trust signals. Your review velocity is not high enough to solidify your establishment as the premier dining choice.`,
+                        `Weak visual reinforcement. Untagged interior and food photos mean Google's Vision AI cannot correctly categorise your atmosphere.`,
+                        `Unstable foundation. You lack the continuous stream of fresh, highly-rated reviews that AI algorithms demand for top-tier recommendation.`
+                    ]
+                },
+                "beauty and wellness": {
+                    gemini: [
+                        `Treatment lists and pricing lack 'Atomic Answer' formatting. Gemini struggles to quote your specific services directly to users.`,
+                        `Fragmented semantic visibility. AI models cannot clearly distinguish your specialist treatments from other salons in ${locationText}.`,
+                        `Your online profile is missing structured data for booking links, lowering AI confidence when users search for local appointments.`
+                    ],
+                    voice: [
+                        `Critical gap. Siri cannot parse your conversational data to answer 'where can I get a haircut/treatment today in ${locationText}'.`,
+                        `Your online presence lacks natural language FAQs regarding walk-ins and specific treatment times.`,
+                        `Voice assistants are currently unable to confidently recommend your salon for spoken, hyper-local beauty searches.`
+                    ],
+                    entity: [
+                        `Stagnant trust signals. AI models require a higher frequency of recent client reviews to rank you above competing local salons.`,
+                        `Missing visual context. Without AI-tagged portfolio images of your work, Google cannot visually verify your expertise.`,
+                        `Entity fragmentation. Your brand requires immediate reinforcement across local directories to trigger automated AI endorsements.`
+                    ]
+                },
+                "trade": {
+                    gemini: [
+                        `Service area and emergency call-out data are not semantically structured. Gemini often bypasses you for urgent local queries.`,
+                        `Fragmented service lists. AI models cannot definitively match your specific trade skills to complex user problems in ${locationText}.`,
+                        `Missing 'Atomic Answers'. Gemini struggles to extract your accreditations and specific repair services for its AI Overviews.`
+                    ],
+                    voice: [
+                        `Critical vulnerability. Smart speakers cannot find hyper-local triggers for urgent, hands-free 'emergency trade near me' searches.`,
+                        `Sub-optimal NAP synchronisation. Voice assistants lack the confident data required to initiate hands-free phone calls to your business.`,
+                        `Your profile lacks conversational FAQs answering common pricing or call-out fee questions for ${locationText} residents.`
+                    ],
+                    entity: [
+                        `Inconsistent review velocity. AI algorithms heavily favour tradespeople with continuous, recent 5-star trust signals.`,
+                        `Weak entity authority. Disconnected digital profiles mean Google does not yet recognise you as the primary trusted contractor in the area.`,
+                        `Unverified visual footprint. Lack of geotagged 'before and after' project photos limits your multi-modal search visibility.`
+                    ]
+                },
+                "retail": {
+                    gemini: [
+                        `Product categories and in-store availability lack semantic markup. Gemini cannot tell users what is currently on your shelves.`,
+                        `Fragmented entity data. AI models struggle to connect your specific inventory to high-intent shopping queries in ${locationText}.`,
+                        `Missing 'Atomic Answers' regarding opening times and parking, causing Gemini to favour larger, better-structured competitors.`
+                    ],
+                    voice: [
+                        `Siri and Alexa cannot parse your data to answer hands-free questions like 'is this product sold near me in ${locationText}'.`,
+                        `Your digital footprint lacks the conversational formatting required to capture local, spoken shopping queries.`,
+                        `Voice assistants fail to confidently recommend your shop due to missing hyper-local neighbourhood data triggers.`
+                    ],
+                    entity: [
+                        `Low trust signal frequency. You need a higher volume of recent, positive reviews to solidify your shop as a local retail authority.`,
+                        `Weak visual reinforcement. Google's Vision AI struggles to categorise your storefront and product images without proper EXIF tagging.`,
+                        `Unstable entity foundation. Your brand footprint requires synchronisation across mapping platforms to trigger AI recommendations.`
+                    ]
+                },
+                "accommodation": {
+                    gemini: [
+                        `Amenities and room types lack precise semantic structuring. Gemini struggles to confidently cite your specific offerings.`,
+                        `Fragmented local context. AI models cannot clearly connect your accommodation to nearby attractions and high-intent tourist queries.`,
+                        `Missing structured booking data. Gemini often bypasses your direct profile in favour of highly-optimised aggregator sites.`
+                    ],
+                    voice: [
+                        `Siri and Alexa cannot find conversational FAQ pairs regarding check-in times, parking, or pet policies for your property.`,
+                        `Your online profile lacks the natural language formatting required for hands-free 'places to stay near me' smart speaker requests.`,
+                        `Voice assistants are currently unable to confidently recommend your rooms for spoken, hyper-local travel searches in ${locationText}.`
+                    ],
+                    entity: [
+                        `Inconsistent trust signals. AI algorithms require a steady stream of fresh guest reviews to maintain top-tier local ranking.`,
+                        `Missing visual context. Untagged exterior and room photos mean Google's Vision AI cannot fully understand your property's value.`,
+                        `Entity fragmentation. Your brand footprint requires immediate alignment across travel directories to secure automated AI endorsements.`
+                    ]
+                },
+                "local services": {
+                    gemini: [
+                        `Partial footprint detected in ${locationText}. Gemini struggles to differentiate your core services from local competitors due to missing 'Atomic Answers'.`,
+                        `Fragmented visibility. Your business data is not semantically structured, meaning Gemini often bypasses you in AI Overviews for ${locationText}.`,
+                        `Low AI confidence. Gemini cannot reliably pull your priority services into its chat interface for prospective customers.`
+                    ],
+                    voice: [
+                        `Critical gap. Siri and Alexa cannot find conversational FAQ pairs or hyper-local 'near me' triggers for your location in ${locationText}.`,
+                        `Sub-optimal. Your online profile lacks the natural language formatting required for hands-free smart speaker queries regarding your services.`,
+                        `Unverified. Voice assistants are currently unable to confidently recommend your services for spoken local searches in ${locationText}.`
+                    ],
+                    entity: [
+                        `Inconsistent trust signals. Your digital footprint lacks the high-frequency review velocity required to solidify your brand as a trusted entity in your sector.`,
+                        `Weak entity reinforcement. Disconnected data and missing visual tags mean AI models do not recognise you as the primary authority in ${locationText}.`,
+                        `Unstable foundation. Your entity requires immediate reinforcement across multiple platforms to trigger automated AI recommendations.`
+                    ]
+                }
+            };
+
+            const selectedResponses = tailoredResponses[industryKey];
 
             // Pick variations based on the hash
             const geminiIndex = hash % 3;
@@ -983,13 +1089,13 @@
                 text: `<strong class="text-white text-base">Lab Analysis Complete for ${cleanName}:</strong><br><br>
 
 <strong class="text-teal-400">👁️ HOW GEMINI SEES YOU:</strong><br>
-<span class="text-slate-300">${geminiVariations[geminiIndex]}</span><br><br>
+<span class="text-slate-300">${selectedResponses.gemini[geminiIndex]}</span><br><br>
 
 <strong class="text-blue-400">🎙️ VOICE VISIBILITY (SIRI & ALEXA):</strong><br>
-<span class="text-slate-300">${voiceVariations[voiceIndex]}</span><br><br>
+<span class="text-slate-300">${selectedResponses.voice[voiceIndex]}</span><br><br>
 
 <strong class="text-amber-500">🏢 BRAND ENTITY STATUS:</strong><br>
-<span class="text-slate-300">${entityVariations[entityIndex]}</span><br><br>
+<span class="text-slate-300">${selectedResponses.entity[entityIndex]}</span><br><br>
 
 <strong class="text-white">Recommended Lab Protocol:</strong><br>
 Based on this analysis, we strongly recommend <strong class="text-teal-400">${recommendedTierTitle}</strong>.<br><br>
@@ -1000,8 +1106,9 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
 
         document.getElementById('audit-form').onsubmit = async function(e) {
             e.preventDefault();
-            const bizInfo = document.getElementById('audit-business').value;
-            if (!bizInfo) return window.showStatusMessage('Please enter a business name and location.', false);
+            const bizName = document.getElementById('audit-business').value;
+            const bizType = document.getElementById('audit-type').value;
+            if (!bizName || !bizType) return window.showStatusMessage('Please enter all business details.', false);
 
             const btn = document.getElementById('gemini-preview-btn');
             const btnContainer = document.getElementById('audit-btn-container');
@@ -1017,7 +1124,7 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
             resultArea.classList.remove('hidden');
 
             // Run the simulated audit (passes the UI element to handle live terminal typing)
-            const result = await runSimulatedAudit(bizInfo, resultArea);
+            const result = await runSimulatedAudit(bizName, bizType, resultArea);
             
             // Add the dynamic action button using the dynamically recommended tier
             const finalHTML = result.text + `<br><br><strong class="text-white">Start being seen. Click the link below.</strong><br><br><div class="flex justify-center"><button type="button" onclick="window.openOnboarding('${result.tier}')" class="bg-teal-500 text-slate-900 px-6 py-3 rounded-lg font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-white transition inline-block glow-button w-full sm:w-auto">Initialise Recommended Protocol</button></div>`;
