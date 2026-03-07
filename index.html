@@ -221,19 +221,19 @@
             50% { height: 20px; }
         }
         
-        /* Privacy Policy Modal Scrollbar */
-        .privacy-scroll::-webkit-scrollbar {
+        /* Modal Scrollbar */
+        .policy-scroll::-webkit-scrollbar {
             width: 6px;
         }
-        .privacy-scroll::-webkit-scrollbar-track {
+        .policy-scroll::-webkit-scrollbar-track {
             background: rgba(15, 23, 42, 0.5); 
             border-radius: 8px;
         }
-        .privacy-scroll::-webkit-scrollbar-thumb {
+        .policy-scroll::-webkit-scrollbar-thumb {
             background: rgba(45, 212, 191, 0.3); 
             border-radius: 8px;
         }
-        .privacy-scroll::-webkit-scrollbar-thumb:hover {
+        .policy-scroll::-webkit-scrollbar-thumb:hover {
             background: rgba(45, 212, 191, 0.6); 
         }
     </style>
@@ -436,9 +436,7 @@
             <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -z-10"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -z-10"></div>
             
-            <div class="inline-block bg-amber-500/10 text-amber-500 border border-amber-500/20 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
-                ROI Projector
-            </div>
+        
             <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tighter uppercase text-white">Calculate Your Blind Spot</h2>
             <p class="text-slate-400 mb-12 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
                 How much revenue are you losing to competitors who are already optimised for AI and Voice search? Adjust your average customer value below to see the projection.
@@ -751,7 +749,7 @@
                 </button>
             </div>
             
-            <div class="p-6 md:p-8 overflow-y-auto privacy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> OffScript Labs (Cromer, North Norfolk, UK)</p>
 
                 <div>
@@ -810,6 +808,89 @@
         </div>
     </div>
 
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
+            
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Terms of Service</h2>
+                <button onclick="window.closeTerms()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Terms">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026<br><strong>Business Type:</strong> Business-to-Business (B2B)</p>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. The Service</h3>
+                    <p>OffScript Labs provides digital marketing, semantic mapping, and NFC hardware solutions designed to optimise business visibility for AI algorithms and voice search. By submitting an onboarding request, you agree to engage our services under these business-to-business terms.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">2. Liability & Guarantees</h3>
+                    <p>While we utilise industry-leading practices to restructure your data for Google Gemini, Siri, and Alexa, we do not own these platforms. Therefore, <strong>we cannot absolutely guarantee specific search rankings, traffic volumes, or AI citations</strong>, as these algorithms are subject to independent updates outside of our control.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">3. Payments & Invoicing</h3>
+                    <p>No payment is taken via this website. Following your onboarding request, you will be contacted to confirm your exact requirements. An invoice will be issued independently. Work will commence, and physical hardware will be dispatched, only upon settlement of the invoice.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">4. Hardware Delivery</h3>
+                    <p>NFC "Tap-to-Review" hardware is programmed in Norfolk and dispatched via Royal Mail. We aim to deliver within the timeframes specified in your chosen Tier, but we are not liable for delays caused by the postal service.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">5. Jurisdiction</h3>
+                    <p>These terms are governed by the laws of England and Wales. Any disputes arising from this agreement shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+                <button onclick="window.closeTerms()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Modal -->
+    <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
+            
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Cookie Policy</h2>
+                <button onclick="window.closeCookie()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Cookie Policy">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026</p>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">Our Stance on Cookies</h3>
+                    <p>At OffScript Labs, we believe in a clean, frictionless user experience. <strong>We do not use intrusive tracking cookies, third-party analytics, or marketing cookies on this website.</strong></p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">Strictly Necessary Mechanisms</h3>
+                    <p>Under the UK Privacy and Electronic Communications Regulations (PECR), websites must obtain consent for non-essential cookies. Because we do not use them, you will not see a disruptive consent banner on our site.</p>
+                    <p class="mt-2">We only utilise strictly necessary browser functions (such as temporary local storage) to allow our AI Audit simulator and interactive ROI calculator to function while you are actively using them. This data is not used to identify you or track your behaviour across the internet.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">Contact</h3>
+                    <p>If you have any questions about how we handle data and privacy, please refer to our Privacy Policy or email <span class="text-teal-400 font-mono">lab@offscriptlabs.co.uk</span>.</p>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+                <button onclick="window.closeCookie()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
         <div class="flex items-center justify-center gap-3 mb-8 text-white">
@@ -818,10 +899,18 @@
             </svg>
             <span class="text-xs uppercase tracking-[0.5em] font-bold text-white/40">OffScript Labs &copy; 2026</span>
         </div>
+        
         <!-- BRIGHT FOOTER TEXT -->
         <p class="text-white text-sm max-w-sm mx-auto font-light leading-relaxed mb-8">
             Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for high-intent growth across North Norfolk.
         </p>
+
+        <!-- UK COMPANIES ACT REQUIREMENT PLACEHOLDER -->
+        <div class="text-[10px] text-slate-600 max-w-lg mx-auto mb-8 leading-relaxed font-mono">
+            OffScript Labs is a trading name based in Cromer, Norfolk, UK. <br>
+            <!-- If you register as a Limited Company, uncomment and fill out the line below: -->
+            <!-- Registered in England & Wales. Company No: XXXXXXXX. Registered Office: [Your Address]. -->
+        </div>
         
         <div class="flex items-center justify-center gap-6 mb-8 text-pretty">
             <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Facebook">
@@ -832,9 +921,13 @@
             </a>
         </div>
         
-        <!-- Privacy Policy Link -->
-        <div class="mt-4 mb-8">
-            <a href="#" onclick="window.openPrivacy(); return false;" class="text-[10px] uppercase tracking-widest text-slate-500 hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
+        <!-- Legal Link Row -->
+        <div class="mt-4 mb-8 flex flex-wrap justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-slate-500">
+            <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
+            <span class="text-slate-800 hidden sm:inline">|</span>
+            <a href="#" onclick="window.openTerms(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Terms of Service</a>
+            <span class="text-slate-800 hidden sm:inline">|</span>
+            <a href="#" onclick="window.openCookie(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Cookie Policy</a>
         </div>
 
         <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono">Lab System Operational</div>
@@ -970,7 +1063,7 @@
             previewModal.classList.remove('flex');
         };
         
-        // Privacy Policy Modal Controls
+        // Privacy & Legal Modal Controls
         window.openPrivacy = function() {
             const modal = document.getElementById('privacy-modal');
             modal.classList.remove('hidden');
@@ -979,6 +1072,32 @@
         };
         window.closePrivacy = function() {
             const modal = document.getElementById('privacy-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        };
+        
+        window.openTerms = function() {
+            const modal = document.getElementById('terms-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closeTerms = function() {
+            const modal = document.getElementById('terms-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        };
+
+        window.openCookie = function() {
+            const modal = document.getElementById('cookie-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closeCookie = function() {
+            const modal = document.getElementById('cookie-modal');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
@@ -1413,6 +1532,10 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
                 window.closeOnboarding(); 
             } else if (e.target == document.getElementById('privacy-modal')) {
                 window.closePrivacy();
+            } else if (e.target == document.getElementById('terms-modal')) {
+                window.closeTerms();
+            } else if (e.target == document.getElementById('cookie-modal')) {
+                window.closeCookie();
             }
         };
     </script>
