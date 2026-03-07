@@ -1,18 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en-GB">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WSW1B5J957"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WSW1B5J957');
-</script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OffScript Labs | The 2026 AI & Voice Search Suite</title>
@@ -232,6 +220,22 @@
             0%, 100% { height: 6px; }
             50% { height: 20px; }
         }
+        
+        /* Privacy Policy Modal Scrollbar */
+        .privacy-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .privacy-scroll::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5); 
+            border-radius: 8px;
+        }
+        .privacy-scroll::-webkit-scrollbar-thumb {
+            background: rgba(45, 212, 191, 0.3); 
+            border-radius: 8px;
+        }
+        .privacy-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(45, 212, 191, 0.6); 
+        }
     </style>
 </head>
 <body class="relative">
@@ -432,7 +436,9 @@
             <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -z-10"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -z-10"></div>
             
-          
+            <div class="inline-block bg-amber-500/10 text-amber-500 border border-amber-500/20 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
+                ROI Projector
+            </div>
             <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tighter uppercase text-white">Calculate Your Blind Spot</h2>
             <p class="text-slate-400 mb-12 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
                 How much revenue are you losing to competitors who are already optimised for AI and Voice search? Adjust your average customer value below to see the projection.
@@ -734,6 +740,76 @@
         </div>
     </div>
 
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
+            
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Privacy Policy</h2>
+                <button onclick="window.closePrivacy()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Privacy Policy">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <div class="p-6 md:p-8 overflow-y-auto privacy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> OffScript Labs (Cromer, North Norfolk, UK)</p>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Overview</h3>
+                    <p>At OffScript Labs, we respect your privacy and are committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. This policy explains how we collect, use, and safeguard your information when you visit offscriptlabs.co.uk or engage our services.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">2. Information We Collect</h3>
+                    <p>We only collect data necessary to provide our services and communicate with you effectively. This includes:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+                        <li><strong>Identity & Contact Data:</strong> Full name, email address, phone number, and business name provided via our contact/onboarding forms.</li>
+                        <li><strong>Business Infrastructure Data:</strong> Website URLs, Google Review links, and details regarding your Google Business Profile status.</li>
+                        <li><strong>Physical Data:</strong> Shipping addresses required exclusively for the physical delivery of NFC hardware kits.</li>
+                        <li><strong>Diagnostic Data:</strong> Business names and local area details entered into our AI Audit simulator.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">3. How We Use Your Data</h3>
+                    <p>Your data is used strictly for the following purposes:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+                        <li>To execute the digital AI audits and semantic mapping requested by you.</li>
+                        <li>To communicate regarding your onboarding, service updates, and lab protocols.</li>
+                        <li>To physically post NFC hardware to your required location.</li>
+                        <li>To structure your digital footprint on third-party platforms (e.g., Google) *only* when explicit Manager access has been granted by you.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">4. Data Storage & Security</h3>
+                    <p>We implement strict security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorised way. Form submissions are securely routed via encrypted endpoints and stored within access-controlled Google Workspace environments. We do not process or store financial/payment information directly on this website.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">5. Third-Party Sharing</h3>
+                    <p>We do not sell, trade, or rent your personal identification information to others. We only share information with trusted third parties strictly necessary for our operations (e.g., Royal Mail for shipping NFC kits, or email routing services like FormSubmit).</p>
+                </div>
+
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">6. Your Legal Rights</h3>
+                    <p>Under the UK GDPR, you have the right to:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+                        <li>Request access to your personal data.</li>
+                        <li>Request correction of any incomplete or inaccurate data.</li>
+                        <li>Request erasure of your personal data.</li>
+                        <li>Withdraw consent at any time.</li>
+                    </ul>
+                    <p class="mt-2">To exercise any of these rights, please contact us directly at <span class="text-teal-400 font-mono">lab@offscriptlabs.co.uk</span>.</p>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+                <button onclick="window.closePrivacy()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
         <div class="flex items-center justify-center gap-3 mb-8 text-white">
@@ -755,7 +831,13 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
         </div>
-        <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono mt-8">Lab System Operational</div>
+        
+        <!-- Privacy Policy Link -->
+        <div class="mt-4 mb-8">
+            <a href="#" onclick="window.openPrivacy(); return false;" class="text-[10px] uppercase tracking-widest text-slate-500 hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
+        </div>
+
+        <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono">Lab System Operational</div>
     </footer>
 
     <script>
@@ -886,6 +968,20 @@
             const previewModal = document.getElementById('full-card-modal');
             previewModal.classList.add('hidden');
             previewModal.classList.remove('flex');
+        };
+        
+        // Privacy Policy Modal Controls
+        window.openPrivacy = function() {
+            const modal = document.getElementById('privacy-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closePrivacy = function() {
+            const modal = document.getElementById('privacy-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
         };
 
         window.showStatusMessage = function(text, isSuccess = true) {
@@ -1315,6 +1411,8 @@ Based on this analysis, we strongly recommend <strong class="text-teal-400">${re
                 window.hideFullCardPreview();
             } else if (e.target == document.getElementById('onboarding-modal')) {
                 window.closeOnboarding(); 
+            } else if (e.target == document.getElementById('privacy-modal')) {
+                window.closePrivacy();
             }
         };
     </script>
