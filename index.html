@@ -968,8 +968,8 @@
     </footer>
 
     <script>
+        const nav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('main-nav');
             if (window.scrollY > 20) {
                 nav.classList.add('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
                 nav.classList.remove('py-4');
