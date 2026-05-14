@@ -995,6 +995,16 @@
     </footer>
 
     <script>
+        function escapeHTML(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('main-nav');
             if (window.scrollY > 20) {
@@ -1289,7 +1299,8 @@
 
         async function runSimulatedAudit(bizName, bizType, resultAreaElement) {
             const lowerInput = bizName.toLowerCase();
-            const cleanName = bizName.split(',')[0].trim() || "Your Business";
+            let cleanName = bizName.split(',')[0].trim() || "Your Business";
+            cleanName = escapeHTML(cleanName);
             
             const norfolkTowns = ['cromer', 'sheringham', 'holt', 'norwich', 'aylsham', 'fakenham', 'wells', 'north walsham', 'mundesley', 'stalham'];
             let locationText = "your local area";
@@ -1299,9 +1310,10 @@
                     break;
                 }
             }
+            locationText = escapeHTML(locationText);
 
             const industryKey = bizType; 
-            const industryText = bizType; 
+            const industryText = escapeHTML(bizType);
 
             let hash = 0;
             for (let i = 0; i < cleanName.length; i++) {

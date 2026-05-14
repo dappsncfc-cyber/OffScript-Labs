@@ -1,0 +1,4 @@
+## 2025-05-24 - DOM-Based XSS in Simulator Output
+**Vulnerability:** A DOM-based Cross-Site Scripting (XSS) vulnerability was found in the `index.html` file within the `runSimulatedAudit` function. The user input for the business name (`bizName`) was being incorporated into an HTML string (`result.text`) without sanitization, and subsequently inserted directly into the DOM using `innerHTML` on `resultAreaElement`.
+**Learning:** This vulnerability existed because the logic manually constructed HTML strings that included unescaped user input (business name and location text) and then inserted them into the DOM using `innerHTML`.
+**Prevention:** Always escape user input before interpolating it into HTML strings that will be rendered using `innerHTML`, or prefer using safer DOM manipulation methods such as `textContent` or `innerText` where possible. A utility `escapeHTML` function can be used to mitigate this pattern.
