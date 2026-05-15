@@ -1287,9 +1287,22 @@
         document.getElementById('audit-business').addEventListener('input', resetAuditUI);
         document.getElementById('audit-type').addEventListener('change', resetAuditUI);
 
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g,
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+
         async function runSimulatedAudit(bizName, bizType, resultAreaElement) {
             const lowerInput = bizName.toLowerCase();
-            const cleanName = bizName.split(',')[0].trim() || "Your Business";
+            let cleanName = bizName.split(',')[0].trim() || "Your Business";
+            cleanName = escapeHTML(cleanName);
             
             const norfolkTowns = ['cromer', 'sheringham', 'holt', 'norwich', 'aylsham', 'fakenham', 'wells', 'north walsham', 'mundesley', 'stalham'];
             let locationText = "your local area";
@@ -1301,7 +1314,8 @@
             }
 
             const industryKey = bizType; 
-            const industryText = bizType; 
+            const industryText = escapeHTML(bizType);
+            locationText = escapeHTML(locationText);
 
             let hash = 0;
             for (let i = 0; i < cleanName.length; i++) {
