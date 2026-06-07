@@ -293,6 +293,7 @@
                 <a href="#hardware" class="hover:text-teal-400 transition">Hardware</a>
                 <a href="photography.html" class="hover:text-teal-400 transition">Photography</a>
                 <a href="https://www.offscriptlabs.co.uk/socials.html" class="hover:text-teal-400 transition">Socials</a>
+                <a href="https://www.offscriptlabs.co.uk/googlepartnership.html" class="hover:text-teal-400 transition">Partnership</a>
                 <a href="#faq" class="hover:text-teal-400 transition">FAQ</a>
                 <a href="#audit" class="bg-teal-500 text-slate-900 px-5 py-2 rounded-lg glow-button font-bold">Free AI Audit</a>
             </div>
@@ -310,6 +311,7 @@
                     <a href="#hardware" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Hardware</a>
                     <a href="photography.html" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Photography</a>
                     <a href="https://www.offscriptlabs.co.uk/socials.html" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Socials</a>
+                    <a href="https://www.offscriptlabs.co.uk/googlepartnership.html" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Partnership</a>
                     <a href="#faq" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">FAQ</a>
                     <div class="px-4">
                         <a href="#audit" onclick="window.toggleMobileMenu()" class="inline-block w-full bg-teal-500 text-slate-900 text-center px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest mt-2">FREE AI AUDIT</a>
@@ -426,167 +428,11 @@
                             <div class="w-8 h-1 md:w-5 md:h-0.5 bg-slate-100 rounded-full mt-1 md:mt-0.5"></div>
                         </div>
                     </div>
+                    
                     <div class="absolute -right-8 -top-3 md:-right-6 md:-top-2 w-14 h-8 md:w-10 md:h-6 bg-gradient-to-br from-purple-500 to-indigo-600 rounded border border-white/20 shadow-[0_0_15px_rgba(168,85,247,0.4)] flex items-center justify-center transform rotate-[15deg] transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/nfc:translate-x-[-48px] group-hover/nfc:translate-y-[28px] md:group-hover/nfc:translate-x-[-32px] md:group-hover/nfc:translate-y-[20px] group-hover/nfc:rotate-0 group-hover/nfc:scale-110 z-10 pointer-events-none">
                         <svg class="w-4 h-4 md:w-3 md:h-3 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path></svg>
                     </div>
                     <div class="absolute inset-0 rounded-xl border border-purple-500 opacity-0 group-hover/nfc:animate-ping delay-500 pointer-events-none"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="calculator" class="py-24 px-6 relative z-10 border-b border-slate-900 bg-slate-950/30">
-        <div class="max-w-4xl mx-auto glass-card p-8 md:p-16 rounded-[40px] border-amber-500/20 text-center shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -z-10"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -z-10"></div>
-            
-            <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tighter uppercase text-white">Calculate Your Blind Spot</h2>
-            <p class="text-slate-400 mb-12 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
-                How much revenue are you losing to competitors who are already optimised for AI and Voice search? Adjust your average customer value below to see the projection.
-            </p>
-
-            <div class="max-w-lg mx-auto bg-slate-900/50 p-6 md:p-8 rounded-3xl border border-slate-800 backdrop-blur-sm">
-                <div class="flex justify-between items-end mb-6">
-                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-slate-400 font-bold">Avg. Customer Value</span>
-                    <span class="text-3xl font-bold text-teal-400" id="calc-acv-display">£45</span>
-                </div>
-                
-                <input type="range" id="calc-slider" min="10" max="500" step="5" value="45" aria-label="Average Customer Value Slider">
-                
-                <div class="flex justify-between mt-4 text-[10px] text-slate-500 font-mono">
-                    <span>£10</span>
-                    <span>£500+</span>
-                </div>
-
-                <div class="mt-10 p-6 rounded-2xl bg-gradient-to-br from-red-950/40 to-slate-900 border border-red-500/20 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-red-500/5 group-hover:bg-red-500/10 transition-colors duration-500"></div>
-                    <p class="text-[10px] md:text-xs uppercase tracking-widest text-red-400/80 font-bold mb-2 relative z-10">Projected Lost Revenue</p>
-                    <div class="text-5xl md:text-6xl font-bold text-red-400 mb-3 relative z-10 tracking-tighter" id="calc-loss-display">£450<span class="text-2xl text-red-400/50 font-medium tracking-normal">/mo</span></div>
-                    <p class="text-[9px] text-slate-500 relative z-10 font-mono leading-relaxed">*Based on a conservative estimate of missing just 10 high-intent AI & Voice recommendations per month.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tiers" class="py-32 px-6 text-center text-pretty border-b border-slate-900">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-bold mb-6 tracking-tighter uppercase text-center text-white">Lab-Tested Tiers</h2>
-            <p class="text-slate-500 max-w-2xl mx-auto font-light mb-20 text-center">Precision-engineered packages to move your business from a basic search result to a trusted AI recommendation</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-                <div id="tier-1" class="tilt-card glass-card p-8 rounded-3xl border-teal-500/20 hover:border-teal-500/40 hover:shadow-[0_0_30px_rgba(45,212,191,0.15)] transition-all flex flex-col items-center text-center" data-scale="1.02">
-                    <div class="mb-auto w-full">
-                        <div class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest mb-4">Tier 1: AI Foundation</div>
-                        <div class="text-5xl font-bold mb-2 text-white">£70</div>
-                        <p class="text-slate-500 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight">Digital Only | Delivery: 3 Days</p>
-                        <div class="space-y-6 mb-10 text-pretty">
-                            <div><span class="text-teal-500 text-sm md:text-base font-bold block mb-1">01</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">AI Semantic Mapping: Restructuring data for Google Gemini cite-readiness</p></div>
-                            <div><span class="text-teal-500 text-sm md:text-base font-bold block mb-1">02</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">Entity Reinforcement: Cleaning up digital footprint to solidify "Brand Entity"</p></div>
-                            <div><span class="text-teal-500 text-sm md:text-base font-bold block mb-1">03</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">Vision AI Tagging: Geotagging 5 photos with precise UK coordinates</p></div>
-                        </div>
-                    </div>
-                    <button onclick="window.openOnboarding('Tier 1: AI Foundation')" class="w-full py-4 bg-slate-800 text-white rounded-xl font-bold text-xs uppercase tracking-widest border border-transparent hover:border-teal-500/40 hover:bg-teal-900/30 hover:text-teal-400 transition">SELECT TIER 1</button>
-                </div>
-
-                <div id="tier-2" class="tilt-card glass-card p-8 rounded-3xl border-blue-500/20 hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all flex flex-col items-center text-center" data-scale="1.02">
-                    <div class="mb-auto w-full text-pretty">
-                        <div class="text-blue-400 text-xs md:text-sm font-bold uppercase tracking-widest mb-4 text-center">Tier 2: Voice Specialist</div>
-                        <div class="text-5xl font-bold mb-2 text-white">£100</div>
-                        <p class="text-slate-500 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight">Digital Only | Delivery: 4 Days</p>
-                        <div class="space-y-6 mb-10">
-                            <p class="text-[10px] md:text-xs text-blue-400 font-bold uppercase italic tracking-wider">Includes all Tier 1 features</p>
-                            <div><span class="text-blue-400 text-sm md:text-base font-bold block mb-1">04</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">Voice Search: 10 conversational "Natural Language" FAQ pairs</p></div>
-                            <div><span class="text-blue-400 text-sm md:text-base font-bold block mb-1">05</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">Hyper-Local Triggers: Neighbourhood data to win "Near Me" requests</p></div>
-                            <div><span class="text-blue-400 text-sm md:text-base font-bold block mb-1">06</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">NAP Synchronisation: Ensuring 100% data accuracy for hands-free calling</p></div>
-                        </div>
-                    </div>
-                    <button onclick="window.openOnboarding('Tier 2: Voice Specialist')" class="w-full py-4 bg-slate-800 text-white rounded-xl font-bold text-xs uppercase tracking-widest border border-transparent hover:border-blue-500/40 hover:bg-blue-900/30 hover:text-blue-400 transition">SELECT TIER 2</button>
-                </div>
-
-                <div id="tier-3" class="tilt-card glass-card p-8 rounded-3xl border-amber-500/40 hover:border-amber-500/60 hover:shadow-[0_0_40px_rgba(245,158,11,0.2)] transition-all bg-amber-500/5 ring-1 ring-amber-500/20 flex flex-col items-center shadow-xl text-center" data-scale="1.05">
-                    <div class="mb-auto w-full text-pretty">
-                        <div class="text-amber-500 text-xs md:text-sm font-bold uppercase tracking-widest mb-4 text-center">Tier 3: Review Booster</div>
-                        <div class="text-5xl font-bold mb-2 text-white">£130</div>
-                        <p class="text-amber-500/60 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight">Digital + 1 NFC Card | Delivery: 5 Days</p>
-                        <div class="space-y-6 mb-10 text-pretty">
-                            <p class="text-[10px] md:text-xs text-amber-500 font-bold uppercase italic tracking-wider">Includes all Tiers 1 & 2 features</p>
-                            <div><span class="text-amber-500 text-sm md:text-base font-bold block mb-1">07</span><p class="text-xs md:text-sm text-slate-200 font-bold italic leading-relaxed">1x Physical NFC Review Card: Google-Branded Tap-to-Review</p></div>
-                            <div><span class="text-amber-500 text-sm md:text-base font-bold block mb-1">08</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">OffScript Staff Script: Guide for acquiring "AI-friendly" reviews</p></div>
-                            <div class="pt-2"><img src="https://img.icons8.com/color/48/google-logo.png" class="mx-auto opacity-50 w-8 h-8 md:w-10 md:h-10" alt="NFC"></div>
-                        </div>
-                    </div>
-                    <button onclick="window.openOnboarding('Tier 3: Review Booster')" class="w-full py-4 bg-amber-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-amber-500 transition text-white text-center">SELECT TIER 3</button>
-                </div>
-
-                <div id="tier-4" class="tilt-card glass-card p-8 rounded-3xl border-teal-400/50 hover:border-teal-400/70 hover:shadow-[0_0_40px_rgba(45,212,191,0.2)] transition-all bg-slate-900 shadow-2xl flex flex-col items-center text-center text-pretty text-white" data-scale="1.02">
-                    <div class="mb-auto w-full text-center text-pretty">
-                        <div class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest mb-4 text-center text-pretty">Tier 4: AI Dominator</div>
-                        <div class="text-5xl font-bold mb-2 text-white">£265</div>
-                        <p class="text-teal-400/60 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight text-pretty text-pretty">Full Lab Suite | Delivery: Starts in 48hrs</p>
-                        <div class="space-y-6 mb-10 text-pretty text-pretty text-pretty">
-                            <p class="text-[10px] md:text-xs text-teal-400 font-bold uppercase italic tracking-wider">Includes all Tiers 1, 2 & 3 features</p>
-                            <div><span class="text-teal-400 text-sm md:text-base font-bold block mb-1">09</span><p class="text-xs md:text-sm text-slate-200 font-bold italic leading-relaxed">3x Physical NFC Review Cards for multi-point acquisition</p></div>
-                            <div><span class="text-teal-400 text-sm md:text-base font-bold block mb-1">10</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">Photo Refresh: 5 brand photos + custom profile banner</p></div>
-                            <div><span class="text-teal-400 text-sm md:text-base font-bold block mb-1">11</span><p class="text-xs md:text-sm text-slate-300 leading-relaxed">30-Day Signal Management: Weekly AI posts and responses</p></div>
-                        </div>
-                    </div>
-                    <button onclick="window.openOnboarding('Tier 4: AI Dominator')" class="w-full py-4 bg-teal-500 text-slate-900 rounded-xl font-bold text-xs glow-button uppercase tracking-widest text-center">SELECT TIER 4</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="hardware" class="py-24 px-6 border-b border-slate-900 bg-slate-950/20">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 text-pretty">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tighter uppercase text-white">Standalone NFC Hardware</h2>
-                <p class="text-slate-500 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">Deploy physical trust-signals across your shop floor. Click any product to view its full lab specifications.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div onclick="window.openHardwareModal('card')" class="tilt-card glass-card rounded-[32px] p-4 flex flex-col items-center text-center cursor-pointer group hover:bg-slate-800/60 hover:border-purple-500/40 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-all border border-purple-500/20" data-scale="1.03">
-                    <div class="w-full h-48 md:h-56 rounded-2xl overflow-hidden mb-6 relative bg-black">
-                        <img src="googlenfccard.png" alt="NFC Review Card" class="object-contain p-4 w-full h-full opacity-90 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                        <div class="absolute bottom-4 left-0 right-0 flex justify-center">
-                            <span class="bg-purple-500/20 text-purple-400 border border-purple-500/30 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest backdrop-blur-md">Pocket Size</span>
-                        </div>
-                    </div>
-                    <h4 class="text-white font-bold uppercase tracking-widest text-sm md:text-base mb-2">NFC Review Card</h4>
-                    <div class="text-purple-400 text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-70 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-                        View Details 
-                        <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </div>
-
-                <div onclick="window.openHardwareModal('stand')" class="tilt-card glass-card rounded-[32px] p-4 flex flex-col items-center text-center cursor-pointer group hover:bg-slate-800/60 hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all border border-blue-500/20" data-scale="1.03">
-                    <div class="w-full h-48 md:h-56 rounded-2xl overflow-hidden mb-6 relative bg-black">
-                        <img src="nfc-stand.jpg" alt="NFC Review Stand" class="object-contain w-full h-full opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-0 right-0 flex justify-center">
-                            <span class="bg-blue-500/20 text-blue-400 border border-blue-500/30 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest backdrop-blur-md">Countertop</span>
-                        </div>
-                    </div>
-                    <h4 class="text-white font-bold uppercase tracking-widest text-sm md:text-base mb-2">NFC Review Stand</h4>
-                    <div class="text-blue-400 text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-70 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-                        View Details 
-                        <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </div>
-
-                <div onclick="window.openHardwareModal('qr')" class="tilt-card glass-card rounded-[32px] p-4 flex flex-col items-center text-center cursor-pointer group hover:bg-slate-800/60 hover:border-teal-500/40 hover:shadow-[0_0_30px_rgba(45,212,191,0.15)] transition-all border border-teal-500/20" data-scale="1.03">
-                    <div class="w-full h-48 md:h-56 rounded-2xl overflow-hidden mb-6 relative bg-black">
-                        <img src="nfc-qr-card.jpg" alt="NFC with QR Code" class="object-contain p-4 w-full h-full opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-0 right-0 flex justify-center">
-                            <span class="bg-teal-500/20 text-teal-400 border border-teal-500/30 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest backdrop-blur-md">Hybrid Tech</span>
-                        </div>
-                    </div>
-                    <h4 class="text-white font-bold uppercase tracking-widest text-sm md:text-base mb-2">NFC with QR Code</h4>
-                    <div class="text-teal-400 text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-70 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-                        View Details 
-                        <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
                 </div>
             </div>
         </div>
