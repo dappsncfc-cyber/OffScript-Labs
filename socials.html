@@ -1,833 +1,409 @@
 <!DOCTYPE html>
 <html lang="en-GB" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OffScript Labs | Premium Food, Drink & Lifestyle Mobile Content</title>
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=300;400;500;600;700&family=Inter:wght=300;400;600&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-        --lab-navy: #020617;
-        --lab-teal: #2dd4bf;
-        --lab-teal-glow: rgba(45, 212, 191, 0.2);
-    }
-    body { 
-        font-family: 'Inter', sans-serif; 
-        background-color: var(--lab-navy); 
-        color: #f8fafc; 
-        overflow-x: hidden; 
-    }
-    h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', sans-serif; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffScript Labs | The Social Media Authority Suite</title>
     
-    section {
-        scroll-margin-top: 120px;
-    }
-    
-    .circuit-bg {
-        background-image: radial-gradient(var(--lab-teal) 0.5px, transparent 0.5px);
-        background-size: 30px 30px;
-        opacity: 0.05;
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=300;400;500;600;700&family=Inter:wght=300;400;600&display=swap" rel="stylesheet">
 
-    .glass-card {
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+    <style>
+        :root {
+            --lab-navy: #020617;
+            --lab-teal: #2dd4bf;
+            --lab-teal-glow: rgba(45, 212, 191, 0.2);
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--lab-navy); 
+            color: #f8fafc; 
+            overflow-x: hidden; 
+        }
+        h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', sans-serif; }
+        
+        section {
+            scroll-margin-top: 120px;
+        }
+        
+        .circuit-bg {
+            background-image: radial-gradient(var(--lab-teal) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+        }
 
-    @keyframes text-shimmer {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    .gradient-text {
-        background: linear-gradient(270deg, #2dd4bf, #3b82f6, #2dd4bf);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        padding-right: 0.2em; 
-        display: inline-block;
-        animation: text-shimmer 4s ease infinite;
-    }
+        @keyframes text-shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    @keyframes blob-bounce {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.1); }
-        100% { transform: translate(-50%, -50%) scale(1); }
-    }
+        .gradient-text {
+            background: linear-gradient(270deg, #2dd4bf, #3b82f6, #2dd4bf);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-right: 0.2em; 
+            display: inline-block;
+            animation: text-shimmer 4s ease infinite;
+        }
 
-    .blob-bounce {
-        animation: blob-bounce 10s ease-in-out infinite;
-    }
+        @keyframes blob-bounce {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
 
-    .glow-button {
-        box-shadow: 0 0 20px var(--lab-teal-glow);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .glow-button:hover {
-        box-shadow: 0 0 30px rgba(45, 212, 191, 0.6);
-        transform: translateY(-2px);
-    }
+        .blob-bounce {
+            animation: blob-bounce 10s ease-in-out infinite;
+        }
 
-    .gallery-overlay {
-        background: linear-gradient(to top, rgba(2, 6, 23, 0.95) 0%, rgba(2, 6, 23, 0.4) 50%, transparent 100%);
-        transition: opacity 0.4s ease;
-    }
+        .glow-button {
+            box-shadow: 0 0 20px var(--lab-teal-glow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(45, 212, 191, 0.6);
+            transform: translateY(-2px);
+        }
 
-    .img-zoom {
-        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+        input, select, textarea {
+            background-color: #0f172a !important;
+            border: 1px solid #1e293b !important;
+            color: white !important;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #64748b !important;
+        }
+        
+        #mobile-menu.hidden { display: none; }
+        strong { color: #fff; font-weight: 700; }
 
-    .gallery-card:hover .img-zoom {
-        transform: scale(1.04);
-    }
-    
-    input, select, textarea {
-        background-color: #0f172a !important;
-        border: 1px solid #1e293b !important;
-        color: white !important;
-    }
-    input::placeholder, textarea::placeholder {
-        color: #64748b !important;
-    }
-
-    .policy-scroll::-webkit-scrollbar {
-        width: 6px;
-    }
-    .policy-scroll::-webkit-scrollbar-track {
-        background: rgba(15, 23, 42, 0.5); 
-        border-radius: 8px;
-    }
-    .policy-scroll::-webkit-scrollbar-thumb {
-        background: rgba(45, 212, 191, 0.3); 
-        border-radius: 8px;
-    }
-    .policy-scroll::-webkit-scrollbar-thumb:hover {
-        background: rgba(45, 212, 191, 0.6); 
-    }
-
-    @keyframes ticker-scroll {
-        0% { transform: translateX(100vw); }
-        100% { transform: translateX(-100%); }
-    }
-    .global-ticker {
-        animation: ticker-scroll 35s linear infinite;
-        will-change: transform;
-    }
-
-    .tilt-card {
-        will-change: transform;
-        transition: transform 0.1s ease-out;
-    }
-    .tilt-reset {
-        transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-    }
-    
-    #mobile-menu.hidden { display: none; }
-    strong { color: #fff; font-weight: 700; }
-  </style>
+        .tilt-card {
+            will-change: transform;
+            transition: transform 0.1s ease-out;
+        }
+        .tilt-reset {
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+        }
+        .policy-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .policy-scroll::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5); 
+            border-radius: 8px;
+        }
+        .policy-scroll::-webkit-scrollbar-thumb {
+            background: rgba(45, 212, 191, 0.3); 
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body class="relative">
 
-  <div class="fixed inset-0 circuit-bg pointer-events-none z-0"></div>
+    <div class="fixed inset-0 circuit-bg pointer-events-none z-0"></div>
 
-  <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-slate-950 border-b border-teal-500/20 flex items-center justify-start backdrop-blur-md overflow-hidden">
-      <div class="global-ticker flex items-center gap-2 md:gap-3 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest text-slate-300 font-medium whitespace-nowrap px-4">
-          <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5 flex-shrink-0">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-500"></span>
-          </span>
-          <span><strong class="text-teal-400">Production Status:</strong> Currently scheduling local visual shoots in North Norfolk for Q2 rollout.</span>
-      </div>
-  </div>
-
-  <nav id="main-nav" class="fixed top-8 md:top-10 w-full z-50 px-4 md:px-6 py-4 transition-all duration-300">
-      <div class="max-w-7xl mx-auto glass-card rounded-2xl px-6 py-3 flex items-center justify-between relative">
-          <a href="index.html" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-white" aria-label="OffScript Labs Home">
-              <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round"/>
-                  <path d="M30 65C40 60 50 70 70 65" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5"/>
-                  <circle cx="50" cy="45" r="3" fill="#2dd4bf" opacity="0.6"/>
-              </svg>
-              <div class="flex flex-col leading-none">
-                  <span class="text-lg font-bold tracking-tighter uppercase">OffScript</span>
-                  <span class="text-[8px] uppercase tracking-[0.3em] text-teal-400 font-bold">Labs</span>
-              </div>
-          </a>
-
-          <div class="hidden md:flex items-center gap-8 text-[10px] uppercase font-bold tracking-widest text-slate-400">
-              <a href="index.html" class="hover:text-teal-400 transition">Home</a>
-              <a href="#about" class="hover:text-teal-400 transition">Approach</a>
-              <a href="#gallery" class="hover:text-teal-400 transition">Gallery</a>
-              <a href="#services" class="hover:text-teal-400 transition">Packages</a>
-              <a href="#contact" class="bg-teal-500 text-slate-900 px-5 py-2 rounded-lg glow-button font-bold">Enquire</a>
-          </div>
-
-          <button onclick="window.toggleMobileMenu()" class="md:hidden text-teal-400 p-2 focus:outline-none" aria-label="Toggle mobile menu">
-              <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-              </svg>
-          </button>
-
-          <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-2 p-6 glass-card rounded-2xl md:hidden shadow-2xl">
-              <div class="flex flex-col gap-6 text-center">
-                  <a href="index.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Home</a>
-                  <a href="#about" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Approach</a>
-                  <a href="#gallery" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Gallery</a>
-                  <a href="#services" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Packages</a>
-                  <div class="px-4">
-                      <a href="#contact" onclick="window.toggleMobileMenu()" class="inline-block w-full bg-teal-500 text-slate-900 text-center px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest mt-2">ENQUIRE</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </nav>
-
-  <section class="relative pt-40 md:pt-48 pb-24 md:pb-32 px-6 overflow-hidden text-center">
-    <div class="max-w-6xl mx-auto relative z-10 text-pretty">
-        <div class="inline-block bg-teal-500/10 text-teal-400 border border-teal-500/20 px-4 py-1 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest mb-8 shadow-[0_0_15px_rgba(45,212,191,0.1)]">
-            Premium Commercial Mobile Content
-        </div>
-        <h1 class="text-5xl md:text-7xl font-bold mb-8 tracking-tighter leading-[0.95] text-white uppercase">
-            Visual content designed <br><span class="gradient-text italic font-normal tracking-wide normal-case">natively for social feeds</span>
-        </h1>
-        <p class="max-w-2xl mx-auto text-slate-400 text-base md:text-lg mb-12 font-light leading-relaxed">
-            Pocket-sized lenses, professional mobile sensors, and high-performance low-light processors. We capture stunning food, mixology, and hospitality lifestyle spaces on-site with zero guest disruption.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="#gallery" class="bg-teal-500 text-slate-900 px-8 md:px-10 py-4 rounded-2xl font-bold glow-button text-xs md:text-sm uppercase tracking-widest w-full sm:w-auto text-center">VIEW GALLERY</a>
-            <a href="#contact" class="glass-card px-8 md:px-10 py-4 rounded-2xl font-bold hover:bg-slate-800 transition text-xs md:text-sm uppercase tracking-widest w-full sm:w-auto text-center text-white">BOOK SHOOT</a>
+    <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-slate-950 border-b border-teal-500/20 flex items-center justify-start backdrop-blur-md overflow-hidden">
+        <div class="global-ticker flex items-center gap-2 md:gap-3 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest text-slate-300 font-medium whitespace-nowrap px-4">
+            <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5 flex-shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-500"></span>
+            </span>
+            <span><strong class="text-teal-400">Campaign Status:</strong> Social authority placement windows are open for <strong class="text-white">1 partner</strong> per postcode.</span>
         </div>
     </div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-teal-500/10 rounded-full blur-[80px] md:blur-[120px] -z-10 blob-bounce"></div>
-  </section>
 
-  <section id="about" class="py-24 px-6 border-y border-slate-900 relative">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 md:gap-12 text-center text-pretty">
-        
-        <div class="tilt-card glass-card p-8 md:p-10 rounded-[32px] flex items-center flex-col hover:bg-slate-800/50 hover:border-teal-500/30 hover:shadow-[0_0_30px_rgba(45,212,191,0.1)] transition-all h-full" data-scale="1.02">
-            <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400 mb-8 font-mono text-sm font-bold">
-                01
+    <nav id="main-nav" class="fixed top-8 md:top-10 w-full z-50 px-4 md:px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto glass-card rounded-2xl px-6 py-3 flex items-center justify-between relative">
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-white" aria-label="OffScript Labs Home">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M30 65C40 60 50 70 70 65" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5"/>
+                    <circle cx="50" cy="45" r="3" fill="#2dd4bf" opacity="0.6"/>
+                </svg>
+                <div class="flex flex-col leading-none">
+                    <span class="text-lg font-bold tracking-tighter uppercase">OffScript</span>
+                    <span class="text-[8px] uppercase tracking-[0.3em] text-teal-400 font-bold">Labs</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-[10px] uppercase font-bold tracking-widest text-slate-400">
+                <a href="index.html" class="hover:text-teal-400 transition">Home</a>
+                <a href="#authority-stack" class="hover:text-teal-400 transition">The Stack</a>
+                <a href="photography.html" class="hover:text-teal-400 transition">Photography</a>
+                <a href="#closing-cta" class="bg-teal-500 text-slate-900 px-5 py-2 rounded-lg glow-button font-bold">Secure Footprint</a>
             </div>
-            <h3 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-tighter text-white">Content Tone</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">We focus on warm, natural lighting and authentic angles. Your plates look fresh, drinks look crisp, and spaces feel welcoming.</p>
-        </div>
 
-        <div class="tilt-card glass-card p-8 md:p-10 rounded-[32px] flex items-center flex-col hover:bg-slate-800/50 hover:border-teal-500/30 hover:shadow-[0_0_30px_rgba(45,212,191,0.1)] transition-all h-full" data-scale="1.02">
-            <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400 mb-8 font-mono text-sm font-bold">
-                02
+            <button onclick="window.toggleMobileMenu()" class="md:hidden text-teal-400 p-2 focus:outline-none" aria-label="Toggle mobile menu">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-2 p-6 glass-card rounded-2xl md:hidden shadow-2xl">
+                <div class="flex flex-col gap-6 text-center">
+                    <a href="index.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Home</a>
+                    <a href="#authority-stack" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">The Stack</a>
+                    <a href="photography.html" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Photography</a>
+                    <div class="px-4">
+                        <a href="#closing-cta" onclick="window.toggleMobileMenu()" class="inline-block w-full bg-teal-500 text-slate-900 text-center px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest mt-2">SECURE FOOTPRINT</a>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-tighter text-white">Zero Disruption</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">No clinical studio set-ups, heavy tripods, or flashy gear. We work seamlessly alongside your active service lines.</p>
         </div>
+    </nav>
 
-        <div class="tilt-card glass-card p-8 md:p-10 rounded-[32px] flex items-center flex-col hover:bg-slate-800/50 hover:border-teal-500/30 hover:shadow-[0_0_30px_rgba(45,212,191,0.1)] transition-all h-full" data-scale="1.02">
-            <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400 mb-8 font-mono text-sm font-bold">
-                03
-            </div>
-            <h3 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-tighter text-white">Platform Native</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Every master file is delivered ready-to-deploy, perfectly optimised for Instagram, TikTok, and Google Maps crops.</p>
+    <section class="relative pt-40 md:pt-48 pb-12 px-6 text-center">
+        <div class="max-w-4xl mx-auto relative z-10 text-pretty">
+            <span class="uppercase tracking-[0.3em] font-mono text-teal-400 text-xs block mb-4">Postcode-Exclusive Signal Distribution</span>
+            <h1 class="text-4xl sm:text-6xl font-bold uppercase tracking-tight leading-none text-slate-100 mb-6">
+                Dominate Local Feeds &amp; Map Rankings
+            </h1>
+            <p class="max-w-2xl mx-auto text-slate-400 text-sm md:text-base font-light leading-relaxed">
+                Connect your physical venue straight to real-time search signals. We synchronise platform activity, capture live trust triggers, and protect your digital entity footprint.
+            </p>
         </div>
+    </section>
 
-    </div>
-  </section>
-
-  <section id="gallery" class="py-24 px-6 border-b border-slate-900 bg-slate-950/30">
-    <div class="max-w-6xl mx-auto space-y-12">
-      
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 text-pretty">
-        <div>
-          <span class="text-teal-400 text-xs font-bold uppercase tracking-widest mb-2 block">02 / Selected Assets</span>
-          <h2 class="text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white">Styled Portfolio</h2>
-        </div>
-        
-        <div class="flex flex-wrap gap-2 text-[10px] font-bold tracking-widest uppercase font-mono">
-          <button onclick="filterGallery('all')" id="filter-all" class="filter-tab px-4 py-2 rounded-xl bg-teal-500 text-slate-900 border border-transparent transition-all shadow-[0_0_15px_rgba(45,212,191,0.2)]">All</button>
-          <button onclick="filterGallery('food')" id="filter-food" class="filter-tab px-4 py-2 rounded-xl glass-card text-slate-400 border border-slate-800 hover:text-white transition-all">Food</button>
-          <button onclick="filterGallery('drink')" id="filter-drink" class="filter-tab px-4 py-2 rounded-xl glass-card text-slate-400 border border-slate-800 hover:text-white transition-all">Drink</button>
-          <button onclick="filterGallery('lifestyle')" id="filter-lifestyle" class="filter-tab px-4 py-2 rounded-xl glass-card text-slate-400 border border-slate-800 hover:text-white transition-all">Lifestyle</button>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
-        </div>
-      
-    </div>
-  </section>
-
-  <section id="services" class="py-32 px-6 text-center text-pretty border-b border-slate-900">
-    <div class="max-w-7xl mx-auto">
-        <h2 class="text-5xl font-bold mb-6 tracking-tighter uppercase text-center text-white">Production Packages</h2>
-        <p class="text-slate-400 max-w-2xl mx-auto font-light mb-20 text-center text-sm md:text-base leading-relaxed">Transparent, flat-rate pricing designed for independent hospitality operations.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+    <section id="authority-stack" class="py-20 px-4 md:px-6 relative z-10">
+        <div class="max-w-6xl mx-auto">
             
-            <div class="tilt-card glass-card p-8 rounded-3xl border-teal-500/20 hover:border-teal-500/40 hover:shadow-[0_0_30px_rgba(45,212,191,0.15)] transition-all flex flex-col justify-between text-center" data-scale="1.02">
-                <div class="w-full mb-6">
-                    <div class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest mb-4">Track A: Menu Refresh</div>
-                    <div class="text-5xl font-bold mb-2 text-white">£195</div>
-                    <p class="text-slate-500 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight">Delivery: 72 Hours</p>
-                    <div class="space-y-4 text-left max-w-xs mx-auto text-slate-300 text-xs md:text-sm">
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>6 specified menu assets</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>90 minutes on-site shoot</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>15 parsed digital masters</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>Delivered within 72 hours</span></div>
-                    </div>
-                </div>
-                <a href="#contact" onclick="prefillForm('Track A Menu Refresh')" class="w-full py-4 bg-slate-800 text-white rounded-xl font-bold text-xs uppercase tracking-widest border border-transparent hover:border-teal-500/40 hover:bg-teal-900/30 hover:text-teal-400 transition block text-center">Enquire Track A</a>
+            <div class="text-center mb-12 text-pretty">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter uppercase text-white mb-4">The OSL Authority Stack</h2>
+                <div class="w-24 h-1 bg-teal-500 mx-auto rounded-full"></div>
             </div>
 
-            <div class="tilt-card glass-card p-8 rounded-3xl border-teal-400/50 hover:border-teal-400/70 hover:shadow-[0_0_40px_rgba(45,212,191,0.2)] transition-all bg-slate-900 shadow-2xl flex flex-col justify-between text-center" data-scale="1.05">
-                <div class="w-full mb-6">
-                    <div class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest mb-4">Track B: Social Growth</div>
-                    <div class="text-5xl font-bold mb-2 text-white">£345</div>
-                    <p class="text-teal-400/60 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight">Most Popular Scope</p>
-                    <div class="space-y-4 text-left max-w-xs mx-auto text-slate-200 text-xs md:text-sm font-medium">
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>12 custom menu & lifestyle assets</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>Up to 3 hours on-site shoot</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>35 parsed mobile digital masters</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>3 raw B-roll social reels files</span></div>
+            <div class="glass-card rounded-[40px] border-teal-500/30 overflow-hidden shadow-2xl relative">
+                <div class="absolute inset-0 bg-gradient-to-b from-teal-500/5 via-transparent to-slate-950/40 pointer-events-none"></div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-800 relative z-10">
+                    
+                    <div class="p-8 md:p-14 flex flex-col justify-between space-y-8 text-pretty">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-teal-500/10 border border-teal-500/30 rounded-lg flex items-center justify-center text-teal-400">
+                                    <i data-lucide="layers" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-teal-400 font-bold">Component 01</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-tight">Profile Maintenance &amp; NFC Review Management</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed font-light">
+                                Weekly geotagged photo injections, active review velocity management via physical hardware, and monthly rank expansion tracking.
+                            </p>
+                        </div>
+                        <div class="pt-6 border-t border-slate-900 flex items-baseline gap-2">
+                            <span class="text-3xl font-bold text-white font-mono">£195</span>
+                            <span class="text-xs text-slate-500 uppercase font-mono">/ month</span>
+                        </div>
                     </div>
-                </div>
-                <a href="#contact" onclick="prefillForm('Track B Social Growth')" class="w-full py-4 bg-teal-500 text-slate-900 rounded-xl font-bold text-xs glow-button uppercase tracking-widest block text-center">Enquire Track B</a>
-            </div>
 
-            <div class="tilt-card glass-card p-8 rounded-3xl border-teal-500/20 hover:border-teal-500/40 hover:shadow-[0_0_30px_rgba(45,212,191,0.15)] transition-all flex flex-col justify-between text-center" data-scale="1.02">
-                <div class="w-full mb-6">
-                    <div class="text-teal-400 text-xs md:text-sm font-bold uppercase tracking-widest mb-4">Track C: Content Retainer</div>
-                    <div class="text-5xl font-bold mb-2 text-white">£275<span class="text-xl text-slate-500 font-medium font-sans">/mo</span></div>
-                    <p class="text-slate-500 text-[10px] md:text-xs mb-8 uppercase tracking-widest leading-tight">Monthly Subscription</p>
-                    <div class="space-y-4 text-left max-w-xs mx-auto text-slate-300 text-xs md:text-sm">
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>Recurring monthly 90-min shoot</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>Capture of changing crafts & specials</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>15 fresh digital images per month</span></div>
-                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-teal-400 flex-shrink-0"></i><span>2 fully-edited platform video reels</span></div>
+                    <div class="p-8 md:p-14 flex flex-col justify-between space-y-8 text-pretty">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-blue-400">
+                                    <i data-lucide="activity" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-blue-400 font-bold">Component 02</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-tight">Social Media Signal Boosting</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed font-light">
+                                The complete 3-post local-intent distribution system syncing your social channels directly with the map.
+                            </p>
+                        </div>
+                        <div class="pt-6 border-t border-slate-900 flex items-baseline gap-2">
+                            <span class="text-3xl font-bold text-white font-mono">£145</span>
+                            <span class="text-xs text-slate-500 uppercase font-mono">/ month</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="border-t border-teal-500/20 bg-slate-950/80 p-8 md:p-12 text-center text-pretty relative z-10">
+                    <div class="max-w-2xl mx-auto space-y-6">
+                        <p class="text-sm md:text-base text-slate-300 font-light leading-relaxed">
+                            Lock down the ultimate hybrid marketing system. Combine both services for total district dominance.
+                        </p>
+                        
+                        <div class="py-4 px-6 inline-block bg-teal-500/10 border border-teal-500/20 rounded-2xl">
+                            <span class="block text-[10px] uppercase tracking-widest text-teal-400 font-bold mb-1">Bundle Price Package</span>
+                            <div class="text-4xl md:text-5xl font-bold text-white font-mono">£295<span class="text-sm text-slate-500 font-normal tracking-normal font-sans">/mo</span></div>
+                            <span class="text-[10px] uppercase tracking-wider text-teal-400/80 block mt-1.5 font-bold font-mono">Saving £45 every single month</span>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button onclick="window.transmitAuthorityBooking()" class="w-full sm:w-auto px-10 bg-teal-500 text-slate-900 font-bold py-4 rounded-xl glow-button text-xs tracking-widest uppercase text-center">
+                                Secure the Stack
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <a href="#contact" onclick="prefillForm('Track C Monthly Retainer')" class="w-full py-4 bg-slate-800 text-white rounded-xl font-bold text-xs uppercase tracking-widest border border-transparent hover:border-teal-500/40 hover:bg-teal-900/30 hover:text-teal-400 transition block text-center">Enquire Track C</a>
+
             </div>
 
         </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="py-24 px-6 border-t border-slate-900 text-center text-pretty">
-    <div class="max-w-3xl mx-auto glass-card p-8 md:p-12 rounded-[40px] border-teal-500/30 relative overflow-hidden text-left shadow-2xl">
-        <h3 class="text-3xl font-bold mb-4 uppercase tracking-tighter text-white text-center sm:text-left">Start your project.</h3>
-        <p class="text-slate-400 mb-8 text-sm font-light text-center sm:text-left leading-relaxed">
-            We respond to all hospitality enquiries in under 24 hours to schedule shoot dates. Complete our fast-form builder below or contact us via <a href="mailto:offscriptlabsuk@gmail.com" class="text-teal-400 font-mono underline underline-offset-4">offscriptlabsuk@gmail.com</a>.
-        </p>
-        
-        <form onsubmit="handleFormSubmission(event)" class="space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block uppercase font-mono text-[9px] font-black tracking-widest text-slate-500 mb-1.5" for="contact-name">Name *</label>
-                <input type="text" id="contact-name" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/50 outline-none transition placeholder-slate-500" placeholder="Your name">
-              </div>
-              <div>
-                <label class="block uppercase font-mono text-[9px] font-black tracking-widest text-slate-500 mb-1.5" for="contact-venue">Venue Brand *</label>
-                <input type="text" id="contact-venue" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/50 outline-none transition placeholder-slate-500" placeholder="e.g. Sourdough Tavern">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block uppercase font-mono text-[9px] font-black tracking-widest text-slate-500 mb-1.5" for="contact-email">Email *</label>
-                <input type="email" id="contact-email" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/50 outline-none transition placeholder-slate-500" placeholder="name@venue.com">
-              </div>
-              <div>
-                <label class="block uppercase font-mono text-[9px] font-black tracking-widest text-slate-500 mb-1.5" for="contact-package">Desired Track</label>
-                <div class="relative">
-                  <select id="contact-package" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/50 outline-none appearance-none cursor-pointer transition">
-                    <option value="Track A Menu Refresh">Track A: Menu Refresh (£195)</option>
-                    <option value="Track B Social Growth">Track B: Social Growth (£345)</option>
-                    <option value="Track C Content Retainer">Track C: Content Retainer (£275/mo)</option>
-                    <option value="Custom Campaign Scope">Custom Project Scope</option>
-                  </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <label class="block uppercase font-mono text-[9px] font-black tracking-widest text-slate-500 mb-1.5" for="contact-notes">Project Notes</label>
-              <textarea id="contact-notes" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-4 text-sm text-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/50 outline-none transition placeholder-slate-500" placeholder="Tell us about your dishes, drinks, or cosy spaces you want captured..."></textarea>
-            </div>
-
-            <div class="flex flex-col items-center justify-center pt-2">
-                <button type="submit" class="w-full px-8 bg-teal-500 text-slate-900 font-bold py-4 rounded-xl glow-button uppercase text-xs tracking-widest transition flex items-center justify-center gap-2">
-                  <i data-lucide="send" class="w-4 h-4"></i>
-                  <span>Transmit Email Enquiry</span>
+    <section id="closing-cta" class="py-24 px-6 border-t border-slate-900 relative">
+        <div class="max-w-3xl mx-auto text-center text-pretty relative z-10 space-y-8">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight uppercase text-white">
+                Ready to stand out from the national chains?
+            </h2>
+            <p class="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+                We only work with a strict number of independent businesses per district to ensure maximum ranking authority. Don't let your competitors claim the footprint first.
+            </p>
+            <div class="pt-4">
+                <button onclick="window.location.href='index.html#audit'" class="w-full sm:w-auto px-8 bg-slate-100 hover:bg-teal-400 text-slate-950 font-bold py-4 rounded-xl transition-all duration-300 text-xs tracking-widest uppercase text-center shadow-lg">
+                    Check Availability For Your Business
                 </button>
             </div>
-        </form>
-    </div>
-  </section>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] md:w-[450px] h-[250px] md:h-[450px] bg-teal-500/5 rounded-full blur-[100px] -z-10 blob-bounce"></div>
+    </section>
 
-  <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
-      <div class="flex items-center justify-center gap-3 mb-8 text-white">
-          <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round" opacity="0.3"/>
-          </svg>
-          <span class="text-xs uppercase tracking-[0.5em] font-bold text-white/40">OffScript Labs &copy; 2026</span>
-      </div>
-      
-      <p class="text-white text-sm max-w-sm mx-auto font-light leading-relaxed mb-8">
-          Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for high-intent growth across North Norfolk.
-      </p>
-
-      <div class="text-[10px] text-slate-600 max-w-lg mx-auto mb-8 leading-relaxed font-mono">
-          OffScript Labs is a trading name based in Cromer, Norfolk, UK. <br>
-      </div>
-      
-      <div class="flex items-center justify-center gap-6 mb-8 text-pretty">
-          <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Facebook">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-          </a>
-          <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Instagram">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-      </div>
-      
-      <div class="mt-4 mb-8 flex flex-wrap justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-slate-500">
-          <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
-          <span class="text-slate-800 hidden sm:inline">|</span>
-          <a href="#" onclick="window.openTerms(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Terms of Service</a>
-          <span class="text-slate-800 hidden sm:inline">|</span>
-          <a href="#" onclick="window.openCookie(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Cookie Policy</a>
-      </div>
-
-      <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono">Lab System Operational</div>
-  </footer>
-
-  <div id="lightbox-modal" class="fixed inset-0 z-[100] hidden bg-slate-950/95 backdrop-blur-md items-center justify-center p-4">
-      <div class="relative max-w-4xl w-full flex flex-col items-center">
-          <button onclick="window.closeLightbox()" class="absolute -top-12 right-0 text-slate-400 hover:text-white transition flex items-center gap-2 text-xs uppercase tracking-widest font-bold" aria-label="Close Lightbox">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-              Close View
-          </button>
-          <div class="glass-card rounded-2xl overflow-hidden border border-white/10 max-h-[75vh] flex items-center justify-center bg-black">
-              <img id="lightbox-img" src="" alt="High Resolution Asset" class="max-w-full max-h-[75vh] object-contain">
-          </div>
-          <div class="w-full text-center mt-4">
-              <span id="lightbox-tag" class="text-[10px] font-mono text-teal-400 uppercase tracking-widest font-bold block"></span>
-              <h3 id="lightbox-title" class="text-xl font-bold text-white uppercase tracking-wide mt-1"></h3>
-          </div>
-      </div>
-  </div>
-
-  <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-      <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
-          <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-              <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Privacy Policy</h2>
-              <button onclick="window.closePrivacy()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Privacy Policy">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-              </button>
-          </div>
-          <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
-              <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> OffScript Labs (Cromer, North Norfolk, UK)</p>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Overview</h3>
-                  <p>At OffScript Labs, we respect your privacy and are committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. This policy explains how we collect, use, and safeguard your information when you visit offscriptlabs.co.uk or engage our services.</p>
-              </div>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">2. Information We Collect</h3>
-                  <p>We only collect data necessary to provide our services and communicate with you effectively. This includes:</p>
-                  <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-400">
-                      <li><strong>Identity & Contact Data:</strong> Full name, email address, phone number, and business name provided via our contact/onboarding forms.</li>
-                      <li><strong>Business Infrastructure Data:</strong> Website URLs, Google Review links, and details regarding your Google Business Profile status.</li>
-                  </ul>
-              </div>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">3. How We Use Your Data</h3>
-                  <p>Your data is used strictly to execute the digital AI audits and enquiries requested by you and to communicate regarding your projects and bookings.</p>
-              </div>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">4. Data Security</h3>
-                  <p>We implement strict security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorised way. Form submissions are securely routed via encrypted endpoints and stored within access-controlled Google Workspace environments.</p>
-              </div>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">5. Legal Rights</h3>
-                  <p>Under the UK GDPR, you have the right to request access to, correction of, or erasure of your personal data. To exercise any of these rights, please contact us directly at <span class="text-teal-400 font-mono">offscriptlabsuk@gmail.com</span>.</p>
-              </div>
-          </div>
-          <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-              <button onclick="window.closePrivacy()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-          </div>
-      </div>
-  </div>
-
-  <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-      <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
-          <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-              <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Terms of Service</h2>
-              <button onclick="window.closeTerms()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Terms">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-              </button>
-          </div>
-          <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
-              <p><strong>Effective Date:</strong> March 2026<br><strong>Business Type:</strong> Business-to-Business (B2B)</p>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. The Service</h3>
-                  <p>OffScript Labs provides premium food, drink, and lifestyle photography alongside voice search optimisations. By submitting an enquiry, you agree to engage our services under these standard business-to-business terms.</p>
-              </div>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">2. Deliverables & Production</h3>
-                  <p>Booking fees are structured based on Tracks A, B, and C as detailed. A non-refundable 25% booking deposit secures the schedule, with balances settled inside the standard terms.</p>
-              </div>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">3. Jurisdiction</h3>
-                  <p>These terms are governed by the laws of England and Wales. Any disputes arising from this agreement shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
-              </div>
-          </div>
-          <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-              <button onclick="window.closeTerms()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-          </div>
-      </div>
-  </div>
-
-  <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-      <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
-          <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-              <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Cookie Policy</h2>
-              <button onclick="window.closeCookie()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Cookie Policy">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-              </button>
-          </div>
-          <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
-              <p><strong>Effective Date:</strong> March 2026</p>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">Our Stance on Cookies</h3>
-                  <p>At OffScript Labs, we believe in a clean, frictionless user experience. <strong>We do not use intrusive tracking cookies, third-party analytics, or marketing cookies on this website.</strong></p>
-              </div>
-              <div>
-                  <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">Necessary Mechanisms</h3>
-                  <p>Under PECR, non-essential cookies must obtain consent. Because we do not use tracking or profile builders, you will not see a disruptive consent banner on our site. We only utilise essential browser elements that enable your experience while using our platform.</p>
-              </div>
-          </div>
-          <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-              <button onclick="window.closeCookie()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-          </div>
-      </div>
-  </div>
-
-  <script>
-    // ----------------------------------------------------------------------
-    // PORTFOLIO IMAGES CONFIGURATOR (FOR REPOSITORY DEPLOYMENT)
-    // ----------------------------------------------------------------------
-    const galleryAssets = [
-      {
-        category: "food",
-        src: "PXL_20241108_130808482~2.jpg",      
-        tag: "Food / Pizza",                              
-        title: "Artisan Stone-Baked Pizza"                    
-      },
-      {
-        category: "food",
-        src: "PXL_20241108_130824446.PORTRAIT~3.jpg", 
-        tag: "Food / Close-Up",                           
-        title: "Gourmet Pizza Details"                               
-      },
-      {
-        category: "food",
-        src: "PXL_20230620_133842575.PORTRAIT~2.jpg", 
-        tag: "Food / Plated",                        
-        title: "Fine Dining Display"                          
-      },
-      {
-        category: "food",
-        src: "PXL_20230914_104255887.PORTRAIT.ORIGINAL~2.jpg", 
-        tag: "Food / Dessert",                              
-        title: "Classic Tart & Fruits"                          
-      },
-      {
-        category: "food",
-        src: "PXL_20230914_104225833.PORTRAIT~2.jpg", 
-        tag: "Food / Plated Side-View",                             
-        title: "Elegant Tart Composition"                           
-      },
-      {
-        category: "lifestyle",
-        src: "PXL_20230520_151117707.PORTRAIT~2.jpg", 
-        tag: "Lifestyle / Charcuterie",                           
-        title: "Cured Meat Board"                           
-      },
-      {
-        category: "food",
-        src: "PXL_20230401_163603671.PORTRAIT~2.jpg", 
-        tag: "Food / Burger",                           
-        title: "The Neon Stack Burger"                           
-      },
-      {
-        category: "drink",
-        src: "PXL_20230520_150446715.PORTRAIT~2.jpg", 
-        tag: "Drink / Cocktail",                           
-        title: "Signature Spritz Cocktail"                           
-      },
-      {
-        category: "food",
-        src: "PXL_20230620_133705436.PORTRAIT~2.jpg", 
-        tag: "Food / Plated Angled",                           
-        title: "Savory Gastronomy Plating"                           
-      },
-      {
-        category: "lifestyle",
-        src: "PXL_20230520_151127079.PORTRAIT.ORIGINAL~2.jpg", 
-        tag: "Lifestyle / Flatlay",                           
-        title: "Charcuterie Sharing Platter"                           
-      },
-      {
-        category: "food",
-        src: "PXL_20230401_163032470.PORTRAIT~2.jpg",
-        tag: "Food / Chicken Burger",
-        title: "Crispy Pink-Bun Chicken Stack"
-      },
-      {
-        category: "food",
-        src: "PXL_20230401_163518829.PORTRAIT~2.jpg",
-        tag: "Food / Gourmet Burger",
-        title: "The Gold-Leaf Charcoal Bun"
-      },
-      {
-        category: "food",
-        src: "PXL_20230401_163723666.PORTRAIT~2.jpg",
-        tag: "Food / Cross-Section",
-        title: "Double-Patty Blue Bun Melt"
-      },
-      {
-        category: "food",
-        src: "PXL_20230401_162414876.PORTRAIT~2.jpg",
-        tag: "Food / Burger Profile",
-        title: "Smoked Bacon Neon Burger"
-      },
-      {
-        category: "food",
-        src: "PXL_20230221_114708703.PORTRAIT~2.jpg",
-        tag: "Food / Basket",
-        title: "Crispy Golden Tenders Basket"
-      },
-      {
-        category: "food",
-        src: "PXL_20230909_141945435.PORTRAIT~2.jpg",
-        tag: "Food / Premium Plating",
-        title: "Pan-Seared Cod & Tuile Gastronomy"
-      }
-    ];
-
-    // Dynamic Image Grid Generator with Click Handler Injection
-    function renderGallery() {
-      const grid = document.getElementById("gallery-grid");
-      if (!grid) return;
-      grid.innerHTML = "";
-
-      galleryAssets.forEach((asset, index) => {
-        const card = document.createElement("div");
-        card.className = "gallery-card relative overflow-hidden rounded-2xl aspect-[4/5] bg-slate-950 group border border-white/5 cursor-pointer";
-        card.dataset.category = asset.category;
-        card.setAttribute("onclick", `window.openLightbox(${index})`);
-
-        card.innerHTML = `
-          <img class="w-full h-full object-cover img-zoom" src="${asset.src}" alt="${asset.title}">
-          <div class="gallery-overlay absolute inset-0 opacity-100 sm:opacity-0 group-hover:opacity-100 flex flex-col justify-end p-6">
-            <span class="text-[9px] font-mono text-teal-400 uppercase tracking-widest font-bold">${asset.tag}</span>
-            <h3 class="text-lg font-bold text-white uppercase tracking-wide mt-1">${asset.title}</h3>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // Lightbox Control Open/Close Actions
-    window.openLightbox = function(index) {
-        const asset = galleryAssets[index];
-        if (!asset) return;
-
-        document.getElementById('lightbox-img').src = asset.src;
-        document.getElementById('lightbox-tag').innerText = asset.tag;
-        document.getElementById('lightbox-title').innerText = asset.title;
-
-        const modal = document.getElementById('lightbox-modal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    };
-
-    window.closeLightbox = function() {
-        const modal = document.getElementById('lightbox-modal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    };
-
-    window.toggleMobileMenu = function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
-    };
-
-    window.addEventListener('scroll', () => {
-        const nav = document.getElementById('main-nav');
-        if (window.scrollY > 20) {
-            nav.classList.add('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
-            nav.classList.remove('py-4');
-            nav.classList.add('py-2');
-        } else {
-            nav.classList.remove('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
-            nav.classList.add('py-4');
-            nav.classList.remove('py-2');
-        }
-    });
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      if (typeof lucide !== 'undefined') lucide.createIcons();
-      renderGallery();
-      initTiltEffect();
-    });
-
-    // Gallery Filter Logic
-    function filterGallery(category) {
-      const cards = document.querySelectorAll(".gallery-card");
-      const tabs = document.querySelectorAll(".filter-tab");
-      
-      tabs.forEach(tab => {
-        if (tab.id === `filter-${category}`) {
-          tab.className = "filter-tab px-4 py-2 rounded-xl bg-teal-500 text-slate-900 border border-transparent transition-all shadow-[0_0_15px_rgba(45,212,191,0.2)]";
-        } else {
-          tab.className = "filter-tab px-4 py-2 rounded-xl glass-card text-slate-400 border border-slate-800 hover:text-white transition-all";
-        }
-      });
-
-      cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
-
-    // Prefill form selection on clicking Track buttons
-    function prefillForm(packageName) {
-      const select = document.getElementById("contact-package");
-      if (select) {
-        select.value = packageName;
-      }
-    }
-
-    // Submit / email handling execution block logic
-    function handleFormSubmission(event) {
-      event.preventDefault();
-      
-      const name = document.getElementById("contact-name").value;
-      const venue = document.getElementById("contact-venue").value;
-      const email = document.getElementById("contact-email").value;
-      const packageSelection = document.getElementById("contact-package").value;
-      const notes = document.getElementById("contact-notes").value;
-
-      const subject = `Production Enquiry - ${venue} (${name})`;
-      const body = `Hi OffScript Labs,\n\n` +
-                   `I would like to enquire about your photography and video packages.\n\n` +
-                   `-----------------------------------------\n` +
-                   `ENQUIRY DETAILS:\n` +
-                   `-----------------------------------------\n` +
-                   `Contact Name: ${name}\n` +
-                   `Venue/Restaurant: ${venue}\n` +
-                   `Email Address: ${email}\n` +
-                   `Selected Service: ${packageSelection}\n\n` +
-                   `Project Notes:\n${notes}\n\n` +
-                   `-----------------------------------------\n` +
-                   `Sent from OffScript Labs Showcase Hub`;
-
-      const mailtoUrl = `mailto:offscriptlabsuk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoUrl;
-    }
-
-    function initTiltEffect() {
-        if (window.matchMedia("(pointer: coarse)").matches) return;
+    <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
+        <div class="flex items-center justify-center gap-3 mb-8 text-white">
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round" opacity="0.3"/>
+            </svg>
+            <span class="text-xs uppercase tracking-[0.5em] font-bold text-white/40">OffScript Labs &copy; 2026</span>
+        </div>
         
-        const tiltCards = document.querySelectorAll('.tilt-card');
-        tiltCards.forEach(card => {
-            const scale = card.getAttribute('data-scale') || '1.02';
-            
-            card.addEventListener('mouseenter', () => {
-                card.classList.remove('tilt-reset');
-            });
-            
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = ((y - centerY) / centerY) * -6; 
-                const rotateY = ((x - centerX) / centerX) * 6;
-                
-                card.style.transform = `perspective(1000px) scale(${scale}) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.classList.add('tilt-reset');
-                card.style.transform = `perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)`;
-            });
+        <p class="text-white text-sm max-w-sm mx-auto font-light leading-relaxed mb-8">
+            Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for high-intent growth across North Norfolk.
+        </p>
+
+        <div class="text-[10px] text-slate-600 max-w-lg mx-auto mb-8 leading-relaxed font-mono">
+            OffScript Labs is a trading name based in Cromer, Norfolk, UK. <br>
+        </div>
+        
+        <div class="flex items-center justify-center gap-6 mb-8 text-pretty">
+            <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+        </div>
+        
+        <div class="mt-4 mb-8 flex flex-wrap justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-slate-500">
+            <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
+            <span class="text-slate-800 hidden sm:inline">|</span>
+            <a href="#" onclick="window.openTerms(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Terms of Service</a>
+            <span class="text-slate-800 hidden sm:inline">|</span>
+            <a href="#" onclick="window.openCookie(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Cookie Policy</a>
+        </div>
+
+        <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono">Lab System Operational</div>
+    </footer>
+
+    <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Privacy Policy</h2>
+                <button onclick="window.closePrivacy()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Privacy Policy">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> OffScript Labs (Cromer, North Norfolk, UK)</p>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Overview</h3>
+                    <p>At OffScript Labs, we respect your privacy and are committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. This policy explains how we collect, use, and safeguard your information when you visit offscriptlabs.co.uk or engage our services.</p>
+                </div>
+            </div>
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+                <button onclick="window.closePrivacy()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Terms of Service</h2>
+                <button onclick="window.closeTerms()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Terms">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026<br><strong>Business Type:</strong> Business-to-Business (B2B)</p>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Service Scope</h3>
+                    <p>OffScript Labs provides digital marketing, social signals optimisation, and local footprint strategy under standard UK service provisions.</p>
+                </div>
+            </div>
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+                <button onclick="window.closeTerms()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Cookie Policy</h2>
+                <button onclick="window.closeCookie()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Cookie Policy">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026</p>
+                <p>We do not use tracking or profiling cookies on this site. Only basic necessary browser data fields are utilised to deliver responsive interfaces.</p>
+            </div>
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+                <button onclick="window.closeCookie()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.toggleMobileMenu = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        };
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
+                nav.classList.remove('py-4');
+                nav.classList.add('py-2');
+            } else {
+                nav.classList.remove('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
         });
-    }
 
-    // Legal Policy Modals Toggle Methods
-    window.openPrivacy = function() {
-        const modal = document.getElementById('privacy-modal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    };
-    window.closePrivacy = function() {
-        const modal = document.getElementById('privacy-modal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    };
-    window.openTerms = function() {
-        const modal = document.getElementById('terms-modal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    };
-    window.closeTerms = function() {
-        const modal = document.getElementById('terms-modal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    };
-    window.openCookie = function() {
-        const modal = document.getElementById('cookie-modal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    };
-    window.closeCookie = function() {
-        const modal = document.getElementById('cookie-modal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    };
+        window.transmitAuthorityBooking = function() {
+            const subject = "OSL Authority Stack Activation Request";
+            const body = "Hi OffScript Labs,\n\nI want to secure the postcode footprint slot for the complete OSL Authority Stack (£295/mo).\n\nPlease check my district availability and contact me with configuration requirements.\n\nBest regards,";
+            window.location.href = `mailto:offscriptlabsuk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        };
 
-    window.onclick = function(e) { 
-        if (e.target == document.getElementById('privacy-modal')) {
-            window.closePrivacy();
-        } else if (e.target == document.getElementById('terms-modal')) {
-            window.closeTerms(); 
-        } else if (e.target == document.getElementById('cookie-modal')) {
-            window.closeCookie();
-        } else if (e.target == document.getElementById('lightbox-modal')) {
-            window.closeLightbox();
-        }
-    };
-  </script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+
+        // Legal Modals handlers
+        window.openPrivacy = function() { document.getElementById('privacy-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
+        window.closePrivacy = function() { document.getElementById('privacy-modal').classList.replace('flex', 'hidden'); document.body.style.overflow = 'auto'; };
+        window.openTerms = function() { document.getElementById('terms-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
+        window.closeTerms = function() { document.getElementById('terms-modal').classList.replace('flex', 'hidden'); document.body.style.overflow = 'auto'; };
+        window.openCookie = function() { document.getElementById('cookie-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
+        window.closeCookie = function() { document.getElementById('cookie-modal').classList.replace('flex', 'hidden'); document.body.style.overflow = 'auto'; };
+
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('privacy-modal')) window.closePrivacy();
+            else if (e.target == document.getElementById('terms-modal')) window.closeTerms();
+            else if (e.target == document.getElementById('cookie-modal')) window.closeCookie();
+        };
+    </script>
 </body>
 </html>
