@@ -149,7 +149,7 @@
 
   <nav id="main-nav" class="fixed top-8 md:top-10 w-full z-50 px-4 md:px-6 py-4 transition-all duration-300">
       <div class="max-w-7xl mx-auto glass-card rounded-2xl px-6 py-3 flex items-center justify-between relative">
-          <a href="https://www.offscriptlabs.co.uk/" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-white" aria-label="OffScript Labs Home">
+          <a href="index.html" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-white" aria-label="OffScript Labs Home">
               <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round"/>
                   <path d="M30 65C40 60 50 70 70 65" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5"/>
@@ -162,7 +162,7 @@
           </a>
 
           <div class="hidden md:flex items-center gap-8 text-[10px] uppercase font-bold tracking-widest text-slate-400">
-              <a href="https://www.offscriptlabs.co.uk/" class="hover:text-teal-400 transition">Home</a>
+              <a href="index.html" class="hover:text-teal-400 transition">Home</a>
               <a href="#about" class="hover:text-teal-400 transition">Approach</a>
               <a href="#gallery" class="hover:text-teal-400 transition">Gallery</a>
               <a href="#services" class="hover:text-teal-400 transition">Packages</a>
@@ -177,7 +177,7 @@
 
           <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-2 p-6 glass-card rounded-2xl md:hidden shadow-2xl">
               <div class="flex flex-col gap-6 text-center">
-                  <a href="https://www.offscriptlabs.co.uk/" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Home</a>
+                  <a href="index.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Home</a>
                   <a href="#about" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Approach</a>
                   <a href="#gallery" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Gallery</a>
                   <a href="#services" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Packages</a>
@@ -504,43 +504,69 @@
   </div>
 
   <script>
-    // Asset layout mapping logic configuration settings array object
+    // ----------------------------------------------------------------------
+    // PORTFOLIO IMAGES CONFIGURATOR (FOR REPOSITORY DEPLOYMENT)
+    // ----------------------------------------------------------------------
     const galleryAssets = [
       {
         category: "food",
-        src: "PXL_20230909_141945435.PORTRAIT~2.jpg",      
-        tag: "Food / Plated",                              
-        title: "Pan-Seared Coastal Cod"                    
-      },
-      {
-        category: "drink",
-        src: "https://images.pexels.com/photos/1189257/pexels-photo-1189257.jpeg?auto=compress&cs=tinysrgb&w=800", 
-        tag: "Drink / Mixology",                           
-        title: "Spritz Hour"                               
-      },
-      {
-        category: "lifestyle",
-        src: "https://images.pexels.com/photos/1581376/pexels-photo-1581376.jpeg?auto=compress&cs=tinysrgb&w=800", 
-        tag: "Lifestyle / Ambience",                        
-        title: "The Fireside Snug"                          
+        src: "PXL_20241108_130808482~2.jpg",      
+        tag: "Food / Pizza",                              
+        title: "Artisan Stone-Baked Pizza"                    
       },
       {
         category: "food",
-        src: "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=800", 
-        tag: "Food / Baking",                              
-        title: "Country Sourdough"                          
+        src: "PXL_20241108_130824446.PORTRAIT~3.jpg", 
+        tag: "Food / Close-Up",                           
+        title: "Gourmet Pizza Details"                               
       },
       {
-        category: "drink",
-        src: "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=800", 
-        tag: "Drink / Coffee",                             
-        title: "Espresso Ritual"                           
+        category: "food",
+        src: "PXL_20230620_133842575.PORTRAIT~2.jpg", 
+        tag: "Food / Plated",                        
+        title: "Fine Dining Display"                          
+      },
+      {
+        category: "food",
+        src: "PXL_20230914_104255887.PORTRAIT.ORIGINAL~2.jpg", 
+        tag: "Food / Dessert",                              
+        title: "Classic Tart & Fruits"                          
+      },
+      {
+        category: "food",
+        src: "PXL_20230914_104225833.PORTRAIT~2.jpg", 
+        tag: "Food / Plated Side-View",                             
+        title: "Elegant Tart Composition"                           
       },
       {
         category: "lifestyle",
-        src: "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800", 
-        tag: "Lifestyle / Vibe",                           
-        title: "Tavern Ale Pull"                           
+        src: "PXL_20230520_151117707.PORTRAIT~2.jpg", 
+        tag: "Lifestyle / Charcuterie",                           
+        title: "Cured Meat Board"                           
+      },
+      {
+        category: "food",
+        src: "PXL_20230401_163603671.PORTRAIT~2.jpg", 
+        tag: "Food / Burger",                           
+        title: "The Neon Stack Burger"                           
+      },
+      {
+        category: "drink",
+        src: "PXL_20230520_150446715.PORTRAIT~2.jpg", 
+        tag: "Drink / Cocktail",                           
+        title: "Signature Spritz Cocktail"                           
+      },
+      {
+        category: "food",
+        src: "PXL_20230620_133705436.PORTRAIT~2.jpg", 
+        tag: "Food / Plated Angled",                           
+        title: "Savory Gastronomy Plating"                           
+      },
+      {
+        category: "lifestyle",
+        src: "PXL_20230520_151127079.PORTRAIT.ORIGINAL~2.jpg", 
+        tag: "Lifestyle / Flatlay",                           
+        title: "Charcuterie Sharing Platter"                           
       }
     ];
 
@@ -555,10 +581,10 @@
         card.className = "gallery-card relative overflow-hidden rounded-2xl aspect-[4/5] bg-slate-950 group border border-white/5";
         card.dataset.category = asset.category;
 
-        const imageSrc = asset.src ? asset.src : "https://images.pexels.com/photos/25758213/pexels-photo-25758213.jpeg?auto=compress&cs=tinysrgb&w=800";
-        const imageAlt = asset.title ? asset.title : "OffScript Production Image";
-        const tagText = asset.tag ? asset.tag : "Category / Focus";
-        const titleText = asset.title ? asset.title : "Untitled Asset";
+        const imageSrc = asset.src;
+        const imageAlt = asset.title;
+        const tagText = asset.tag;
+        const titleText = asset.title;
 
         card.innerHTML = `
           <img class="w-full h-full object-cover img-zoom" src="${imageSrc}" alt="${imageAlt}">
@@ -624,7 +650,7 @@
       }
     }
 
-    // Submit / email handling execution block logic setup
+    // Submit / email handling execution block logic
     function handleFormSubmission(event) {
       event.preventDefault();
       
