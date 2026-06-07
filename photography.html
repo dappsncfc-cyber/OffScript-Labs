@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offscript Labs — Premium Food, Drink & Lifestyle Mobile Content</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #020508;
+      --bg-deep: #010203;
+      --panel: rgba(5, 12, 18, 0.7);
+      --line: rgba(122, 255, 229, 0.08);
+      --mint: #9fffe8;
+      --text: #e6fff9;
+      --muted: #8faea9;
+    }
+
+    body {
+      margin: 0;
+      width: 100%;
+      background-color: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .page-shell {
+      position: relative;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(34, 240, 200, 0.05), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(40, 150, 130, 0.05), transparent 40%),
+        linear-gradient(180deg, #03070a 0%, #020508 100%);
+    }
+
+    .nav-link {
+      position: relative;
+      color: rgba(226,255,248,0.6);
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 1px;
+      background: var(--mint);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--mint);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .gallery-overlay {
+      background: linear-gradient(to top, rgba(1, 3, 5, 0.9) 0%, rgba(1, 3, 5, 0.3) 50%, transparent 100%);
+      transition: opacity 0.4s ease;
+    }
+
+    .img-zoom {
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-card:hover .img-zoom {
+      transform: scale(1.04);
+    }
+
+    /* Modal dialog custom styling */
+    .policy-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .policy-scroll::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.5); 
+      border-radius: 8px;
+    }
+    .policy-scroll::-webkit-scrollbar-thumb {
+      background: rgba(159, 255, 232, 0.3); 
+      border-radius: 8px;
+    }
+    .policy-scroll::-webkit-scrollbar-thumb:hover {
+      background: rgba(159, 255, 232, 0.6); 
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-shell w-full min-h-screen">
+    
+    <!-- Top Static Banner detailing hospitality content services -->
+    <div class="border-b border-[#9fffe8]/10 text-[#9fffe8] py-2.5 px-6 text-center text-[10px] tracking-[0.2em] font-mono relative z-50 uppercase">
+      Food, Drink &amp; Lifestyle Visuals &bull; Zero Operational Impact &bull; 72-Hour Delivery
+    </div>
+
+    <!-- Header navigation -->
+    <header class="w-full z-40 px-6 sm:px-10 lg:px-16 py-8">
+      <div class="max-w-[1600px] mx-auto flex items-center justify-between">
+        <!-- Minimal Left-Aligned Navigation Links -->
+        <nav aria-label="Primary navigation" class="flex items-center gap-6 sm:gap-10 uppercase tracking-[0.2em] text-[10px] font-mono">
+          <a href="https://www.offscriptlabs.co.uk/" class="nav-link text-[#9fffe8]">Home</a>
+          <a href="#about" class="nav-link">Approach</a>
+          <a href="#gallery" class="nav-link">Gallery</a>
+          <a href="#services" class="nav-link">Packages</a>
+          <a href="#contact" class="nav-link text-[#9fffe8]">Enquire</a>
+        </nav>
+
+        <!-- Geo Tag -->
+        <span class="font-mono text-[9px] tracking-widest text-[#5b7975] uppercase">NORFOLK</span>
+      </div>
+    </header>
+
+    <main>
+      
+      <!-- Minimal Editorial Hero Section -->
+      <section class="px-6 sm:px-10 lg:px-16 py-20 lg:py-32">
+        <div class="max-w-[1600px] mx-auto">
+          <div class="max-w-4xl space-y-6">
+            <span class="uppercase tracking-[0.3em] font-mono text-[#9fffe8] text-xs block">Premium Commercial Mobile Content</span>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight font-medium leading-[1.05] text-slate-100">
+              Visual content designed natively for social feeds.
+            </h1>
+            <p class="max-w-2xl text-base sm:text-lg leading-relaxed text-[#8faea9]">
+              Pocket-sized lenses, professional mobile sensors, and high-performance low-light processors. We capture stunning food, mixology, and hospitality lifestyle spaces on-site with zero guest disruption.
+            </p>
+            <div class="pt-4 flex flex-wrap gap-4">
+              <a href="#gallery" class="bg-gradient-to-r from-teal-950/80 to-[#102a32] hover:from-[#11353f] border border-[#7affde]/20 px-8 py-3.5 rounded-full font-mono text-[10px] uppercase tracking-widest text-[#9fffe8] transition-all">
+                View Gallery
+              </a>
+              <a href="#contact" class="border border-slate-800 hover:border-[#9fffe8]/35 px-8 py-3.5 rounded-full font-mono text-[10px] uppercase tracking-widest text-slate-300 transition-all">
+                Book Shoot
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STREAMLINED PHILOSOPHY -->
+      <section id="about" class="px-6 sm:px-10 lg:px-16 py-12 border-t border-slate-900">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#9fffe8]">01 / Content Tone</span>
+            <p class="text-xs text-[#8faea9] leading-relaxed">
+              We focus on warm, natural lighting and authentic angles. Your plates look fresh, drinks look crisp, and spaces feel welcoming.
+            </p>
+          </div>
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#9fffe8]">02 / Zero Disruption</span>
+            <p class="text-xs text-[#8faea9] leading-relaxed">
+              No clinical studio set-ups, heavy tripods, or flashy gear. We work seamlessly alongside your active service lines.
+            </p>
+          </div>
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#9fffe8]">03 / Platform Native</span>
+            <p class="text-xs text-[#8faea9] leading-relaxed">
+              Every master file is delivered ready-to-deploy, perfectly optimised for Instagram, TikTok, and Google Maps crops.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: HIGH-END MINIMAL GALLERY GRID -->
+      <section id="gallery" class="px-6 sm:px-10 lg:px-16 py-16 border-t border-slate-900 bg-[#020406]">
+        <div class="max-w-[1600px] mx-auto space-y-12">
+          
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-[#9fffe8] block mb-1">02 / Selected Assets</span>
+              <h2 class="text-2xl sm:text-3xl uppercase font-semibold text-slate-100">Styled Portfolio</h2>
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="flex flex-wrap gap-2 text-[9px] font-mono tracking-widest uppercase">
+              <button onclick="filterGallery('all')" id="filter-all" class="filter-tab px-3 py-1.5 rounded bg-teal-950/30 text-[#9fffe8] border border-[#7affde]/20">All</button>
+              <button onclick="filterGallery('food')" id="filter-food" class="filter-tab px-3 py-1.5 rounded text-slate-400 border border-transparent hover:text-white">Food</button>
+              <button onclick="filterGallery('drink')" id="filter-drink" class="filter-tab px-3 py-1.5 rounded text-slate-400 border border-transparent hover:text-white">Drink</button>
+              <button onclick="filterGallery('lifestyle')" id="filter-lifestyle" class="filter-tab px-3 py-1.5 rounded text-slate-400 border border-transparent hover:text-white">Lifestyle</button>
+            </div>
+          </div>
+
+          <!-- Clean Masonry Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+            <!-- Dynamically populated via JavaScript configurations at the bottom -->
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- CLEAR PRODUCTION TRACKS & PRICING -->
+      <section id="services" class="px-6 sm:px-10 lg:px-16 py-20 lg:py-28 bg-[#020508] border-t border-slate-900">
+        <div class="max-w-[1600px] mx-auto space-y-12">
+          
+          <div class="max-w-2xl">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#9fffe8] block mb-1">03 / Simple Services</span>
+            <h2 class="text-3xl uppercase font-semibold text-slate-100">Production Packages</h2>
+            <p class="text-sm text-[#8faea9] mt-2">Transparent, flat-rate pricing designed for independent hospitality operations.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Track A -->
+            <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-8">
+              <div class="space-y-4">
+                <div class="flex justify-between items-start border-b border-slate-800 pb-4">
+                  <div>
+                    <span class="text-[9px] font-mono text-[#5b7975] uppercase block">Track A</span>
+                    <h3 class="text-xl uppercase font-bold text-slate-200 mt-1">Menu Refresh</h3>
+                  </div>
+                  <strong class="text-xl font-mono text-[#9fffe8]">£195</strong>
+                </div>
+                <ul class="space-y-2 text-xs text-[#8faea9]">
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> 6 specified menu/lifestyle assets</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> 90 minutes on-site shoot</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> 15 parsed mobile digital masters</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> Delivered within 72 hours</li>
+                </ul>
+              </div>
+              <a href="#contact" onclick="prefillForm('Track A Menu Refresh')" class="text-center font-mono text-[10px] uppercase tracking-wider bg-teal-950/40 hover:bg-[#102a32] border border-[#7affde]/20 py-2.5 rounded-lg text-[#9fffe8] transition-colors block">Enquire Track A</a>
+            </div>
+
+            <!-- Track B -->
+            <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-8 border-[#9fffe8]/35 shadow-[0_0_30px_rgba(159,255,232,0.05)]">
+              <div class="space-y-4">
+                <div class="flex justify-between items-start border-b border-slate-800 pb-4">
+                  <div>
+                    <span class="text-[9px] font-mono text-[#5b7975] uppercase block">Track B</span>
+                    <h3 class="text-xl uppercase font-bold text-slate-200 mt-1">Social Growth</h3>
+                  </div>
+                  <strong class="text-xl font-mono text-[#9fffe8]">£345</strong>
+                </div>
+                <ul class="space-y-2 text-xs text-[#8faea9]">
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> 12 custom menu/lifestyle assets</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> Up to 3 hours on-site shoot</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> 35 parsed mobile digital masters</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> 3 raw B-roll social reels</li>
+                </ul>
+              </div>
+              <a href="#contact" onclick="prefillForm('Track B Social Growth')" class="text-center font-mono text-[10px] uppercase tracking-wider bg-gradient-to-r from-teal-950 to-[#102a32] hover:from-[#11353f] border border-[#7affde]/30 py-2.5 rounded-lg text-[#9fffe8] hover:text-white transition-all block">Enquire Track B</a>
+            </div>
+
+            <!-- Track C -->
+            <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-8">
+              <div class="space-y-4">
+                <div class="flex justify-between items-start border-b border-slate-800 pb-4">
+                  <div>
+                    <span class="text-[9px] font-mono text-[#5b7975] uppercase block">Track C</span>
+                    <h3 class="text-xl uppercase font-bold text-slate-200 mt-1">Monthly Retainer</h3>
+                  </div>
+                  <strong class="text-xl font-mono text-[#9fffe8]">£275<span class="text-xs text-[#5b7975]">/mo</span></strong>
+                </div>
+                <ul class="space-y-2 text-xs text-[#8faea9]">
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> Recurring monthly 90-min shoot</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> Capture of changing drafts/specials</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> 15 fresh digital images per month</li>
+                  <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#9fffe8]"></i> 2 fully-edited platform video reels</li>
+                </ul>
+              </div>
+              <a href="#contact" onclick="prefillForm('Track C Monthly Retainer')" class="text-center font-mono text-[10px] uppercase tracking-wider bg-teal-950/40 hover:bg-[#102a32] border border-[#7affde]/20 py-2.5 rounded-lg text-[#9fffe8] transition-colors block">Enquire Track C</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CONCISE ENQUIRY INTERFACE -->
+      <section id="contact" class="px-6 sm:px-10 lg:px-16 py-20 bg-[#04090d] border-t border-slate-900 relative">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#9fffe8] block">04 / Book Now</span>
+            <h2 class="text-3xl sm:text-4xl uppercase font-semibold text-slate-100 leading-tight">Start your project.</h2>
+            <p class="text-[#8faea9] text-sm leading-relaxed">
+              We respond to all hospitality enquiries in under 24 hours to schedule shoot dates. Contact our team directly or complete our fast-form builder.
+            </p>
+            
+            <div class="space-y-3 font-mono text-xs text-[#8faea9] pt-4">
+              <div class="flex items-center gap-3">
+                <i data-lucide="mail" class="w-4 h-4 text-[#9fffe8]"></i>
+                <a href="mailto:offscriptlabsuk@gmail.com" class="hover:text-[#9fffe8] transition-colors">offscriptlabsuk@gmail.com</a>
+              </div>
+              <div class="flex items-center gap-3">
+                <i data-lucide="map-pin" class="w-4 h-4 text-[#9fffe8]"></i>
+                <span>Norfolk, UK</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slick Simple Form -->
+          <div class="lg:col-span-7">
+            <form onsubmit="handleFormSubmission(event)" class="glass-panel p-6 sm:p-10 rounded-2xl space-y-5 text-left">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block uppercase font-mono text-[9px] tracking-widest text-[#5b7975] mb-1.5" for="contact-name">Name *</label>
+                  <input type="text" id="contact-name" required class="w-full bg-[#03080b]/80 border border-[#7affde]/10 focus:border-[#9fffe8] rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none transition-all" placeholder="Your name">
+                </div>
+                <div>
+                  <label class="block uppercase font-mono text-[9px] tracking-widest text-[#5b7975] mb-1.5" for="contact-venue">Venue Brand *</label>
+                  <input type="text" id="contact-venue" required class="w-full bg-[#03080b]/80 border border-[#7affde]/10 focus:border-[#9fffe8] rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none transition-all" placeholder="e.g. Sourdough Tavern">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block uppercase font-mono text-[9px] tracking-widest text-[#5b7975] mb-1.5" for="contact-email">Email *</label>
+                  <input type="email" id="contact-email" required class="w-full bg-[#03080b]/80 border border-[#7affde]/10 focus:border-[#9fffe8] rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none transition-all" placeholder="name@venue.com">
+                </div>
+                <div>
+                  <label class="block uppercase font-mono text-[9px] tracking-widest text-[#5b7975] mb-1.5" for="contact-package">Desired Track</label>
+                  <select id="contact-package" class="w-full bg-[#03080b]/80 border border-[#7affde]/10 focus:border-[#9fffe8] rounded-xl px-4 py-2.5 text-sm text-slate-300 focus:outline-none transition-all">
+                    <option value="Track A Menu Refresh">Track A: Menu Refresh (£195)</option>
+                    <option value="Track B Social Growth">Track B: Social Growth (£345)</option>
+                    <option value="Track C Content Retainer">Track C: Content Retainer (£275/mo)</option>
+                    <option value="Custom Campaign Scope">Custom Project Scope</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block uppercase font-mono text-[9px] tracking-widest text-[#5b7975] mb-1.5" for="contact-notes">Project Notes</label>
+                <textarea id="contact-notes" rows="4" class="w-full bg-[#03080b]/80 border border-[#7affde]/10 focus:border-[#9fffe8] rounded-xl p-4 text-xs text-slate-100 placeholder-slate-600 focus:outline-none transition-all font-mono" placeholder="Tell us about your dishes, drinks, or cosy spaces you want captured..."></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-gradient-to-r from-teal-950/80 to-[#102a32] hover:from-[#11353f] border border-[#7affde]/30 text-[#9fffe8] py-3.5 rounded-xl text-xs font-mono uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Transmit Email Enquiry</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Integrated Search Suite Footer with Offscript Labs Color Gradients -->
+    <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
+        <div class="flex items-center justify-center gap-3 mb-8 text-white">
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#9fffe8" stroke-width="4" stroke-linejoin="round" opacity="0.3"/>
+            </svg>
+            <span class="text-xs uppercase tracking-[0.5em] font-bold text-white/40">OffScript Labs &copy; 2026</span>
+        </div>
+        
+        <p class="text-white text-sm max-w-sm mx-auto font-light leading-relaxed mb-8">
+            Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for high-intent growth across North Norfolk.
+        </p>
+
+        <div class="text-[10px] text-slate-600 max-w-lg mx-auto mb-8 leading-relaxed font-mono">
+            OffScript Labs is a trading name based in Cromer, Norfolk, UK. <br>
+        </div>
+        
+        <div class="flex items-center justify-center gap-6 mb-8 text-pretty">
+            <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-[#9fffe8] transition-colors duration-300" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-[#9fffe8] transition-colors duration-300" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+        </div>
+        
+        <div class="mt-4 mb-8 flex flex-wrap justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-slate-500">
+            <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-[#9fffe8] transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
+            <span class="text-slate-800 hidden sm:inline">|</span>
+            <a href="#" onclick="window.openTerms(); return false;" class="hover:text-[#9fffe8] transition underline decoration-slate-700 underline-offset-4">Terms of Service</a>
+            <span class="text-slate-800 hidden sm:inline">|</span>
+            <a href="#" onclick="window.openCookie(); return false;" class="hover:text-[#9fffe8] transition underline decoration-slate-700 underline-offset-4">Cookie Policy</a>
+        </div>
+
+        <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono">Lab System Operational</div>
+    </footer>
+
+  </div>
+
+  <!-- Privacy Policy, Terms, and Cookie Modals matching Offscript style -->
+  <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+      <div class="glass-panel w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
+          <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+              <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Privacy Policy</h2>
+              <button onclick="window.closePrivacy()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Privacy Policy">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+          </div>
+          <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+              <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> Offscript Labs (Cromer, North Norfolk, UK)</p>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">1. Overview</h3>
+                  <p>At Offscript Labs, we respect your privacy and are committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. This policy explains how we collect, use, and safeguard your information when you visit offscriptlabs.co.uk or engage our services.</p>
+              </div>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">2. Information We Collect</h3>
+                  <p>We only collect data necessary to provide our services and communicate with you effectively. This includes:</p>
+                  <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+                      <li><strong>Identity & Contact Data:</strong> Full name, email address, phone number, and business name provided via our contact/onboarding forms.</li>
+                      <li><strong>Business Infrastructure Data:</strong> Website URLs, Google Review links, and details regarding your Google Business Profile status.</li>
+                  </ul>
+              </div>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">3. How We Use Your Data</h3>
+                  <p>Your data is used strictly to execute the digital AI audits and enquiries requested by you and to communicate regarding your projects and bookings.</p>
+              </div>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">4. Data Security</h3>
+                  <p>We implement strict security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorised way. Form submissions are securely routed via encrypted endpoints and stored within access-controlled Google Workspace environments.</p>
+              </div>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">5. Legal Rights</h3>
+                  <p>Under the UK GDPR, you have the right to request access to, correction of, or erasure of your personal data. To exercise any of these rights, please contact us directly at <span class="text-[#9fffe8] font-mono">offscriptlabsuk@gmail.com</span>.</p>
+              </div>
+          </div>
+          <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+              <button onclick="window.closePrivacy()" class="px-8 py-3 bg-[#9fffe8] text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest transition duration-300">Acknowledge & Close</button>
+          </div>
+      </div>
+  </div>
+
+  <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+      <div class="glass-panel w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
+          <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+              <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Terms of Service</h2>
+              <button onclick="window.closeTerms()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Terms">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+          </div>
+          <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+              <p><strong>Effective Date:</strong> March 2026<br><strong>Business Type:</strong> Business-to-Business (B2B)</p>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">1. The Service</h3>
+                  <p>Offscript Labs provides premium food, drink, and lifestyle photography alongside voice search optimisations. By submitting an enquiry, you agree to engage our services under these standard business-to-business terms.</p>
+              </div>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">2. Deliverables & Production</h3>
+                  <p>Booking fees are structured based on Tracks A, B, and C as detailed. A non-refundable 25% booking deposit secures the schedule, with balances settled inside the standard terms.</p>
+              </div>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">3. Jurisdiction</h3>
+                  <p>These terms are governed by the laws of England and Wales. Any disputes arising from this agreement shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+              </div>
+          </div>
+          <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+              <button onclick="window.closeTerms()" class="px-8 py-3 bg-[#9fffe8] text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest transition duration-300">Acknowledge & Close</button>
+          </div>
+      </div>
+  </div>
+
+  <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+      <div class="glass-panel w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
+          <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+              <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Cookie Policy</h2>
+              <button onclick="window.closeCookie()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Cookie Policy">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+          </div>
+          <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+              <p><strong>Effective Date:</strong> March 2026</p>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">Our Stance on Cookies</h3>
+                  <p>At Offscript Labs, we believe in a clean, frictionless user experience. <strong>We do not use intrusive tracking cookies, third-party analytics, or marketing cookies on this website.</strong></p>
+              </div>
+              <div>
+                  <h3 class="text-[#9fffe8] font-bold uppercase tracking-widest text-[10px] mb-2">Necessary Mechanisms</h3>
+                  <p>Under PECR, non-essential cookies must obtain consent. Because we do not use tracking or profile builders, you will not see a disruptive consent banner on our site. We only utilise essential browser elements that enable your experience while using our platform.</p>
+              </div>
+          </div>
+          <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
+              <button onclick="window.closeCookie()" class="px-8 py-3 bg-[#9fffe8] text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest transition duration-300">Acknowledge & Close</button>
+          </div>
+      </div>
+  </div>
+
+  <script>
+    // ----------------------------------------------------------------------
+    // PORTFOLIO IMAGES CONFIGURATOR (FOR GITHUB DEPLOYMENT)
+    // ----------------------------------------------------------------------
+    const galleryAssets = [
+      {
+        category: "food",
+        src: "PXL_20230909_141945435.PORTRAIT~2.jpg",      
+        tag: "Food / Plated",                              
+        title: "Pan-Seared Coastal Cod"                    
+      },
+      {
+        category: "drink",
+        src: "https://images.pexels.com/photos/1189257/pexels-photo-1189257.jpeg?auto=compress&cs=tinysrgb&w=800", 
+        tag: "Drink / Mixology",                           
+        title: "Spritz Hour"                               
+      },
+      {
+        category: "lifestyle",
+        src: "https://images.pexels.com/photos/1581376/pexels-photo-1581376.jpeg?auto=compress&cs=tinysrgb&w=800", 
+        tag: "Lifestyle / Ambience",                        
+        title: "The Fireside Snug"                          
+      },
+      {
+        category: "food",
+        src: "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=800", 
+        tag: "Food / Baking",                              
+        title: "Country Sourdough"                          
+      },
+      {
+        category: "drink",
+        src: "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=800", 
+        tag: "Drink / Coffee",                             
+        title: "Espresso Ritual"                           
+      },
+      {
+        category: "lifestyle",
+        src: "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800", 
+        tag: "Lifestyle / Vibe",                           
+        title: "Tavern Ale Pull"                           
+      }
+    ];
+
+    // Dynamic Image Grid Generator
+    function renderGallery() {
+      const grid = document.getElementById("gallery-grid");
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      galleryAssets.forEach(asset => {
+        const card = document.createElement("div");
+        card.className = "gallery-card relative overflow-hidden rounded-2xl aspect-[4/5] bg-slate-950 group";
+        card.dataset.category = asset.category;
+
+        const imageSrc = asset.src ? asset.src : "https://images.pexels.com/photos/25758213/pexels-photo-25758213.jpeg?auto=compress&cs=tinysrgb&w=800";
+        const imageAlt = asset.title ? asset.title : "Offscript Production Image";
+        const tagText = asset.tag ? asset.tag : "Category / Focus";
+        const titleText = asset.title ? asset.title : "Untitled Asset";
+
+        card.innerHTML = `
+          <img class="w-full h-full object-cover img-zoom" src="${imageSrc}" alt="${imageAlt}">
+          <div class="gallery-overlay absolute inset-0 opacity-100 sm:opacity-0 group-hover:opacity-100 flex flex-col justify-end p-6">
+            <span class="text-[9px] font-mono text-[#9fffe8] uppercase tracking-widest">${tagText}</span>
+            <h3 class="text-lg font-medium text-white uppercase tracking-wide mt-1">${titleText}</h3>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Live Clock London/Norfolk timezone
+    function updateClock() {
+      const clock = document.getElementById("studio-clock");
+      if (!clock) return;
+      const now = new Date();
+      const options = { timeZone: 'Europe/London', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      clock.textContent = `${now.toLocaleTimeString('en-GB', options)} GMT`;
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      updateClock();
+      setInterval(updateClock, 1000);
+      renderGallery();
+    });
+
+    // Gallery Filter Logic
+    function filterGallery(category) {
+      const cards = document.querySelectorAll(".gallery-card");
+      const tabs = document.querySelectorAll(".filter-tab");
+      
+      tabs.forEach(tab => {
+        if (tab.id === `filter-${category}`) {
+          tab.className = "filter-tab px-3 py-1.5 rounded bg-teal-950/30 text-[#9fffe8] border border-[#7affde]/20";
+        } else {
+          tab.className = "filter-tab px-3 py-1.5 rounded text-slate-400 border border-transparent hover:text-white";
+        }
+      });
+
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    // Prefill form selection on clicking Track buttons
+    function prefillForm(packageName) {
+      const select = document.getElementById("contact-package");
+      if (select) {
+        select.value = packageName;
+      }
+    }
+
+    // Submit / email handling
+    function handleFormSubmission(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById("contact-name").value;
+      const venue = document.getElementById("contact-venue").value;
+      const email = document.getElementById("contact-email").value;
+      const packageSelection = document.getElementById("contact-package").value;
+      const notes = document.getElementById("contact-notes").value;
+
+      const subject = `Production Enquiry - ${venue} (${name})`;
+      const body = `Hi Offscript Labs,\n\n` +
+                   `I would like to enquire about your photography and video packages.\n\n` +
+                   `-----------------------------------------\n` +
+                   `ENQUIRY DETAILS:\n` +
+                   `-----------------------------------------\n` +
+                   `Contact Name: ${name}\n` +
+                   `Venue/Restaurant: ${venue}\n` +
+                   `Email Address: ${email}\n` +
+                   `Selected Service: ${packageSelection}\n\n` +
+                   `Project Notes:\n${notes}\n\n` +
+                   `-----------------------------------------\n` +
+                   `Sent from Offscript Labs Showcase Hub`;
+
+      const mailtoUrl = `mailto:offscriptlabsuk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    }
+
+    // Legal Policy Modals Toggle Methods
+    window.openPrivacy = function() {
+        const modal = document.getElementById('privacy-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    };
+    window.closePrivacy = function() {
+        const modal = document.getElementById('privacy-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    };
+    window.openTerms = function() {
+        const modal = document.getElementById('terms-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    };
+    window.closeTerms = function() {
+        const modal = document.getElementById('terms-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    };
+    window.openCookie = function() {
+        const modal = document.getElementById('cookie-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    };
+    window.closeCookie = function() {
+        const modal = document.getElementById('cookie-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    };
+
+    window.onclick = function(e) { 
+        if (e.target == document.getElementById('privacy-modal')) {
+            window.closePrivacy();
+        } else if (e.target == document.getElementById('terms-modal')) {
+            window.closeTerms(); 
+        } else if (e.target == document.getElementById('cookie-modal')) {
+            window.closeCookie();
+        }
+    };
+  </script>
+</body>
+</html>
