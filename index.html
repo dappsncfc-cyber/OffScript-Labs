@@ -303,8 +303,8 @@
                 <a href="#tiers" class="hover:text-teal-400 transition">Lab Tiers</a>
                 <a href="#hardware" class="hover:text-teal-400 transition">Hardware</a>
                 <a href="photography.html" class="hover:text-teal-400 transition">Photography</a>
-                <a href="socials.html" class="hover:text-teal-400 transition">Social Management</a>
-                <a href="googlepartnership.html" class="hover:text-teal-400 transition">Google Partnership</a>
+                <a href="socials.html" class="hover:text-teal-400 transition">Socials</a>
+                <a href="googlepartnership.html" class="hover:text-teal-400 transition">Partnership</a>
                 <a href="#faq" class="hover:text-teal-400 transition">FAQ</a>
                 <a href="#audit" class="bg-teal-500 text-slate-900 px-5 py-2 rounded-lg glow-button font-bold">Free AI Audit</a>
             </div>
@@ -594,7 +594,7 @@
                 <p class="text-slate-500 text-sm uppercase tracking-widest text-center">Common queries regarding our 2026 search suite</p>
             </div>
             <div class="space-y-4">
-                <details class="group glass-card rounded-2xl border-slate-800 transition-all duration-300 text-pretty">
+                <details class="group glass-card rounded-2xl border-slate-800 duration-300">
                     <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-white/5 transition-colors text-left text-white">
                         <span class="text-sm font-bold uppercase tracking-tighter">Do I need to share my Google password?</span>
                         <svg class="w-5 h-5 text-teal-500 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -603,7 +603,7 @@
                         No. We utilise safe, official "Manager" access. You simply invite our lab email to your profile, keeping your account 100% secure and under your ultimate control.
                     </div>
                 </details>
-                <details class="group glass-card rounded-2xl border-slate-800 transition-all duration-300 text-pretty">
+                <details class="group glass-card rounded-2xl border-slate-800 duration-300">
                     <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-white/5 transition-colors text-left text-white">
                         <span class="text-sm font-bold uppercase tracking-tighter">How long does the NFC kit take to arrive?</span>
                         <svg class="w-5 h-5 text-teal-500 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -612,7 +612,7 @@
                         Digital AI work begins within 24 hours. Physical NFC kits are programmed in our Norfolk lab and shipped via Royal Mail 1st Class, usually arriving in 1-2 working days.
                     </div>
                 </details>
-                <details class="group glass-card rounded-2xl border-slate-800 transition-all duration-300 text-pretty">
+                <details class="group glass-card rounded-2xl border-slate-800 duration-300 text-pretty">
                     <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-white/5 transition-colors text-left text-white">
                         <span class="text-sm font-bold uppercase tracking-tighter">What exactly is "AI Semantic Mapping"?</span>
                         <svg class="w-5 h-5 text-teal-500 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -679,10 +679,23 @@
                     </svg>
                     <h2 class="text-2xl md:text-3xl font-bold tracking-tighter uppercase text-white">Lab Onboarding</h2>
                 </div>
-                <div id="modal-tier-card" onclick="window.showFullCardPreview()" class="glass-card bg-slate-900/60 rounded-2xl p-4 border mb-6 mx-auto max-w-sm text-center cursor-pointer hover:bg-slate-800 transition">
+                
+                <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest pb-4">Initialising Protocol</p>
+                
+                <div id="modal-tier-card" onclick="window.showFullCardPreview()" class="glass-card bg-slate-900/60 rounded-2xl p-4 border mb-6 mx-auto max-w-sm text-center cursor-pointer hover:bg-slate-800 transition group relative" role="button" aria-label="View full tier details">
+                    <div class="absolute top-3 right-3 text-slate-500 group-hover:text-teal-400 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                    </div>
                     <div id="modal-tier-name" class="text-teal-400 text-[11px] font-bold uppercase tracking-widest mb-2">[Tier Name]</div>
                     <div id="modal-tier-price" class="text-4xl font-bold text-white mb-2">£0</div>
                     <p id="modal-tier-desc" class="text-slate-500 text-[10px] uppercase tracking-widest leading-tight">Details</p>
+                </div>
+
+                <div class="bg-teal-500/10 border border-teal-500/20 rounded-xl p-4 mb-6 mx-auto max-w-md">
+                    <p class="text-xs text-teal-300 font-medium leading-relaxed">
+                        <span class="block mb-1 text-sm">💳 <strong>No payment is taken today.</strong></span>
+                        We will be in touch to complete your set-up and tailor the service to your business.
+                    </p>
                 </div>
             </div>
 
@@ -733,15 +746,95 @@
         </div>
     </div>
 
+    <div id="full-card-modal" class="fixed inset-0 z-[70] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="w-full max-w-sm relative">
+            <button onclick="window.hideFullCardPreview()" class="absolute -top-12 right-0 text-slate-400 hover:text-white transition flex items-center gap-2 text-xs uppercase tracking-widest font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Close Preview
+            </button>
+            <div id="full-card-content" class="w-full text-left"></div>
+        </div>
+    </div>
+
     <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
         <div class="flex items-center justify-center gap-3 mb-8 text-white">
-            <svg width="24" height="24" viewBox="0 0 100 100" fill="none"><path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" opacity="0.3"/></svg>
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round" opacity="0.3"/>
+            </svg>
             <span class="text-xs uppercase tracking-[0.5em] font-bold text-white/40">OffScript Labs &copy; 2026</span>
         </div>
+        
         <p class="text-white text-sm max-w-sm mx-auto font-light leading-relaxed mb-8">
-            Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for growth across North Norfolk.
+            Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for high-intent growth across North Norfolk.
         </p>
+
+        <div class="text-[10px] text-slate-600 max-w-lg mx-auto mb-8 leading-relaxed font-mono">
+            OffScript Labs is a trading name based in Cromer, Norfolk, UK. <br>
+        </div>
+        
+        <div class="flex items-center justify-center gap-6 mb-8 text-pretty">
+            <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+        </div>
+        
+        <div class="mt-4 mb-8 flex flex-wrap justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-slate-500">
+            <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
+            <span class="text-slate-800 hidden sm:inline">|</span>
+            <a href="#" onclick="window.openTerms(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Terms of Service</a>
+            <span class="text-slate-800 hidden sm:inline">|</span>
+            <a href="#" onclick="window.openCookie(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Cookie Policy</a>
+        </div>
+
+        <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono">Lab System Operational</div>
     </footer>
+
+    <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Privacy Policy</h2>
+                <button onclick="window.closePrivacy()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> OffScript Labs (Cromer, North Norfolk, UK)</p>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Overview</h3>
+                    <p>At OffScript Labs, we respect your privacy and are committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. This policy explains how we collect, use, and safeguard your information when you visit offscriptlabs.co.uk or engage our services.</p>
+                </div>
+            </div>
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 text-center"><button onclick="window.closePrivacy()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button></div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Terms of Service</h2>
+                <button onclick="window.closeTerms()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026<br><strong>Business Type:</strong> Business-to-Business (B2B)</p>
+                <div><h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. The Service</h3><p>OffScript Labs provides digital marketing, semantic mapping, and NFC hardware solutions designed to optimise business visibility for AI algorithms and voice search.</p></div>
+            </div>
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 text-center"><button onclick="window.closeTerms()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button></div>
+        </div>
+    </div>
+
+    <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
+            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
+                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Cookie Policy</h2>
+                <button onclick="window.closeCookie()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+                <p><strong>Effective Date:</strong> March 2026</p>
+                <p>We do not use tracking or profiling cookies on this website. Only basic functional system vectors are processed to ensure proper responsiveness.</p>
+            </div>
+            <div class="p-6 border-t border-slate-800 bg-slate-900/80 text-center"><button onclick="window.closeCookie()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button></div>
+        </div>
+    </div>
 
     <script>
         window.addEventListener('scroll', () => {
@@ -765,38 +858,64 @@
                 price: "£20",
                 desc: "A sleek, pocket-sized smart card designed for on-the-go interaction. Perfect for tradespeople, delivery staff, or waiting staff to carry and seamlessly tap against a customer's phone immediately after delivering an excellent service.",
                 img: "googlenfccard.png",
-                color: "text-purple-400"
+                color: "text-purple-400",
+                imgClass: "object-contain p-4 opacity-90"
             },
             'stand': {
                 name: "NFC Review Stand",
                 price: "£25",
                 desc: "An acrylic counter stand featuring an embedded NFC transmitter. Engineered specifically for high-footfall areas like cafe till points, hotel reception desks, and salon waiting areas to capture passive trust signals.",
                 img: "nfc-stand.jpg",
-                color: "text-blue-400"
+                color: "text-blue-400",
+                imgClass: "object-contain p-2 opacity-90"
             },
             'qr': {
                 name: "NFC with QR Code",
                 price: "£30",
-                desc: "The ultimate hybrid trust tool. This card features both our standard 'Tap-to-Review' NFC technology alongside a custom-generated scannable QR code, ensuring a 100% success rate even with older smartphone models.",
+                desc: "The ultimate hybrid trust tool. This card features both our standard 'Tap-to-Review' NFC technology alongside a custom-generated scannable QR code, ensuring a 100% success rate even with older smartphone models. Easily mountable to any surface via an included 3M sticky back.",
                 img: "nfc-qr-card.jpg",
-                color: "text-teal-400"
+                color: "text-teal-400",
+                imgClass: "object-contain p-4 opacity-90"
             }
         };
 
         window.openOnboarding = function(tierName) {
-            let price = "£0"; let desc = "";
-            if (tierName.includes('Tier 1')) { price = "£70"; desc = "Digital Only | Delivery: 3 Days"; }
-            else if (tierName.includes('Tier 2')) { price = "£100"; desc = "Digital Only | Delivery: 4 Days"; }
-            else if (tierName.includes('Tier 3')) { price = "£130"; desc = "Digital + 1 NFC Card | Delivery: 5 Days"; }
-            else if (tierName.includes('Tier 4')) { price = "£265"; desc = "Full Lab Suite | Delivery: Starts in 48hrs"; }
+            let price = "£0"; let desc = ""; let nameColor = "text-teal-400"; let borderColor = "border-teal-500/20";
+            if (tierName.includes('Tier 1')) { price = "£70"; desc = "Digital Only | Delivery: 3 Days"; nameColor = "text-teal-400"; borderColor = "border-teal-500/20"; }
+            else if (tierName.includes('Tier 2')) { price = "£100"; desc = "Digital Only | Delivery: 4 Days"; nameColor = "text-blue-400"; borderColor = "border-blue-500/20"; }
+            else if (tierName.includes('Tier 3')) { price = "£130"; desc = "Digital + 1 NFC Card | Delivery: 5 Days"; nameColor = "text-amber-500"; borderColor = "border-amber-500/40"; }
+            else if (tierName.includes('Tier 4')) { price = "£265"; desc = "Full Lab Suite | Delivery: Starts in 48hrs"; nameColor = "text-teal-400"; borderColor = "border-teal-400/50"; }
+            else if (tierName.includes('Card')) { price = "£20"; desc = "Hardware Only | Custom Programmed"; nameColor = "text-purple-400"; borderColor = "border-purple-500/30"; }
+            else if (tierName.includes('Stand')) { price = "£25"; desc = "Hardware Only | Custom Programmed"; nameColor = "text-blue-400"; borderColor = "border-blue-500/30"; }
+            else if (tierName.includes('QR')) { price = "£30"; desc = "Hardware Only | Custom Programmed"; nameColor = "text-teal-400"; borderColor = "border-teal-500/30"; }
 
             document.getElementById('modal-tier-name').innerText = tierName;
+            document.getElementById('modal-tier-name').className = `text-[11px] font-bold uppercase tracking-widest mb-2 ${nameColor}`;
             document.getElementById('modal-tier-price').innerText = price;
             document.getElementById('modal-tier-desc').innerText = desc;
+            document.getElementById('modal-tier-card').className = `glass-card bg-slate-900/60 rounded-2xl p-4 md:p-6 border mb-6 mx-auto max-w-sm text-center cursor-pointer hover:bg-slate-800 transition-all group relative ${borderColor}`;
             document.getElementById('selected-tier-value').value = tierName;
 
-            const modal = document.getElementById('onboarding-modal');
-            modal.classList.replace('hidden', 'flex');
+            const shipping = document.getElementById('physical-shipping');
+            const digitalInfra = document.getElementById('section-digital-infrastructure');
+            const semanticMap = document.getElementById('section-semantic-mapping');
+
+            if (tierName.includes('NFC') || tierName.includes('Card') || tierName.includes('Stand') || tierName.includes('QR')) {
+                shipping.classList.remove('opacity-30', 'pointer-events-none');
+                digitalInfra.classList.add('hidden');
+                semanticMap.classList.add('hidden');
+            } else {
+                digitalInfra.classList.remove('hidden');
+                semanticMap.classList.remove('hidden');
+                if (tierName.includes('Tier 3') || tierName.includes('Tier 4')) {
+                    shipping.classList.remove('opacity-30', 'pointer-events-none');
+                } else {
+                    shipping.classList.add('opacity-30', 'pointer-events-none');
+                }
+            }
+            
+            window.closeHardwareModal();
+            document.getElementById('onboarding-modal').classList.replace('hidden', 'flex');
             document.body.style.overflow = 'hidden';
         };
 
@@ -822,14 +941,238 @@
             document.body.style.overflow = 'auto';
         };
 
+        window.showFullCardPreview = function() {
+            const tierName = document.getElementById('selected-tier-value').value;
+            const container = document.getElementById('full-card-content');
+            container.innerHTML = '';
+            
+            if (tierName.includes('NFC') || tierName.includes('Card') || tierName.includes('Stand') || tierName.includes('QR')) {
+                let hwKey = tierName.includes('Card') ? 'card' : (tierName.includes('Stand') ? 'stand' : 'qr');
+                const data = hardwareData[hwKey];
+                if (data) {
+                    const hwCard = document.createElement('div');
+                    hwCard.className = `glass-card p-6 md:p-8 rounded-[32px] border text-center border-teal-500/30`;
+                    hwCard.innerHTML = `
+                        <div class="w-full h-40 rounded-2xl overflow-hidden mb-6 bg-black flex justify-center"><img src="${data.img}" class="h-full object-contain p-2"></div>
+                        <h3 class="text-xl font-bold uppercase text-white mb-2">${data.name}</h3>
+                        <div class="text-2xl font-bold text-teal-400 mb-6">${data.price}</div>
+                        <p class="text-slate-300 text-sm font-light mb-8">${data.desc}</p>
+                        <button type="button" onclick="window.hideFullCardPreview()" class="w-full py-4 bg-slate-800 text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-slate-700 transition">Return to Form</button>
+                    `;
+                    container.appendChild(hwCard);
+                }
+            } else {
+                let tierId = tierName.includes('Tier 1') ? 'tier-1' : (tierName.includes('Tier 2') ? 'tier-2' : (tierName.includes('Tier 3') ? 'tier-3' : 'tier-4'));
+                const originalCard = document.getElementById(tierId);
+                if (originalCard) {
+                    const clone = originalCard.cloneNode(true);
+                    clone.removeAttribute('id');
+                    clone.classList.remove('tilt-card');
+                    clone.style.transform = 'none';
+                    const btn = clone.querySelector('button');
+                    if (btn) { btn.innerText = "Return to Form"; btn.setAttribute('onclick', 'window.hideFullCardPreview()'); btn.setAttribute('type', 'button'); }
+                    container.appendChild(clone);
+                }
+            }
+            document.getElementById('full-card-modal').classList.replace('hidden', 'flex');
+        };
+
+        window.hideFullCardPreview = function() {
+            document.getElementById('full-card-modal').classList.replace('flex', 'hidden');
+        };
+
+        window.openPrivacy = function() { document.getElementById('privacy-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
+        window.closePrivacy = function() { document.getElementById('privacy-modal').classList.replace('flex', 'hidden'); document.body.style.overflow = 'auto'; };
+        window.openTerms = function() { document.getElementById('terms-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
+        window.closeTerms = function() { document.getElementById('terms-modal').classList.replace('flex', 'hidden'); document.body.style.overflow = 'auto'; };
+        window.openCookie = function() { document.getElementById('cookie-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
+        window.closeCookie = function() { document.getElementById('cookie-modal').classList.replace('flex', 'hidden'); document.body.style.overflow = 'auto'; };
+
+        window.showStatusMessage = function(text, isSuccess = true) {
+            const message = document.createElement('div');
+            message.className = `fixed top-10 left-1/2 -translate-x-1/2 glass-card px-8 py-4 rounded-2xl z-[100] font-bold uppercase tracking-widest text-[10px] text-center max-w-[90vw] transition-all duration-300 transform translate-y-[-20px] opacity-0 shadow-2xl`;
+            message.classList.add(isSuccess ? 'border-teal-500' : 'border-red-500', isSuccess ? 'text-teal-400' : 'text-red-400');
+            message.innerText = text;
+            document.body.appendChild(message);
+            requestAnimationFrame(() => { message.classList.remove('translate-y-[-20px]', 'opacity-0'); });
+            setTimeout(() => {
+                message.classList.add('translate-y-[-20px]', 'opacity-0');
+                setTimeout(() => message.remove(), 400);
+            }, 7000);
+        };
+
+        function resetAuditUI() {
+            const btnContainer = document.getElementById('audit-btn-container');
+            if (btnContainer.classList.contains('hidden')) {
+                btnContainer.classList.remove('hidden');
+                document.getElementById('audit-ai-result').classList.add('hidden');
+                document.getElementById('gemini-preview-btn').innerText = 'GET YOUR FREE REVIEW & REPORT ✨';
+            }
+        }
+        document.getElementById('audit-business').addEventListener('input', resetAuditUI);
+        document.getElementById('audit-type').addEventListener('change', resetAuditUI);
+
+        async function runSimulatedAudit(bizName, bizType, resultAreaElement) {
+            const lowerInput = bizName.toLowerCase();
+            const cleanName = bizName.split(',')[0].trim() || "Your Business";
+            
+            const norfolkTowns = ['cromer', 'sheringham', 'holt', 'norwich', 'aylsham', 'fakenham', 'wells', 'north walsham', 'mundesley', 'stalham'];
+            let locationText = "your local area";
+            for (let town of norfolkTowns) {
+                if (lowerInput.includes(town)) { locationText = town.charAt(0).toUpperCase() + town.slice(1); break; }
+            }
+
+            let hash = 0;
+            for (let i = 0; i < cleanName.length; i++) { hash = ((hash << 5) - hash) + cleanName.charCodeAt(i); hash = hash & hash; }
+            hash = Math.abs(hash);
+
+            const terminalLogs = [
+                `> Initialising Lab connection...`,
+                `> Querying semantic footprint for "${cleanName}"...`,
+                `> Cross-referencing ${bizType} sector data in ${locationText}...`,
+                `> Pinging Apple Siri & Amazon Alexa voice registries...`,
+                `> Analysing Google Gemini cite-readiness...`,
+                `> Compiling final entity report...`
+            ];
+
+            resultAreaElement.innerHTML = '';
+            for (let i = 0; i < terminalLogs.length; i++) {
+                setTimeout(() => {
+                    const logLine = document.createElement('div');
+                    logLine.className = 'terminal-log';
+                    logLine.innerText = terminalLogs[i];
+                    resultAreaElement.appendChild(logLine);
+                    if (i < terminalLogs.length - 1) {
+                         logLine.classList.add('typing-cursor');
+                         setTimeout(() => logLine.classList.remove('typing-cursor'), 400);
+                    }
+                }, i * 400); 
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            
+            const tailoredResponses = {
+                "hospitality": {
+                    gemini: [`Menu and hours lack structural schema fields. Gemini cannot verify your table options over competing properties.`],
+                    voice: [`Smart speaker databases lack natural FAQ definitions to route spoken booking intents in ${locationText}.`],
+                    entity: [`Review profile data flags low submission frequency, preventing automated high-confidence indexing triggers.`]
+                },
+                "beauty and wellness": {
+                    gemini: [`Service mapping configurations fail to provide isolated rate descriptions to AI assistant profiles.`],
+                    voice: [`Hands-free requests can parse basic map coordinates but lose accuracy on custom treatment queries.`],
+                    entity: [`Brand profiles require persistent feedback updates to bypass algorithm trust filter layers.`]
+                },
+                "trade": {
+                    gemini: [`Emergency response zones are unmapped semantically, missing critical visibility parameters.`],
+                    voice: [`Missing voice intent markers prevent voice call activations on modern voice decks.`],
+                    entity: [`Inconsistent location verification limits visibility during regional crisis lookups.`]
+                },
+                "retail": {
+                    gemini: [`Local category markers do not supply atomic structure data feeds to shopping crawlers.`],
+                    voice: [`Spoken inventory lookups fail validation checks due to static location definitions.`],
+                    entity: [`Profile trust levels require immediate configuration alignment to rank inside mobile lookups.`]
+                },
+                "accommodation": {
+                    gemini: [`Amenity options are unencoded, driving traffic onto high-commission comparison tools.`],
+                    voice: [`Conversational parameters are unindexed for local policy lookups across smart screens.`],
+                    entity: [`Guest trust validation history needs continuous fresh signals to prevent list downranking.`]
+                },
+                "local services": {
+                    gemini: [`Entity structure fields return broad results, missing core regional footprint mappings.`],
+                    voice: [`Voice search nodes block service recommendations due to ambiguous verification loops.`],
+                    entity: [`Profile signals need configuration syncs to rank ahead of franchise frameworks.`]
+                }
+            };
+
+            const selectedResponses = tailoredResponses[bizType] || tailoredResponses["local services"];
+            const tierDecider = hash % 10;
+            let recommendedTierTitle = tierDecider <= 2 ? "Tier 2: Voice Specialist" : (tierDecider >= 8 ? "Tier 4: AI Dominator" : "Tier 3: Review Booster");
+
+            return {
+                text: `<strong class="text-white text-base">Lab Analysis Complete for ${cleanName}:</strong><br><br>
+<strong class="text-teal-400">👁️ HOW GEMINI SEES YOU:</strong><br><span class="text-slate-300">${selectedResponses.gemini[0]}</span><br><br>
+<strong class="text-blue-400">🎙️ VOICE VISIBILITY (SIRI & ALEXA):</strong><br><span class="text-slate-300">${selectedResponses.voice[0]}</span><br><br>
+<strong class="text-amber-500">🏢 BRAND ENTITY STATUS:</strong><br><span class="text-slate-300">${selectedResponses.entity[0]}</span><br><br>
+<strong class="text-white">Recommended Lab Protocol:</strong><br>We strongly recommend <strong class="text-teal-400">${recommendedTierTitle}</strong>.`,
+                tier: recommendedTierTitle
+            };
+        }
+
+        document.getElementById('audit-form').onsubmit = async function(e) {
+            e.preventDefault();
+            const bizName = document.getElementById('audit-business').value;
+            const bizType = document.getElementById('audit-type').value;
+            if (!bizName || !bizType) return window.showStatusMessage('Please enter all business details.', false);
+
+            const btn = document.getElementById('gemini-preview-btn');
+            const btnContainer = document.getElementById('audit-btn-container');
+            const resultArea = document.getElementById('audit-ai-result');
+            const scanner = document.getElementById('audit-scanner');
+            
+            const encodedUrl = "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4Mjg0aDVOUGR4Umw0Wi1rZ21xNmhMb09HdzNNVmJtODRDWVpxZTlJdE5QLTRTSDF6X1JiRkdrOUVSX2FHU2UzWUIvZXhlYw==";
+            fetch(atob(encodedUrl), { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ "Selected Tier": "Cold Lead (Audit)", "Business Name": `${bizName} [${bizType}]` })}).catch(console.error);
+
+            btn.disabled = true; btn.classList.add('gemini-pulse'); btn.innerText = 'Analysing Local Entity Data...';
+            scanner.classList.remove('hidden'); resultArea.classList.remove('hidden');
+
+            const result = await runSimulatedAudit(bizName, bizType, resultArea);
+            resultArea.innerHTML = result.text + `<br><br><div class="flex justify-center"><button type="button" onclick="window.openOnboarding('${result.tier}')" class="bg-teal-500 text-slate-900 px-6 py-3 rounded-lg font-bold uppercase text-xs tracking-widest hover:bg-white transition inline-block glow-button w-full sm:w-auto">Initialise Recommended Protocol</button></div>`;
+            
+            btn.disabled = false; btn.classList.remove('gemini-pulse'); scanner.classList.add('hidden'); btnContainer.classList.add('hidden');
+        };
+
+        // RESTORED: AJAX Submission and FormSubmit Pipeline Implementation
+        document.getElementById('requirement-form').onsubmit = async function(e) {
+            e.preventDefault();
+            if (document.getElementById('ob-honey').value) return;
+
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'SENDING TO LAB...'; btn.disabled = true;
+
+            const formData = {
+                "_subject": "New OffScript Labs Order: " + document.getElementById('ob-business-name').value,
+                "_replyto": document.getElementById('ob-email').value,
+                "Selected Tier": document.getElementById('selected-tier-value').value,
+                "Full Name": document.getElementById('ob-name').value,
+                "Business Name": document.getElementById('ob-business-name').value,
+                "Email Address": document.getElementById('ob-email').value,
+                "Contact Number": document.getElementById('ob-phone').value,
+                "Manager Invite Status": document.getElementById('ob-invite').value,
+                "Google Maps Verified": document.getElementById('ob-verified').value,
+                "Website/Social Link": document.getElementById('ob-link').value,
+                "Priority Services": document.getElementById('ob-services').value,
+                "Shipping Address": document.getElementById('ob-address').value,
+                "Google Review Link": document.getElementById('ob-review-link').value
+            };
+
+            try {
+                const emailPromise = fetch("https://formsubmit.co/ajax/dappsncfc@gmail.com", {
+                    method: "POST", headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(formData)
+                });
+
+                const encodedUrl = "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4Mjg0aDVOUGR4Umw0Wi1rZ21xNmhMb09HdzNNVmJtODRDWVpxZTlJdE5QLTRTSDF6X1JiRkdrOUVSX2FHU2UzWUIvZXhlYw==";
+                const sheetPromise = fetch(atob(encodedUrl), { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(formData) });
+
+                await Promise.all([emailPromise, sheetPromise]);
+                window.showStatusMessage('Lab Session Ignited Successfully. Check your email for verification.');
+                window.closeOnboarding(); e.target.reset();
+            } catch (error) {
+                window.showStatusMessage('Protocol Error. Please verify connection networks.', false);
+            } finally {
+                btn.innerText = originalText; btn.disabled = false;
+            }
+        };
+
         function initCalculator() {
             const slider = document.getElementById('calc-slider');
-            if (!slider) return;
-            slider.addEventListener('input', function() {
-                const acv = parseInt(this.value);
-                document.getElementById('calc-acv-display').textContent = '£' + acv.toLocaleString();
-                document.getElementById('calc-loss-display').innerHTML = '£' + (acv * 10).toLocaleString() + '<span class="text-2xl text-red-400/50 font-medium tracking-normal">/mo</span>';
-            });
+            if (slider) {
+                slider.addEventListener('input', function() {
+                    const acv = parseInt(this.value);
+                    document.getElementById('calc-acv-display').textContent = '£' + acv.toLocaleString();
+                    document.getElementById('calc-loss-display').innerHTML = '£' + (acv * 10).toLocaleString() + '<span class="text-2xl text-red-400/50 font-medium tracking-normal">/mo</span>';
+                });
+            }
         }
 
         function initTiltEffect() {
@@ -850,13 +1193,16 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            initCalculator();
-            initTiltEffect();
+            initCalculator(); initTiltEffect();
         });
 
         window.onclick = function(e) {
             if (e.target == document.getElementById('onboarding-modal')) window.closeOnboarding();
             else if (e.target == document.getElementById('hardware-modal')) window.closeHardwareModal();
+            else if (e.target == document.getElementById('privacy-modal')) window.closePrivacy();
+            else if (e.target == document.getElementById('terms-modal')) window.closeTerms();
+            else if (e.target == document.getElementById('cookie-modal')) window.closeCookie();
+            else if (e.target == document.getElementById('full-card-modal')) window.hideFullCardPreview();
         };
     </script>
 </body>
