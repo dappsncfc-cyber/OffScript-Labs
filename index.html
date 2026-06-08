@@ -426,7 +426,7 @@
                             </span>
                         </div>
                         <div class="absolute inset-0 bg-white flex flex-col items-center justify-center opacity-0 group-hover/nfc:opacity-100 transition-opacity duration-300 delay-[400ms]">
-                            <svg class="w-6 h-6 md:w-4 md:h-4 mb-1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            <svg class="w-6 h-6 md:w-4 md:h-4 mb-1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92(3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             <div class="w-12 h-1 md:w-8 bg-slate-200 rounded-full mt-2"></div>
                         </div>
                     </div>
@@ -691,7 +691,7 @@
                     <p id="modal-tier-desc" class="text-slate-500 text-[10px] uppercase tracking-widest leading-tight">Details</p>
                 </div>
 
-                <div class="bg-teal-500/10 border border-teal-500/20 rounded-xl p-4 mb-6 mx-auto max-w-md">
+                <div class="bg-teal-500/10 border border-teal-500/20 rounded-xl p-4 mb-6 mx-auto max-w-md text-center">
                     <p class="text-xs text-teal-300 font-medium leading-relaxed">
                         <span class="block mb-1 text-sm">💳 <strong>No payment is taken today.</strong></span>
                         We will be in touch to complete your set-up and tailor the service to your business.
@@ -792,16 +792,49 @@
     </footer>
 
     <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
+        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
             <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
                 <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Privacy Policy</h2>
                 <button onclick="window.closePrivacy()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
+            
             <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> OffScript Labs (Cromer, North Norfolk, UK)</p>
                 <div>
                     <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Overview</h3>
                     <p>At OffScript Labs, we respect your privacy and are committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. This policy explains how we collect, use, and safeguard your information when you visit offscriptlabs.co.uk or engage our services.</p>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">2. Information We Collect</h3>
+                    <p>We only collect data necessary to provide our services and communicate with you effectively. This includes:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+                        <li><strong>Identity & Contact Data:</strong> Full name, email address, phone number, and business name provided via our contact/onboarding forms.</li>
+                        <li><strong>Business Infrastructure Data:</strong> Website URLs, Google Review links, and details regarding your Google Business Profile status.</li>
+                        <li><strong>Physical Data:</strong> Shipping addresses required exclusively for the physical delivery of NFC hardware kits.</li>
+                        <li><strong>Diagnostic Data:</strong> Business names and local area details entered into our AI Audit simulator.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">3. How We Use Your Data</h3>
+                    <p>Your data is used strictly for the following purposes:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+                        <li>To execute the digital AI audits and semantic mapping requested by you.</li>
+                        <li>To communicate regarding your onboarding, service updates, and lab protocols.</li>
+                        <li>To physically post NFC hardware to your required location.</li>
+                        <li>To structure your digital footprint on third-party platforms (e.g., Google) *only* when explicit Manager access has been granted by you.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">4. Data Storage & Security</h3>
+                    <p>We implement strict security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorised way. Form submissions are securely routed via encrypted endpoints and stored within access-controlled Google Workspace environments. We do not process or store financial/payment information directly on this website.</p>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">5. Third-Party Sharing</h3>
+                    <p>We do not sell, trade, or rent your personal identification information to others. We only share information with trusted third parties strictly necessary for our operations (e.g., Royal Mail for shipping NFC kits, or email routing services like FormSubmit).</p>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">6. Your Legal Rights</h3>
+                    <p>Under the UK GDPR, you have the right to request access to, correction of, or erasure of your personal data, or to withdraw consent at any time. To exercise any of these rights, please contact us directly at <span class="text-teal-400 font-mono">lab@offscriptlabs.co.uk</span>.</p>
                 </div>
             </div>
             <div class="p-6 border-t border-slate-800 bg-slate-900/80 text-center"><button onclick="window.closePrivacy()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button></div>
@@ -814,9 +847,29 @@
                 <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Terms of Service</h2>
                 <button onclick="window.closeTerms()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
+            
             <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026<br><strong>Business Type:</strong> Business-to-Business (B2B)</p>
-                <div><h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. The Service</h3><p>OffScript Labs provides digital marketing, semantic mapping, and NFC hardware solutions designed to optimise business visibility for AI algorithms and voice search.</p></div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. The Service</h3>
+                    <p>OffScript Labs provides digital marketing, semantic mapping, and NFC hardware solutions designed to optimise business visibility for AI algorithms and voice search. By submitting an onboarding request, you agree to engage our services under these business-to-business terms.</p>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">2. Liability & Guarantees</h3>
+                    <p>While we utilise industry-leading practices to restructure your data for Google Gemini, Siri, and Alexa, we do not own these platforms. Therefore, <strong>we cannot absolutely guarantee specific search rankings, traffic volumes, or AI citations</strong>, as these algorithms are subject to independent updates outside of our control.</p>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">3. Payments & Invoicing</h3>
+                    <p>No payment is taken via this website. Following your onboarding request, you will be contacted to confirm your exact requirements. An invoice will be issued independently. Work will commence, and physical hardware will be dispatched, only upon settlement of the invoice.</p>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">4. Hardware Delivery</h3>
+                    <p>NFC "Tap-to-Review" hardware is programmed in Norfolk and dispatched via Royal Mail. We aim to deliver within the timeframes specified in your chosen Tier, but we are not liable for delays caused by the postal service.</p>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">5. Jurisdiction</h3>
+                    <p>These terms are governed by the laws of England and Wales. Any disputes arising from this agreement shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+                </div>
             </div>
             <div class="p-6 border-t border-slate-800 bg-slate-900/80 text-center"><button onclick="window.closeTerms()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button></div>
         </div>
@@ -828,9 +881,18 @@
                 <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Cookie Policy</h2>
                 <button onclick="window.closeCookie()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
+            
             <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026</p>
-                <p>We do not use tracking or profiling cookies on this website. Only basic functional system vectors are processed to ensure proper responsiveness.</p>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">Our Stance on Cookies</h3>
+                    <p>At OffScript Labs, we believe in a clean, frictionless user experience. <strong>We do not use intrusive tracking cookies, third-party analytics, or marketing cookies on this website.</strong></p>
+                </div>
+                <div>
+                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">Strictly Necessary Mechanisms</h3>
+                    <p>Under the UK Privacy and Electronic Communications Regulations (PECR), websites must obtain consent for non-essential cookies. Because we do not use them, you will not see a disruptive consent banner on our site.</p>
+                    <p class="mt-2">We only utilise strictly necessary browser functions (such as temporary local storage) to allow our AI Audit simulator and interactive ROI calculator to function while you are actively using them. This data is not used to identify you or track your behaviour across the internet.</p>
+                </div>
             </div>
             <div class="p-6 border-t border-slate-800 bg-slate-900/80 text-center"><button onclick="window.closeCookie()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button></div>
         </div>
