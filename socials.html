@@ -7,88 +7,73 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=300;400;500;600;700&family=Inter:wght=300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --lab-navy: #020617;
-            --lab-teal: #2dd4bf;
-            --lab-teal-glow: rgba(45, 212, 191, 0.2);
+            --lab-teal: #0d9488;
+            --lab-teal-light: #14b8a6;
         }
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: var(--lab-navy); 
-            color: #f8fafc; 
+            background-color: #f8fafc;
+            color: #1e293b;
             overflow-x: hidden; 
         }
-        h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', sans-serif; }
+        h1, h2, h3, h4, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
         
         section {
             scroll-margin-top: 120px;
         }
         
-        .circuit-bg {
-            background-image: radial-gradient(var(--lab-teal) 0.5px, transparent 0.5px);
-            background-size: 30px 30px;
-            opacity: 0.05;
+        .bright-grid-bg {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.4;
         }
 
-        .glass-card {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
         }
 
-        @keyframes text-shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .gradient-text {
-            background: linear-gradient(270deg, #2dd4bf, #3b82f6, #2dd4bf);
-            background-size: 200% auto;
+        .gradient-text-bright {
+            background: linear-gradient(135deg, #0d9488 0%, #2563eb 50%, #4f46e5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding-right: 0.2em; 
+            padding-right: 0.1em;
             display: inline-block;
-            animation: text-shimmer 4s ease infinite;
         }
 
-        @keyframes blob-bounce {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
-            100% { transform: translate(-50%, -50%) scale(1); }
+        @keyframes blob-float {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-48%, -52%) scale(1.08); }
         }
 
-        .blob-bounce {
-            animation: blob-bounce 10s ease-in-out infinite;
+        .blob-float {
+            animation: blob-float 12s ease-in-out infinite;
         }
 
-        .glow-button {
-            box-shadow: 0 0 20px var(--lab-teal-glow);
+        .btn-primary {
+            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+            color: #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.35);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glow-button:hover {
-            box-shadow: 0 0 30px rgba(45, 212, 191, 0.6);
+        .btn-primary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(13, 148, 136, 0.5);
+            background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
         }
 
-        input, select, textarea {
-            background-color: #0f172a !important;
-            border: 1px solid #1e293b !important;
-            color: white !important;
-        }
-        input::placeholder, textarea::placeholder {
-            color: #64748b !important;
-        }
-        
         #mobile-menu.hidden { display: none; }
-        strong { color: #fff; font-weight: 700; }
+        strong { color: #0f172a; font-weight: 700; }
 
         .tilt-card {
             will-change: transform;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.15s ease-out, box-shadow 0.3s ease;
         }
         .tilt-reset {
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
@@ -97,11 +82,11 @@
             width: 6px;
         }
         .policy-scroll::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.5); 
+            background: #f1f5f9;
             border-radius: 8px;
         }
         .policy-scroll::-webkit-scrollbar-thumb {
-            background: rgba(45, 212, 191, 0.3); 
+            background: #cbd5e1;
             border-radius: 8px;
         }
 
@@ -116,181 +101,188 @@
         }
     </style>
 </head>
-<body class="relative">
+<body class="relative bg-slate-50 text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900">
 
-    <div class="fixed inset-0 circuit-bg pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bright-grid-bg pointer-events-none z-0"></div>
 
-    <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-slate-950 border-b border-teal-500/20 flex items-center backdrop-blur-md overflow-hidden">
+    <!-- Announcement Bar -->
+    <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-teal-900 text-white border-b border-teal-800 flex items-center backdrop-blur-md overflow-hidden shadow-sm">
         <div class="global-ticker-container whitespace-nowrap flex items-center">
-            <div class="flex items-center gap-6 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest text-slate-300 font-medium px-4">
+            <div class="flex items-center gap-6 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest font-semibold px-4 text-teal-100">
                 <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5 flex-shrink-0">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-500"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-300 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-400"></span>
                 </span>
-                <span><strong class="text-teal-400">Availability Status:</strong> We only take on <strong class="text-white">1 business partner</strong> per local area to ensure top rankings.</span>
-                <span class="text-slate-700">&bull;</span>
+                <span><strong class="text-white">District Exclusivity:</strong> We only partner with <strong class="text-teal-200">1 business</strong> per local area to ensure top local rankings.</span>
+                <span class="text-teal-700">&bull;</span>
             </div>
-            <div class="flex items-center gap-6 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest text-slate-300 font-medium px-4" aria-hidden="true">
+            <div class="flex items-center gap-6 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest font-semibold px-4 text-teal-100" aria-hidden="true">
                 <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5 flex-shrink-0">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-500"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-300 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-400"></span>
                 </span>
-                <span><strong class="text-teal-400">Availability Status:</strong> We only take on <strong class="text-white">1 business partner</strong> per local area to ensure top rankings.</span>
-                <span class="text-slate-700">&bull;</span>
+                <span><strong class="text-white">District Exclusivity:</strong> We only partner with <strong class="text-teal-200">1 business</strong> per local area to ensure top local rankings.</span>
+                <span class="text-teal-700">&bull;</span>
             </div>
         </div>
     </div>
 
+    <!-- Navigation -->
     <nav id="main-nav" class="fixed top-8 md:top-10 w-full z-50 px-4 md:px-6 py-4 transition-all duration-300">
-        <div class="max-w-7xl mx-auto glass-card rounded-2xl px-6 py-3 flex items-center justify-between relative">
-            <a href="index.html" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-white" aria-label="OffScript Labs Home">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round"/>
-                    <path d="M30 65C40 60 50 70 70 65" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5"/>
-                    <circle cx="50" cy="45" r="3" fill="#2dd4bf" opacity="0.6"/>
+        <div class="max-w-7xl mx-auto glass-card-light rounded-2xl px-6 py-3 flex items-center justify-between relative shadow-sm border border-slate-200/80 bg-white/90">
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-slate-900" aria-label="OffScript Labs Home">
+                <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#0d9488" stroke-width="5" stroke-linejoin="round"/>
+                    <path d="M30 65C40 60 50 70 70 65" stroke="#0d9488" stroke-width="3" stroke-opacity="0.6"/>
+                    <circle cx="50" cy="45" r="4" fill="#0d9488"/>
                 </svg>
                 <div class="flex flex-col leading-none">
-                    <span class="text-lg font-bold tracking-tighter uppercase">OffScript</span>
-                    <span class="text-[8px] uppercase tracking-[0.3em] text-teal-400 font-bold">Labs</span>
+                    <span class="text-xl font-extrabold tracking-tighter uppercase text-slate-900">OffScript</span>
+                    <span class="text-[9px] uppercase tracking-[0.35em] text-teal-600 font-bold">Labs</span>
                 </div>
             </a>
 
-            <div class="hidden md:flex items-center gap-8 text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                <a href="index.html" class="hover:text-teal-400 transition">Home</a>
-                <a href="#authority-stack" class="hover:text-teal-400 transition">The Stack</a>
-                <a href="photography.html" class="hover:text-teal-400 transition">Photography</a>
-                <a href="#closing-cta" class="bg-teal-500 text-slate-900 px-5 py-2 rounded-lg glow-button font-bold">Check Availability</a>
+            <div class="hidden md:flex items-center gap-8 text-[11px] uppercase font-bold tracking-wider text-slate-600">
+                <a href="index.html" class="hover:text-teal-600 transition">Home</a>
+                <a href="#authority-stack" class="hover:text-teal-600 transition">The Stack</a>
+                <a href="photography.html" class="hover:text-teal-600 transition">Photography</a>
+                <a href="#closing-cta" class="btn-primary px-5 py-2.5 rounded-xl font-bold uppercase tracking-wider">Check Availability</a>
             </div>
 
-            <button onclick="window.toggleMobileMenu()" class="md:hidden text-teal-400 p-2 focus:outline-none" aria-label="Toggle mobile menu">
+            <button onclick="window.toggleMobileMenu()" class="md:hidden text-teal-700 p-2 focus:outline-none" aria-label="Toggle mobile menu">
                 <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
 
-            <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-2 p-6 glass-card rounded-2xl md:hidden shadow-2xl">
-                <div class="flex flex-col gap-6 text-center">
-                    <a href="index.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Home</a>
-                    <a href="#authority-stack" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">The Stack</a>
-                    <a href="photography.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Photography</a>
-                    <div class="px-4">
-                        <a href="#closing-cta" onclick="window.toggleMobileMenu()" class="inline-block w-full bg-teal-500 text-slate-900 text-center px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest mt-2">CHECK AVAILABILITY</a>
+            <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-3 p-6 glass-card-light rounded-2xl md:hidden shadow-xl border border-slate-200 bg-white">
+                <div class="flex flex-col gap-4 text-center">
+                    <a href="index.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-700 py-2 hover:text-teal-600">Home</a>
+                    <a href="#authority-stack" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-700 py-2 hover:text-teal-600">The Stack</a>
+                    <a href="photography.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-700 py-2 hover:text-teal-600">Photography</a>
+                    <div class="px-2 pt-2">
+                        <a href="#closing-cta" onclick="window.toggleMobileMenu()" class="inline-block w-full btn-primary text-center px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest">CHECK AVAILABILITY</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="relative pt-40 md:pt-48 pb-12 px-6 text-center">
-        <div class="max-w-4xl mx-auto relative z-10 text-pretty">
-            <span class="uppercase tracking-[0.3em] font-mono text-teal-400 text-xs block mb-4">Local Growth &amp; Content Management</span>
-            <h1 class="text-4xl sm:text-6xl font-bold uppercase tracking-tight leading-none text-slate-100 mb-6">
-                Social Media <br><span class="gradient-text italic font-normal tracking-wide normal-case">Services</span>
+    <!-- Hero -->
+    <section class="relative pt-40 md:pt-48 pb-16 px-6 text-center bg-gradient-to-b from-teal-50/40 via-slate-50 to-white">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="text-teal-600 text-xs font-bold uppercase tracking-widest mb-3 block">Local Growth & Content Management</span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight leading-none text-slate-900 mb-6">
+                Social Media <br><span class="gradient-text-bright italic font-normal normal-case">Management Services</span>
             </h1>
-            <p class="max-w-2xl mx-auto text-slate-400 text-sm md:text-base font-light leading-relaxed">
-                We manage your social feeds and keep your online profiles active, accurate, and completely optimised so your business stands out when local customers are looking for you.
+            <p class="max-w-2xl mx-auto text-slate-600 text-base md:text-lg font-normal leading-relaxed">
+                We manage your social feeds and map listings so your business stays active, accurate, and recommended when local customers search for your services.
             </p>
         </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-teal-200/30 rounded-full blur-[100px] -z-10 blob-float pointer-events-none"></div>
     </section>
 
-    <section id="authority-stack" class="py-20 px-4 md:px-6 relative z-10 border-t border-slate-900">
+    <!-- Authority Stack Section -->
+    <section id="authority-stack" class="py-20 px-4 md:px-6 relative z-10 border-t border-slate-200 bg-white">
         <div class="max-w-6xl mx-auto">
             
-            <div class="text-center mb-12 text-pretty">
-                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter uppercase text-white mb-4">The OSL Authority Stack</h2>
-                <div class="w-24 h-1 bg-teal-500 mx-auto rounded-full"></div>
+            <div class="text-center mb-12">
+                <span class="text-teal-600 text-xs font-bold uppercase tracking-widest mb-2 block">Comprehensive Local System</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight uppercase text-slate-900">The OSL Authority Stack</h2>
             </div>
 
-            <div class="glass-card rounded-[40px] border-teal-500/30 overflow-hidden shadow-2xl relative">
-                <div class="absolute inset-0 bg-gradient-to-b from-teal-500/5 via-transparent to-slate-950/40 pointer-events-none"></div>
+            <div class="bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden shadow-xl relative">
                 
-                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-800 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200">
                     
-                    <div class="p-8 md:p-14 flex flex-col justify-between space-y-8 text-pretty">
+                    <!-- Part 1 -->
+                    <div class="p-8 md:p-12 flex flex-col justify-between space-y-8 bg-white">
                         <div class="space-y-6">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 bg-teal-500/10 border border-teal-500/30 rounded-lg flex items-center justify-center text-teal-400">
-                                    <i data-lucide="layers" class="w-4 h-4"></i>
+                                <div class="w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center text-teal-700">
+                                    <i data-lucide="layers" class="w-5 h-5"></i>
                                 </div>
-                                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-teal-400 font-bold">Part 1</span>
+                                <span class="text-xs uppercase tracking-widest text-teal-700 font-bold">Part 1</span>
                             </div>
-                            <h3 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-tight">Profile Maintenance &amp; NFC Review Management</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed font-light">
-                                Weekly geotagged photo injections, active review velocity management via physical hardware, and monthly rank expansion tracking.
+                            <h3 class="text-2xl font-bold uppercase text-slate-900 tracking-tight">Profile Maintenance & NFC Review Management</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed font-normal">
+                                Weekly geotagged photo updates, continuous review acquisition via physical tap cards, and monthly rank expansion tracking.
                             </p>
                             
-                            <div class="space-y-4 pt-4 text-xs text-slate-300 border-t border-slate-900/60">
-                                <div class="flex items-start gap-2.5">
-                                    <div class="w-5 h-5 bg-teal-500/10 rounded border border-teal-500/20 text-teal-400 flex items-center justify-center font-mono text-[10px] font-bold mt-0.5 flex-shrink-0">1</div>
-                                    <p><strong>Geotagged Photo Updates:</strong> We add new, high-quality images of your business every week. Each photo is digitally tagged with your exact location coordinates to prove to search engines that you are an active local hub.</p>
+                            <div class="space-y-4 pt-4 text-xs text-slate-700 border-t border-slate-100">
+                                <div class="flex items-start gap-3">
+                                    <span class="w-5 h-5 bg-teal-100 text-teal-800 rounded flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">1</span>
+                                    <p><strong>Geotagged Photo Updates:</strong> Fresh images of your venue added weekly, digitally tagged with exact location coordinates to prove active local operations.</p>
                                 </div>
-                                <div class="flex items-start gap-2.5">
-                                    <div class="w-5 h-5 bg-teal-500/10 rounded border border-teal-500/20 text-teal-400 flex items-center justify-center font-mono text-[10px] font-bold mt-0.5 flex-shrink-0">2</div>
-                                    <p><strong>Steady Review Growth:</strong> We use physical "Tap-to-Review" countertop cards at your venue to help you get a steady stream of fresh, genuine 5-star customer reviews safely and consistently.</p>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-5 h-5 bg-teal-100 text-teal-800 rounded flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">2</span>
+                                    <p><strong>Steady Review Growth:</strong> Tap-to-review countertop cards provided to capture consistent 5-star customer feedback safely.</p>
                                 </div>
-                                <div class="flex items-start gap-2.5">
-                                    <div class="w-5 h-5 bg-teal-500/10 rounded border border-teal-500/20 text-teal-400 flex items-center justify-center font-mono text-[10px] font-bold mt-0.5 flex-shrink-0">3</div>
-                                    <p><strong>Local Map Tracking:</strong> Every month, we check exactly how far your map pin visibility reaches into neighboring areas, tuning your descriptions to bring in customers from further away.</p>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-5 h-5 bg-teal-100 text-teal-800 rounded flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">3</span>
+                                    <p><strong>Local Map Tracking:</strong> Monthly radius checks to analyze how far your map visibility extends into surrounding Norfolk towns.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="pt-6 border-t border-slate-800/60 flex items-baseline gap-2">
-                            <span class="text-3xl font-bold text-white font-mono">£195</span>
-                            <span class="text-xs text-slate-500 uppercase font-mono">/ month</span>
+                        <div class="pt-6 border-t border-slate-100 flex items-baseline gap-2">
+                            <span class="text-3xl font-extrabold text-slate-900">£195</span>
+                            <span class="text-xs text-slate-500 uppercase font-semibold">/ month</span>
                         </div>
                     </div>
 
-                    <div class="p-8 md:p-14 flex flex-col justify-between space-y-8 text-pretty">
+                    <!-- Part 2 -->
+                    <div class="p-8 md:p-12 flex flex-col justify-between space-y-8 bg-white">
                         <div class="space-y-6">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-blue-400">
-                                    <i data-lucide="activity" class="w-4 h-4"></i>
+                                <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-700">
+                                    <i data-lucide="activity" class="w-5 h-5"></i>
                                 </div>
-                                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-blue-400 font-bold">Part 2</span>
+                                <span class="text-xs uppercase tracking-widest text-blue-700 font-bold">Part 2</span>
                             </div>
-                            <h3 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-tight">Social Media Signal Boosting</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed font-light">
-                                The complete 3-post local-intent distribution system syncing your social channels directly with the map.
+                            <h3 class="text-2xl font-bold uppercase text-slate-900 tracking-tight">Social Media Signal Boosting</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed font-normal">
+                                The 3-post weekly local-intent distribution system syncing your social channels directly with local map crawlers.
                             </p>
                             
-                            <div class="space-y-4 pt-4 text-xs text-slate-300 border-t border-slate-900/60">
-                                <div class="flex items-start gap-2.5">
-                                    <div class="w-5 h-5 bg-blue-500/10 rounded border border-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-[10px] font-bold mt-0.5 flex-shrink-0">1</div>
-                                    <p><strong>Targeted Social Posts:</strong> We design and publish 3 high-quality posts a week on your channels. Every post is written to highlight your location and target customers living or looking in your immediate area.</p>
+                            <div class="space-y-4 pt-4 text-xs text-slate-700 border-t border-slate-100">
+                                <div class="flex items-start gap-3">
+                                    <span class="w-5 h-5 bg-blue-100 text-blue-800 rounded flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">1</span>
+                                    <p><strong>Targeted Social Posts:</strong> 3 tailored social posts written weekly to highlight your local venue and target regional customers.</p>
                                 </div>
-                                <div class="flex items-start gap-2.5">
-                                    <div class="w-5 h-5 bg-blue-500/10 rounded border border-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-[10px] font-bold mt-0.5 flex-shrink-0">2</div>
-                                    <p><strong>Map Listing Syncing:</strong> We automatically duplicate your social updates directly onto your Google Map listing, showing map algorithms and active searchers that your venue has live, daily activity.</p>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-5 h-5 bg-blue-100 text-blue-800 rounded flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">2</span>
+                                    <p><strong>Map Listing Syncing:</strong> Updates posted to social feeds are duplicated directly onto Google Map updates for maximum activity signals.</p>
                                 </div>
-                                <div class="flex items-start gap-2.5">
-                                    <div class="w-5 h-5 bg-blue-500/10 rounded border border-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-[10px] font-bold mt-0.5 flex-shrink-0">3</div>
-                                    <p><strong>Short-Form Video Editing:</strong> Send us your raw smartphone clips, and we will edit them into professional, high-retention Reels or TikTok frames with polished titles and matching background music.</p>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-5 h-5 bg-blue-100 text-blue-800 rounded flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">3</span>
+                                    <p><strong>Short-Form Video Editing:</strong> Send us your raw video clips, and we edit them into polished Reels or TikToks with captions.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="pt-6 border-t border-slate-800/60 flex items-baseline gap-2">
-                            <span class="text-3xl font-bold text-white font-mono">£145</span>
-                            <span class="text-xs text-slate-500 uppercase font-mono">/ month</span>
+                        <div class="pt-6 border-t border-slate-100 flex items-baseline gap-2">
+                            <span class="text-3xl font-extrabold text-slate-900">£145</span>
+                            <span class="text-xs text-slate-500 uppercase font-semibold">/ month</span>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="border-t border-teal-500/20 bg-slate-950/80 p-8 md:p-12 text-center text-pretty relative z-10">
+                <!-- Combined Bundle CTA -->
+                <div class="border-t border-teal-200 bg-gradient-to-b from-teal-50/50 to-teal-100/50 p-8 md:p-12 text-center relative">
                     <div class="max-w-2xl mx-auto space-y-6">
-                        <p class="text-sm md:text-base text-slate-300 font-light leading-relaxed">
-                            Lock down the ultimate hybrid marketing system. Combine both services for total district dominance.
+                        <p class="text-sm md:text-base text-slate-700 font-normal leading-relaxed">
+                            Combine both services into our complete hybrid marketing stack for total district dominance.
                         </p>
                         
-                        <div class="py-4 px-6 inline-block bg-teal-500/10 border border-teal-500/20 rounded-2xl">
-                            <span class="block text-[10px] uppercase tracking-widest text-teal-400 font-bold mb-1">Bundle Price Package</span>
-                            <div class="text-4xl md:text-5xl font-bold text-white font-mono">£295<span class="text-sm text-slate-500 font-normal tracking-normal font-sans">/mo</span></div>
-                            <span class="text-[10px] uppercase tracking-wider text-teal-400/80 block mt-1.5 font-bold font-mono">Saving £45 every single month</span>
+                        <div class="py-4 px-8 inline-block bg-white border border-teal-300 rounded-2xl shadow-sm">
+                            <span class="block text-xs uppercase tracking-widest text-teal-800 font-bold mb-1">Bundle Price Package</span>
+                            <div class="text-4xl md:text-5xl font-extrabold text-slate-900">£295<span class="text-base text-slate-500 font-normal">/mo</span></div>
+                            <span class="text-xs uppercase tracking-wider text-teal-700 block mt-1 font-bold">Save £45 every month</span>
                         </div>
                         
                         <div class="pt-2">
-                            <button onclick="window.transmitAuthorityBooking()" class="w-full sm:w-auto px-10 bg-teal-500 text-slate-900 font-bold py-4 rounded-xl glow-button text-xs tracking-widest uppercase text-center">
-                                Secure the Stack
+                            <button onclick="window.transmitAuthorityBooking()" class="w-full sm:w-auto btn-primary px-10 py-4 rounded-xl font-bold text-xs tracking-widest uppercase text-center shadow-lg">
+                                Secure The Complete Stack
                             </button>
                         </div>
                     </div>
@@ -301,116 +293,99 @@
         </div>
     </section>
 
-    <section id="closing-cta" class="py-24 px-6 border-t border-slate-900 relative">
-        <div class="max-w-3xl mx-auto text-center text-pretty relative z-10 space-y-8">
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight uppercase text-white">
-                Ready to stand out from the national chains?
+    <!-- Availability CTA -->
+    <section id="closing-cta" class="py-24 px-6 border-t border-slate-200 bg-slate-50 relative">
+        <div class="max-w-3xl mx-auto text-center space-y-8 relative z-10">
+            <span class="text-teal-600 text-xs font-bold uppercase tracking-widest block">Limited District Availability</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight uppercase text-slate-900">
+                Ready To Stand Out In Your District?
             </h2>
-            <p class="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-                We only work with a strict number of independent businesses per district to ensure maximum ranking authority. Don't let your competitors claim the footprint first.
+            <p class="text-slate-600 text-base md:text-lg font-normal leading-relaxed max-w-2xl mx-auto">
+                We enforce strict partner exclusivity per town/postcode to ensure maximum ranking focus. Check if your district is currently open.
             </p>
-            <div class="pt-4">
-                <button onclick="window.transmitAvailabilityCheck()" class="w-full sm:w-auto px-8 bg-slate-100 hover:bg-teal-400 text-slate-950 font-bold py-4 rounded-xl transition-all duration-300 text-xs tracking-widest uppercase text-center shadow-lg">
-                    Check Availability For Your Business
+            <div>
+                <button onclick="window.transmitAvailabilityCheck()" class="btn-primary px-9 py-4 rounded-xl font-bold text-xs tracking-widest uppercase text-center shadow-lg">
+                    Check District Availability
                 </button>
             </div>
         </div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] md:w-[450px] h-[250px] md:h-[450px] bg-teal-500/5 rounded-full blur-[100px] -z-10 blob-bounce"></div>
     </section>
 
-    <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
-        <div class="flex items-center justify-center gap-3 mb-8 text-white">
-            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round" opacity="0.3"/>
+    <!-- Footer -->
+    <footer class="py-16 bg-slate-900 text-slate-300 text-center px-6 relative z-10 border-t border-slate-800">
+        <div class="flex items-center justify-center gap-3 mb-6 text-white">
+            <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#0d9488" stroke-width="6" stroke-linejoin="round"/>
             </svg>
-            <span class="text-xs uppercase tracking-[0.5em] font-bold text-white/40">OffScript Labs &copy; 2026</span>
+            <span class="text-xs uppercase tracking-[0.4em] font-extrabold text-slate-200">OffScript Labs &copy; 2026</span>
         </div>
         
-        <p class="text-white text-sm max-w-sm mx-auto font-light leading-relaxed mb-8">
-            Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for high-intent growth across North Norfolk.
+        <p class="text-slate-400 text-sm max-w-md mx-auto font-normal leading-relaxed mb-6">
+            Social media signals and local footprint optimization for North Norfolk businesses.
         </p>
 
-        <div class="text-[10px] text-slate-600 max-w-lg mx-auto mb-8 leading-relaxed font-mono">
-            OffScript Labs is a trading name based in Cromer, Norfolk, UK. <br>
+        <div class="text-xs text-slate-500 max-w-lg mx-auto mb-6 font-mono">
+            OffScript Labs • Cromer, Norfolk, UK
         </div>
         
-        <div class="flex items-center justify-center gap-6 mb-8 text-pretty">
-            <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Facebook">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        <div class="flex items-center justify-center gap-6 mb-8">
+            <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors" aria-label="Facebook">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
-            <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Instagram">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors" aria-label="Instagram">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
         </div>
         
-        <div class="mt-4 mb-8 flex flex-wrap justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-slate-500">
-            <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
-            <span class="text-slate-800 hidden sm:inline">|</span>
-            <a href="#" onclick="window.openTerms(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Terms of Service</a>
-            <span class="text-slate-800 hidden sm:inline">|</span>
-            <a href="#" onclick="window.openCookie(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Cookie Policy</a>
+        <div class="flex flex-wrap justify-center items-center gap-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-teal-400 transition underline underline-offset-4 decoration-slate-700">Privacy Policy</a>
+            <span class="text-slate-700 hidden sm:inline">•</span>
+            <a href="#" onclick="window.openTerms(); return false;" class="hover:text-teal-400 transition underline underline-offset-4 decoration-slate-700">Terms of Service</a>
+            <span class="text-slate-700 hidden sm:inline">•</span>
+            <a href="#" onclick="window.openCookie(); return false;" class="hover:text-teal-400 transition underline underline-offset-4 decoration-slate-700">Cookie Policy</a>
         </div>
-
-        <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono">Lab System Operational</div>
     </footer>
 
-    <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
-            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Privacy Policy</h2>
-                <button onclick="window.closePrivacy()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Privacy Policy">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+    <!-- Policy Modals -->
+    <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-900/60 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="bg-white w-full max-w-3xl max-h-[85vh] rounded-3xl border border-slate-200 shadow-2xl flex flex-col text-left">
+            <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-3xl">
+                <h2 class="text-xl font-bold tracking-tight uppercase text-slate-900">Privacy Policy</h2>
+                <button onclick="window.closePrivacy()" class="text-slate-400 hover:text-slate-800 transition bg-white p-2 rounded-full border border-slate-200"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
-            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-600 space-y-5 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> OffScript Labs (Cromer, North Norfolk, UK)</p>
-                <div>
-                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Overview</h3>
-                    <p>At OffScript Labs, we respect your privacy and are committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. This policy explains how we collect, use, and safeguard your information when you visit offscriptlabs.co.uk or engage our services.</p>
-                </div>
+                <p>We collect essential communication and venue details to handle social management requests.</p>
             </div>
-            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-                <button onclick="window.closePrivacy()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-            </div>
+            <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-3xl text-center"><button onclick="window.closePrivacy()" class="btn-primary px-8 py-2.5 rounded-xl text-xs uppercase font-bold tracking-wider">Close</button></div>
         </div>
     </div>
 
-    <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
-            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Terms of Service</h2>
-                <button onclick="window.closeTerms()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Terms">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+    <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-900/60 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="bg-white w-full max-w-3xl max-h-[85vh] rounded-3xl border border-slate-200 shadow-2xl flex flex-col text-left">
+            <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-3xl">
+                <h2 class="text-xl font-bold tracking-tight uppercase text-slate-900">Terms of Service</h2>
+                <button onclick="window.closeTerms()" class="text-slate-400 hover:text-slate-800 transition bg-white p-2 rounded-full border border-slate-200"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
-            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-600 space-y-5 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026<br><strong>Business Type:</strong> Business-to-Business (B2B)</p>
-                <div>
-                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Service Scope</h3>
-                    <p>OffScript Labs provides digital marketing, social signals optimisation, and local footprint strategy under standard UK service provisions.</p>
-                </div>
+                <p>Social media management is provided on a monthly subscription basis with district exclusivity rights.</p>
             </div>
-            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-                <button onclick="window.closeTerms()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-            </div>
+            <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-3xl text-center"><button onclick="window.closeTerms()" class="btn-primary px-8 py-2.5 rounded-xl text-xs uppercase font-bold tracking-wider">Close</button></div>
         </div>
     </div>
 
-    <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl flex flex-col text-left">
-            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Cookie Policy</h2>
-                <button onclick="window.closeCookie()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Cookie Policy">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+    <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-900/60 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="bg-white w-full max-w-3xl max-h-[85vh] rounded-3xl border border-slate-200 shadow-2xl flex flex-col text-left">
+            <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-3xl">
+                <h2 class="text-xl font-bold tracking-tight uppercase text-slate-900">Cookie Policy</h2>
+                <button onclick="window.closeCookie()" class="text-slate-400 hover:text-slate-800 transition bg-white p-2 rounded-full border border-slate-200"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
-            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-600 space-y-5 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026</p>
-                <p>We do not use tracking or profiling cookies on this site. Only basic necessary browser data fields are utilised to deliver responsive interfaces.</p>
+                <p>We do not use tracking or profiling cookies on this site.</p>
             </div>
-            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-                <button onclick="window.closeCookie()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-            </div>
+            <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-3xl text-center"><button onclick="window.closeCookie()" class="btn-primary px-8 py-2.5 rounded-xl text-xs uppercase font-bold tracking-wider">Close</button></div>
         </div>
     </div>
 
@@ -422,13 +397,11 @@
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('main-nav');
             if (window.scrollY > 20) {
-                nav.classList.add('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
+                nav.classList.add('py-2', 'shadow-md');
                 nav.classList.remove('py-4');
-                nav.classList.add('py-2');
             } else {
-                nav.classList.remove('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
+                nav.classList.remove('py-2', 'shadow-md');
                 nav.classList.add('py-4');
-                nav.classList.remove('py-2');
             }
         });
 
@@ -448,7 +421,6 @@
             if (typeof lucide !== 'undefined') lucide.createIcons();
         });
 
-        // Legal Modals handlers
         window.openPrivacy = function() { document.getElementById('privacy-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
         window.closePrivacy = function() { document.getElementById('privacy-modal').classList.replace('flex', 'hidden'); document.body.style.overflow = 'auto'; };
         window.openTerms = function() { document.getElementById('terms-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };

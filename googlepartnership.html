@@ -7,79 +7,73 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=300;400;500;600;700&family=Inter:wght=300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --lab-navy: #020617;
-            --lab-teal: #2dd4bf;
-            --lab-teal-glow: rgba(45, 212, 191, 0.2);
+            --lab-teal: #0d9488;
+            --lab-teal-light: #14b8a6;
         }
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: var(--lab-navy); 
-            color: #f8fafc; 
+            background-color: #f8fafc;
+            color: #1e293b;
             overflow-x: hidden; 
         }
-        h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', sans-serif; }
+        h1, h2, h3, h4, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
         
         section {
             scroll-margin-top: 120px;
         }
         
-        .circuit-bg {
-            background-image: radial-gradient(var(--lab-teal) 0.5px, transparent 0.5px);
-            background-size: 30px 30px;
-            opacity: 0.05;
+        .bright-grid-bg {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.4;
         }
 
-        .glass-card {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
         }
 
-        @keyframes text-shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .gradient-text {
-            background: linear-gradient(270deg, #2dd4bf, #3b82f6, #2dd4bf);
-            background-size: 200% auto;
+        .gradient-text-bright {
+            background: linear-gradient(135deg, #0d9488 0%, #2563eb 50%, #4f46e5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding-right: 0.2em; 
+            padding-right: 0.1em;
             display: inline-block;
-            animation: text-shimmer 4s ease infinite;
         }
 
-        @keyframes blob-bounce {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
-            100% { transform: translate(-50%, -50%) scale(1); }
+        @keyframes blob-float {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-48%, -52%) scale(1.08); }
         }
 
-        .blob-bounce {
-            animation: blob-bounce 10s ease-in-out infinite;
+        .blob-float {
+            animation: blob-float 12s ease-in-out infinite;
         }
 
-        .glow-button {
-            box-shadow: 0 0 20px var(--lab-teal-glow);
+        .btn-primary {
+            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+            color: #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.35);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glow-button:hover {
-            box-shadow: 0 0 30px rgba(45, 212, 191, 0.6);
+        .btn-primary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(13, 148, 136, 0.5);
+            background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
         }
 
         #mobile-menu.hidden { display: none; }
-        strong { color: #fff; font-weight: 700; }
+        strong { color: #0f172a; font-weight: 700; }
 
         .tilt-card {
             will-change: transform;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.15s ease-out, box-shadow 0.3s ease;
         }
         .tilt-reset {
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
@@ -96,271 +90,254 @@
         }
     </style>
 </head>
-<body class="relative">
+<body class="relative bg-slate-50 text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900">
 
-    <div class="fixed inset-0 circuit-bg pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bright-grid-bg pointer-events-none z-0"></div>
 
-    <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-slate-950 border-b border-teal-500/20 flex items-center backdrop-blur-md overflow-hidden">
+    <!-- Announcement Bar -->
+    <div id="exclusivity-bar" class="fixed top-0 left-0 w-full h-8 md:h-10 z-[60] bg-teal-900 text-white border-b border-teal-800 flex items-center backdrop-blur-md overflow-hidden shadow-sm">
         <div class="global-ticker-container whitespace-nowrap flex items-center">
-            <div class="flex items-center gap-6 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest text-slate-300 font-medium px-4">
+            <div class="flex items-center gap-6 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest font-semibold px-4 text-teal-100">
                 <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5 flex-shrink-0">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-500"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-300 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-400"></span>
                 </span>
-                <span><strong class="text-teal-400">Exclusive Offer:</strong> Sign up below to claim an unreleased 10% discount code plus a 14-day free trial of Google Workspace for business.</span>
-                <span class="text-slate-700">&bull;</span>
+                <span><strong class="text-white">Exclusive Offer:</strong> Claim a 10% discount code plus 14-day free trial of Google Workspace.</span>
+                <span class="text-teal-700">&bull;</span>
             </div>
-            <div class="flex items-center gap-6 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest text-slate-300 font-medium px-4" aria-hidden="true">
+            <div class="flex items-center gap-6 text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest font-semibold px-4 text-teal-100" aria-hidden="true">
                 <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5 flex-shrink-0">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-500"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-300 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-teal-400"></span>
                 </span>
-                <span><strong class="text-teal-400">Exclusive Offer:</strong> Sign up below to claim an unreleased 10 % discount code plus a 14-day free trial of Google Workspace for business..</span>
-                <span class="text-slate-700">&bull;</span>
+                <span><strong class="text-white">Exclusive Offer:</strong> Claim a 10% discount code plus 14-day free trial of Google Workspace.</span>
+                <span class="text-teal-700">&bull;</span>
             </div>
         </div>
     </div>
 
+    <!-- Navigation -->
     <nav id="main-nav" class="fixed top-8 md:top-10 w-full z-50 px-4 md:px-6 py-4 transition-all duration-300">
-        <div class="max-w-7xl mx-auto glass-card rounded-2xl px-6 py-3 flex items-center justify-between relative">
-            <a href="index.html" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-white" aria-label="OffScript Labs Home">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round"/>
-                    <path d="M30 65C40 60 50 70 70 65" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5"/>
-                    <circle cx="50" cy="45" r="3" fill="#2dd4bf" opacity="0.6"/>
+        <div class="max-w-7xl mx-auto glass-card-light rounded-2xl px-6 py-3 flex items-center justify-between relative shadow-sm border border-slate-200/80 bg-white/90">
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-80 text-slate-900" aria-label="OffScript Labs Home">
+                <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#0d9488" stroke-width="5" stroke-linejoin="round"/>
+                    <path d="M30 65C40 60 50 70 70 65" stroke="#0d9488" stroke-width="3" stroke-opacity="0.6"/>
+                    <circle cx="50" cy="45" r="4" fill="#0d9488"/>
                 </svg>
                 <div class="flex flex-col leading-none">
-                    <span class="text-lg font-bold tracking-tighter uppercase">OffScript</span>
-                    <span class="text-[8px] uppercase tracking-[0.3em] text-teal-400 font-bold">Labs</span>
+                    <span class="text-xl font-extrabold tracking-tighter uppercase text-slate-900">OffScript</span>
+                    <span class="text-[9px] uppercase tracking-[0.35em] text-teal-600 font-bold">Labs</span>
                 </div>
             </a>
 
-            <div class="hidden md:flex items-center gap-8 text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                <a href="index.html" class="hover:text-teal-400 transition">Home</a>
-                <a href="#overview" class="hover:text-teal-400 transition">Overview</a>
-                <a href="#highlights" class="hover:text-teal-400 transition">Highlights</a>
-                <a href="photography.html" class="hover:text-teal-400 transition">Photography</a>
-                <a href="#onboarding" class="bg-teal-500 text-slate-900 px-5 py-2 rounded-lg glow-button font-bold">Get Trial Link</a>
+            <div class="hidden md:flex items-center gap-8 text-[11px] uppercase font-bold tracking-wider text-slate-600">
+                <a href="index.html" class="hover:text-teal-600 transition">Home</a>
+                <a href="#overview" class="hover:text-teal-600 transition">Overview</a>
+                <a href="#highlights" class="hover:text-teal-600 transition">Highlights</a>
+                <a href="photography.html" class="hover:text-teal-600 transition">Photography</a>
+                <a href="#onboarding" class="btn-primary px-5 py-2.5 rounded-xl font-bold uppercase tracking-wider">Get Trial Link</a>
             </div>
 
-            <button onclick="window.toggleMobileMenu()" class="md:hidden text-teal-400 p-2 focus:outline-none" aria-label="Toggle mobile menu">
+            <button onclick="window.toggleMobileMenu()" class="md:hidden text-teal-700 p-2 focus:outline-none" aria-label="Toggle mobile menu">
                 <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
 
-            <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-2 p-6 glass-card rounded-2xl md:hidden shadow-2xl">
-                <div class="flex flex-col gap-6 text-center">
-                    <a href="index.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Home</a>
-                    <a href="#overview" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Overview</a>
-                    <a href="#highlights" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Highlights</a>
-                    <a href="photography.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-300 py-2">Photography</a>
-                    <div class="px-4">
-                        <a href="#onboarding" onclick="window.toggleMobileMenu()" class="inline-block w-full bg-teal-500 text-slate-900 text-center px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest mt-2">GET TRIAL LINK</a>
+            <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-3 p-6 glass-card-light rounded-2xl md:hidden shadow-xl border border-slate-200 bg-white">
+                <div class="flex flex-col gap-4 text-center">
+                    <a href="index.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-700 py-2 hover:text-teal-600">Home</a>
+                    <a href="#overview" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-700 py-2 hover:text-teal-600">Overview</a>
+                    <a href="#highlights" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-700 py-2 hover:text-teal-600">Highlights</a>
+                    <a href="photography.html" onclick="window.toggleMobileMenu()" class="block text-xs uppercase font-bold tracking-widest text-slate-700 py-2 hover:text-teal-600">Photography</a>
+                    <div class="px-2 pt-2">
+                        <a href="#onboarding" onclick="window.toggleMobileMenu()" class="inline-block w-full btn-primary text-center px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest">GET TRIAL LINK</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section id="overview" class="relative pt-40 md:pt-48 pb-20 px-6 text-center overflow-hidden">
-        <div class="max-w-4xl mx-auto relative z-10 text-pretty flex flex-col items-center">
-            <span class="uppercase tracking-[0.3em] font-mono text-teal-400 text-xs block mb-4">Cloud Productivity Suite Integration</span>
-            <h1 class="text-4xl sm:text-6xl font-bold uppercase tracking-tight leading-none text-slate-100 mb-6">
+    <!-- Overview -->
+    <section id="overview" class="relative pt-40 md:pt-48 pb-20 px-6 text-center overflow-hidden bg-gradient-to-b from-teal-50/40 via-slate-50 to-white">
+        <div class="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            <span class="text-teal-600 text-xs font-bold uppercase tracking-widest mb-3 block">Cloud Productivity Suite Integration</span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-slate-900 mb-6">
                 What is Google&nbsp;Workspace?
             </h1>
-            <p class="max-w-2xl mx-auto text-slate-400 text-base md:text-lg mb-8 font-light leading-relaxed">
-                Google&nbsp;Workspace is a cloud-based productivity suite that helps teams communicate, collaborate and get things done from anywhere and on any device. It's simple to set up, use and manage, so your business can focus on what really matters.
+            <p class="max-w-2xl mx-auto text-slate-600 text-base md:text-lg mb-8 font-normal leading-relaxed">
+                Google Workspace is a cloud-based productivity suite that helps teams communicate, collaborate, and get things done from anywhere and on any device.
             </p>
             
-            <div class="mb-10 w-full max-w-[240px] sm:max-w-[280px] flex justify-center">
-                <a href="https://referworkspace.app.goo.gl/bRgQ " class="block transition-transform duration-300 hover:scale-105 active:scale-98">
-                    <img src="https://storage.googleapis.com/referworkspace-asset/img/digitalbuttons/digital_button_en.png" alt="Get Started with Google Workspace" class="w-full h-auto shadow-[0_0_25px_rgba(45,212,191,0.15)] rounded-lg" />
+            <div class="mb-8 w-full max-w-[260px] flex justify-center">
+                <a href="https://referworkspace.app.goo.gl/bRgQ" class="block transition-transform duration-300 hover:scale-105">
+                    <img src="https://storage.googleapis.com/referworkspace-asset/img/digitalbuttons/digital_button_en.png" alt="Get Started with Google Workspace" class="w-full h-auto shadow-md rounded-lg" />
                 </a>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center font-mono text-[11px] font-bold tracking-widest uppercase">
-                <a href="https://www.youtube.com/c/googleworkspace" target="_blank" rel="noopener noreferrer" class="bg-slate-900 border border-slate-800 text-teal-400 px-6 py-3.5 rounded-xl hover:bg-slate-800 hover:text-white transition flex items-center gap-2">
-                    <i data-lucide="video" class="w-4 h-4"></i> Watch a video
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center text-xs font-bold tracking-wider uppercase">
+                <a href="https://www.youtube.com/c/googleworkspace" target="_blank" rel="noopener noreferrer" class="bg-white border border-slate-300 text-slate-800 px-6 py-3.5 rounded-xl hover:bg-slate-100 transition flex items-center gap-2 shadow-sm">
+                    <i data-lucide="video" class="w-4 h-4 text-teal-600"></i> Watch a video
                 </a>
-                <a href="https://referworkspace.app.goo.gl/one-pager" target="_blank" rel="noopener noreferrer" class="glass-card text-slate-300 px-6 py-3.5 rounded-xl hover:border-teal-500/40 hover:text-white transition flex items-center gap-2">
-                    <i data-lucide="info" class="w-4 h-4"></i> find out more here
+                <a href="https://referworkspace.app.goo.gl/one-pager" target="_blank" rel="noopener noreferrer" class="bg-white border border-slate-300 text-slate-800 px-6 py-3.5 rounded-xl hover:bg-slate-100 transition flex items-center gap-2 shadow-sm">
+                    <i data-lucide="info" class="w-4 h-4 text-teal-600"></i> Find out more
                 </a>
             </div>
         </div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-teal-500/10 rounded-full blur-[80px] md:blur-[120px] -z-10 blob-bounce"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-teal-200/30 rounded-full blur-[100px] -z-10 blob-float pointer-events-none"></div>
     </section>
 
-    <section id="highlights" class="py-20 px-6 border-y border-slate-900 relative bg-slate-950/20">
+    <!-- Highlights -->
+    <section id="highlights" class="py-20 px-6 border-y border-slate-200 relative bg-white">
         <div class="max-w-6xl mx-auto">
-            
-            <div class="text-center mb-16 text-pretty">
-                <span class="text-teal-400 text-xs font-bold uppercase tracking-widest mb-2 block font-mono">Core Highlights Bundle</span>
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tighter uppercase text-white">Here are some highlights</h2>
-                <div class="w-16 h-1 bg-teal-500 mx-auto rounded-full mt-4"></div>
+            <div class="text-center mb-16">
+                <span class="text-teal-600 text-xs font-bold uppercase tracking-widest mb-2 block">Core Highlights Bundle</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight uppercase text-slate-900">Why Modern Workspaces Choose Google</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <div class="tilt-card glass-card p-8 md:p-10 rounded-[32px] flex flex-col justify-between hover:bg-slate-800/50 hover:border-teal-500/30 transition-all h-full" data-scale="1.02">
-                    <div class="space-y-6">
-                        <div class="w-12 h-12 bg-teal-500/10 border border-teal-500/30 rounded-xl flex items-center justify-center text-teal-400">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
+                <div class="tilt-card bg-slate-50 border border-slate-200 hover:border-teal-400 p-8 rounded-3xl flex flex-col justify-between hover:shadow-xl transition-all h-full" data-scale="1.02">
+                    <div class="space-y-5">
+                        <div class="w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center text-teal-700">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight text-white">Business email for your domain</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed font-light">
-                            Look professional and communicate as you@yourcompany.com. Gmail's simple features help you build your brand while getting more done.
+                        <h3 class="text-xl font-bold uppercase tracking-tight text-slate-900">Professional Business Email</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed font-normal">
+                            Build immediate trust with custom email addresses (you@yourcompany.com) powered by Gmail's secure infrastructure.
                         </p>
                     </div>
                 </div>
 
-                <div class="tilt-card glass-card p-8 md:p-10 rounded-[32px] flex flex-col justify-between hover:bg-slate-800/50 hover:border-teal-500/30 transition-all h-full" data-scale="1.02">
-                    <div class="space-y-6">
-                        <div class="w-12 h-12 bg-teal-500/10 border border-teal-500/30 rounded-xl flex items-center justify-center text-teal-400">
-                            <i data-lucide="smartphone" class="w-5 h-5"></i>
+                <div class="tilt-card bg-slate-50 border border-slate-200 hover:border-teal-400 p-8 rounded-3xl flex flex-col justify-between hover:shadow-xl transition-all h-full" data-scale="1.02">
+                    <div class="space-y-5">
+                        <div class="w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center text-teal-700">
+                            <i data-lucide="smartphone" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight text-white">Access from any location or device</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed font-light">
-                            Check emails, share files, edit documents, hold video meetings and more, whether you're at work, at home or on the move. You can pick up where you left off from a computer, tablet or phone.
+                        <h3 class="text-xl font-bold uppercase tracking-tight text-slate-900">Universal Access Everywhere</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed font-normal">
+                            Access docs, calendars, and team chats seamlessly across desktop, phone, or tablet with automatic cloud syncing.
                         </p>
                     </div>
                 </div>
 
-                <div class="tilt-card glass-card p-8 md:p-10 rounded-[32px] flex flex-col justify-between hover:bg-slate-800/50 hover:border-teal-500/30 transition-all h-full" data-scale="1.02">
-                    <div class="space-y-6">
-                        <div class="w-12 h-12 bg-teal-500/10 border border-teal-500/30 rounded-xl flex items-center justify-center text-teal-400">
-                            <i data-lucide="sliders" class="w-5 h-5"></i>
+                <div class="tilt-card bg-slate-50 border border-slate-200 hover:border-teal-400 p-8 rounded-3xl flex flex-col justify-between hover:shadow-xl transition-all h-full" data-scale="1.02">
+                    <div class="space-y-5">
+                        <div class="w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center text-teal-700">
+                            <i data-lucide="sliders" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold uppercase tracking-tight text-white">Enterprise-level management tools</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed font-light">
-                            Robust admin settings give you total command over users, devices, security and more.
+                        <h3 class="text-xl font-bold uppercase tracking-tight text-slate-900">Enterprise Admin Tools</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed font-normal">
+                            Manage user accounts, security policies, device access, and file permissions effortlessly from a central console.
                         </p>
                     </div>
                 </div>
 
             </div>
-
         </div>
     </section>
 
-    <section id="onboarding" class="py-24 px-6 relative">
-        <div class="max-w-3xl mx-auto glass-card p-8 md:p-12 rounded-[40px] border-teal-500/30 relative overflow-hidden text-center shadow-2xl">
-            <div class="absolute inset-0 bg-gradient-to-b from-teal-500/5 to-transparent pointer-events-none"></div>
-            
+    <!-- Onboarding / Activation -->
+    <section id="onboarding" class="py-24 px-6 relative bg-slate-50">
+        <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-3xl border border-teal-200 text-center shadow-xl relative overflow-hidden">
             <div class="max-w-2xl mx-auto space-y-6 relative z-10">
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tight uppercase text-white">
-                    Initialise Workspace Trial Protocol
+                <span class="text-teal-600 text-xs font-bold uppercase tracking-widest mb-1 block">Free Trial Activation</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight uppercase text-slate-900">
+                    Activate Your Google Workspace Trial
                 </h2>
                 
-                <p class="text-slate-300 text-sm md:text-base font-light leading-relaxed">
-                    Sign up using my link <a class="text-teal-400 font-mono underline underline-offset-4 hover:text-white transition" href="https://referworkspace.app.goo.gl/bRgQ">https://referworkspace.app.goo.gl/bRgQ</a> and get a 14-day trial, and message me to get an exclusive discount when you try Google&nbsp;Workspace for your business.
+                <p class="text-slate-600 text-sm md:text-base font-normal leading-relaxed">
+                    Sign up using our referral link <a class="text-teal-700 font-bold underline underline-offset-4" href="https://referworkspace.app.goo.gl/bRgQ">https://referworkspace.app.goo.gl/bRgQ</a> for a 14-day free trial. Contact us for an exclusive 10% discount promo code.
                 </p>
                 
                 <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://referworkspace.app.goo.gl/bRgQ" target="_blank" rel="noopener noreferrer" class="bg-teal-500 text-slate-900 font-bold px-8 py-4 rounded-xl glow-button text-xs tracking-widest uppercase text-center">
-                        Launch 14-Day Free Trial Link
+                    <a href="https://referworkspace.app.goo.gl/bRgQ" target="_blank" rel="noopener noreferrer" class="btn-primary px-8 py-4 rounded-xl text-xs font-bold tracking-widest uppercase text-center shadow-lg">
+                        Launch 14-Day Free Trial
                     </a>
-                    <button onclick="window.transmitDiscountQuery()" class="glass-card text-white font-bold px-8 py-4 rounded-xl hover:bg-slate-800 transition text-xs tracking-widest uppercase text-center">
-                        Message For Exclusive Discount
+                    <button onclick="window.transmitDiscountQuery()" class="bg-white border border-slate-300 text-slate-800 font-bold px-8 py-4 rounded-xl hover:bg-slate-100 transition text-xs tracking-widest uppercase text-center shadow-sm">
+                        Request 10% Discount Code
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 bg-black border-t border-slate-900 text-center px-6 relative z-10 text-pretty">
-        <div class="flex items-center justify-center gap-3 mb-8 text-white">
-            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#2dd4bf" stroke-width="4" stroke-linejoin="round" opacity="0.3"/>
+    <!-- Footer -->
+    <footer class="py-16 bg-slate-900 text-slate-300 text-center px-6 relative z-10 border-t border-slate-800">
+        <div class="flex items-center justify-center gap-3 mb-6 text-white">
+            <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 10H60V25L75 80C78 90 70 95 50 95C30 95 22 90 25 80L40 25V10Z" stroke="#0d9488" stroke-width="6" stroke-linejoin="round"/>
             </svg>
-            <span class="text-xs uppercase tracking-[0.5em] font-bold text-white/40">OffScript Labs &copy; 2026</span>
+            <span class="text-xs uppercase tracking-[0.4em] font-extrabold text-slate-200">OffScript Labs &copy; 2026</span>
         </div>
         
-        <p class="text-white text-sm max-w-sm mx-auto font-light leading-relaxed mb-8">
-            Helping UK businesses bridge the gap between physical shops and the 2026 AI search landscape. Lab-tested solutions for high-intent growth across North Norfolk.
+        <p class="text-slate-400 text-sm max-w-md mx-auto font-normal leading-relaxed mb-6">
+            Google Workspace integration and cloud digital strategy for North Norfolk businesses.
         </p>
 
-        <div class="text-[10px] text-slate-600 max-w-lg mx-auto mb-8 leading-relaxed font-mono">
-            OffScript Labs is a trading name based in Cromer, Norfolk, UK. <br>
+        <div class="text-xs text-slate-500 max-w-lg mx-auto mb-6 font-mono">
+            OffScript Labs • Cromer, Norfolk, UK
         </div>
 
-        <div class="flex items-center justify-center gap-6 mb-8 text-pretty">
-            <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Facebook">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        <div class="flex items-center justify-center gap-6 mb-8">
+            <a href="https://www.facebook.com/profile.php?id=61587701140172" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors" aria-label="Facebook">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
-            <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-teal-400 transition-colors duration-300" aria-label="Instagram">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <a href="https://www.instagram.com/offscriptlabs/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors" aria-label="Instagram">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
         </div>
 
-        <div class="mt-4 mb-8 flex flex-wrap justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-slate-500">
-            <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Privacy Policy</a>
-            <span class="text-slate-800 hidden sm:inline">|</span>
-            <a href="#" onclick="window.openTerms(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Terms of Service</a>
-            <span class="text-slate-800 hidden sm:inline">|</span>
-            <a href="#" onclick="window.openCookie(); return false;" class="hover:text-teal-400 transition underline decoration-slate-700 underline-offset-4">Cookie Policy</a>
+        <div class="flex flex-wrap justify-center items-center gap-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <a href="#" onclick="window.openPrivacy(); return false;" class="hover:text-teal-400 transition underline underline-offset-4 decoration-slate-700">Privacy Policy</a>
+            <span class="text-slate-700 hidden sm:inline">•</span>
+            <a href="#" onclick="window.openTerms(); return false;" class="hover:text-teal-400 transition underline underline-offset-4 decoration-slate-700">Terms of Service</a>
+            <span class="text-slate-700 hidden sm:inline">•</span>
+            <a href="#" onclick="window.openCookie(); return false;" class="hover:text-teal-400 transition underline underline-offset-4 decoration-slate-700">Cookie Policy</a>
         </div>
-
-        <div id="connection-id" class="text-[10px] uppercase tracking-widest text-white/40 font-mono">Lab System Operational</div>
     </footer>
 
-    <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
-            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Privacy Policy</h2>
-                <button onclick="window.closePrivacy()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Privacy Policy">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+    <!-- Policy Modals -->
+    <div id="privacy-modal" class="fixed inset-0 z-[80] hidden bg-slate-900/60 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="bg-white w-full max-w-3xl max-h-[85vh] rounded-3xl border border-slate-200 shadow-2xl flex flex-col text-left">
+            <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-3xl">
+                <h2 class="text-xl font-bold tracking-tight uppercase text-slate-900">Privacy Policy</h2>
+                <button onclick="window.closePrivacy()" class="text-slate-400 hover:text-slate-800 transition bg-white p-2 rounded-full border border-slate-200"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
-            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-600 space-y-5 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026<br><strong>Data Controller:</strong> OffScript Labs (Cromer, North Norfolk, UK)</p>
-                <div>
-                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Overview</h3>
-                    <p>At OffScript Labs, we respect your privacy and are committed to protecting your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. This policy explains how we collect, use, and safeguard your information when you visit offscriptlabs.co.uk or engage our services.</p>
-                </div>
+                <p>We process basic enquiry details to fulfill Workspace trial and setup requests.</p>
             </div>
-            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-                <button onclick="window.closePrivacy()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-            </div>
+            <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-3xl text-center"><button onclick="window.closePrivacy()" class="btn-primary px-8 py-2.5 rounded-xl text-xs uppercase font-bold tracking-wider">Close</button></div>
         </div>
     </div>
 
-    <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
-            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Terms of Service</h2>
-                <button onclick="window.closeTerms()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Terms">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+    <div id="terms-modal" class="fixed inset-0 z-[80] hidden bg-slate-900/60 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="bg-white w-full max-w-3xl max-h-[85vh] rounded-3xl border border-slate-200 shadow-2xl flex flex-col text-left">
+            <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-3xl">
+                <h2 class="text-xl font-bold tracking-tight uppercase text-slate-900">Terms of Service</h2>
+                <button onclick="window.closeTerms()" class="text-slate-400 hover:text-slate-800 transition bg-white p-2 rounded-full border border-slate-200"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
-            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-600 space-y-5 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026<br><strong>Business Type:</strong> Business-to-Business (B2B)</p>
-                <div>
-                    <h3 class="text-teal-400 font-bold uppercase tracking-widest text-[10px] mb-2">1. Service Scope</h3>
-                    <p>OffScript Labs provides digital marketing, social signals optimisation, and local footprint strategy under standard UK service provisions.</p>
-                </div>
+                <p>Google Workspace licenses are subject to Google official terms of service.</p>
             </div>
-            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-                <button onclick="window.closeTerms()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-            </div>
+            <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-3xl text-center"><button onclick="window.closeTerms()" class="btn-primary px-8 py-2.5 rounded-xl text-xs uppercase font-bold tracking-wider">Close</button></div>
         </div>
     </div>
 
-    <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-950/90 backdrop-blur-md items-center justify-center p-4 text-center">
-        <div class="glass-card w-full max-w-3xl max-h-[85vh] rounded-[32px] border-slate-700 shadow-2xl relative flex flex-col text-left">
-            <div class="p-6 md:p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 rounded-t-[32px]">
-                <h2 class="text-xl md:text-2xl font-bold tracking-tighter uppercase text-white">Cookie Policy</h2>
-                <button onclick="window.closeCookie()" class="text-slate-500 hover:text-white transition bg-slate-800 p-2 rounded-full" aria-label="Close Cookie Policy">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+    <div id="cookie-modal" class="fixed inset-0 z-[80] hidden bg-slate-900/60 backdrop-blur-md items-center justify-center p-4 text-center">
+        <div class="bg-white w-full max-w-3xl max-h-[85vh] rounded-3xl border border-slate-200 shadow-2xl flex flex-col text-left">
+            <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-3xl">
+                <h2 class="text-xl font-bold tracking-tight uppercase text-slate-900">Cookie Policy</h2>
+                <button onclick="window.closeCookie()" class="text-slate-400 hover:text-slate-800 transition bg-white p-2 rounded-full border border-slate-200"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
-            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-300 space-y-6 leading-relaxed">
+            <div class="p-6 md:p-8 overflow-y-auto policy-scroll text-sm text-slate-600 space-y-5 leading-relaxed">
                 <p><strong>Effective Date:</strong> March 2026</p>
-                <p>We do not use tracking or profiling cookies on this site. Only basic necessary browser data fields are utilised to deliver responsive interfaces.</p>
+                <p>We do not use tracking or profiling cookies on this site.</p>
             </div>
-            <div class="p-6 border-t border-slate-800 bg-slate-900/80 rounded-b-[32px] text-center">
-                <button onclick="window.closeCookie()" class="px-8 py-3 bg-teal-500 text-slate-900 font-bold rounded-xl text-xs uppercase tracking-widest glow-button transition">Acknowledge & Close</button>
-            </div>
+            <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-3xl text-center"><button onclick="window.closeCookie()" class="btn-primary px-8 py-2.5 rounded-xl text-xs uppercase font-bold tracking-wider">Close</button></div>
         </div>
     </div>
 
@@ -372,15 +349,17 @@
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('main-nav');
             if (window.scrollY > 20) {
-                nav.classList.add('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
+                nav.classList.add('py-2', 'shadow-md');
+                nav.classList.remove('py-4');
             } else {
-                nav.classList.remove('bg-slate-950/80', 'backdrop-blur-xl', 'border-b', 'border-slate-800');
+                nav.classList.remove('py-2', 'shadow-md');
+                nav.classList.add('py-4');
             }
         });
 
         window.transmitDiscountQuery = function() {
             const subject = "Exclusive Google Workspace Discount Enquiry";
-            const body = "Hi OffScript Labs,\n\nI have initiated my 14-day Google Workspace trial configuration using your activation route.\n\nPlease claim and transmit my exclusive registration discount profile code for my business operation.\n\nBest regards,";
+            const body = "Hi OffScript Labs,\n\nI have initiated my 14-day Google Workspace trial setup using your link.\n\nPlease send me my exclusive registration discount code.\n\nBest regards,";
             window.location.href = `mailto:offscriptlabsuk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         };
 
@@ -391,8 +370,8 @@
                 card.addEventListener('mouseenter', () => card.classList.remove('tilt-reset'));
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
-                    const rotateX = ((e.clientY - rect.top - (rect.height / 2)) / (rect.height / 2)) * -6; 
-                    const rotateY = ((e.clientX - rect.left - (rect.width / 2)) / (rect.width / 2)) * 6;
+                    const rotateX = ((e.clientY - rect.top - (rect.height / 2)) / (rect.height / 2)) * -5;
+                    const rotateY = ((e.clientX - rect.left - (rect.width / 2)) / (rect.width / 2)) * 5;
                     card.style.transform = `perspective(1000px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
                 });
                 card.addEventListener('mouseleave', () => {
@@ -407,7 +386,6 @@
             initTiltEffect();
         });
 
-        // Legal Modals handlers
         window.openPrivacy = function() { document.getElementById('privacy-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
         window.closePrivacy = function() { document.getElementById('privacy-modal').classList.replace('flex', 'hidden'); document.body.style.overflow = 'auto'; };
         window.openTerms = function() { document.getElementById('terms-modal').classList.replace('hidden', 'flex'); document.body.style.overflow = 'hidden'; };
